@@ -32,3 +32,43 @@ covid_data <- covid_data %>%
          Green_Short_B8w = "R-GPTS_Per_8")
 ```
 
+```{r}
+# Recoding Green variables
+covid_data <- covid_data %>%
+  mutate(Green_Short_A1w = fct_recode(Green_Short_A1w, 
+                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
+         Green_Short_A2w = fct_recode(Green_Short_A2w, 
+                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
+         Green_Short_A3w = fct_recode(Green_Short_A3w, 
+                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
+         Green_Short_A4w = fct_recode(Green_Short_A4w, 
+                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),  
+         Green_Short_A5w = fct_recode(Green_Short_A5w, 
+                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),  
+         Green_Short_A6w = fct_recode(Green_Short_A6w, 
+                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),  
+         Green_Short_A7w = fct_recode(Green_Short_A7w, 
+                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"), 
+         Green_Short_A8w = fct_recode(Green_Short_A8w, 
+                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
+         Green_Short_B1w = fct_recode(Green_Short_B1w, 
+                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
+         Green_Short_B2w = fct_recode(Green_Short_B2w, 
+                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
+         Green_Short_B3w = fct_recode(Green_Short_B3w, 
+                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
+         Green_Short_B4w = fct_recode(Green_Short_B4w, 
+                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
+         Green_Short_B5w = fct_recode(Green_Short_B5w, 
+                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
+         Green_Short_B6w = fct_recode(Green_Short_B6w, 
+                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
+         Green_Short_B7w = fct_recode(Green_Short_B7w, 
+                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),               
+         Green_Short_B8w = fct_recode(Green_Short_B8w, 
+                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"))
+
+# issue - recoding these as factors turns them into character variables
+# we can deal with this later after removing NAs and weird values
+```
+
