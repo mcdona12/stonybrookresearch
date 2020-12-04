@@ -1,0 +1,13 @@
+---
+title: "stony brook research cleaning"
+author: "Clare McDonald"
+date: "12/2/2020"
+output: pdf_document
+---
+
+```{r setup}
+library(tidyverse)
+covid_data <- read_csv("~/Clare M Folder/Stony Brook Research 2/COVID-19_December 2, 2020_11.38.csv")
+```
+ 
+ hi this is a test
