@@ -1,19 +1,34 @@
 ---
-title: "stony brook research cleaning"
-author: "Clare McDonald"
+title: "Stony Brook Data Cleaning"
+author: "Clare McDonald & Viveka Hall-Holt"
 date: "12/2/2020"
 output: pdf_document
 ---
 
-```{r setup}
+```{r setup, include = FALSE}
 library(tidyverse)
+library(dplyr)
 covid_data <- read_csv("~/Clare M Folder/Stony Brook Research 2/COVID-19_December 2, 2020_11.38.csv")
 ```
  
- hi this is a test
- 
- new change 1 
- 
- new change 2
- 
- this is a useless document :/
+```{r}
+# Renaming Green variables
+covid_data <- covid_data %>%
+  rename(Green_Short_A1w = "R-GPTS_Ref_1",
+         Green_Short_A2w = "R-GPTS_Ref_2",
+         Green_Short_A3w = "R-GPTS_Ref_3",
+         Green_Short_A4w = "R-GPTS_Ref_4",
+         Green_Short_A5w = "R-GPTS_Ref_5",
+         Green_Short_A6w = "R-GPTS_Ref_6",
+         Green_Short_A7w = "R-GPTS_Ref_7",
+         Green_Short_A8w = "R-GPTS_Ref_8",
+         Green_Short_B1w = "R-GPTS_Per_1",
+         Green_Short_B2w = "R-GPTS_Per_2",
+         Green_Short_B3w = "R-GPTS_Per_3",
+         Green_Short_B4w = "R-GPTS_Per_4",
+         Green_Short_B5w = "R-GPTS_Per_5",
+         Green_Short_B6w = "R-GPTS_Per_6",
+         Green_Short_B7w = "R-GPTS_Per_7",
+         Green_Short_B8w = "R-GPTS_Per_8")
+```
+
