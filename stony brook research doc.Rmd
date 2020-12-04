@@ -15,3 +15,5 @@ covid_data <- read_csv("~/Clare M Folder/Stony Brook Research 2/COVID-19_Decembe
  new change 1 
  
  new change 2
+ 
+ this is a useless document :/
