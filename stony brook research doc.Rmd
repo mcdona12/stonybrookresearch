@@ -70,5 +70,6 @@ covid_data <- covid_data %>%
 
 # issue - recoding these as factors turns them into character variables
 # we can deal with this later after removing NAs and weird values
+# sounds good. do you know how to reverse them from being character variables?
 ```
 
