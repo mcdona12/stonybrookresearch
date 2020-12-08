@@ -8,7 +8,7 @@ output: pdf_document
 ```{r setup, include = FALSE}
 library(tidyverse)
 library(dplyr)
-covid_data <- read_csv("~/Clare M Folder/Stony Brook Research 2/COVID-19_December 2, 2020_11.38.csv")
+covid_data <- read_csv("~/Stony Brook Research/COVID-19_December 2, 2020_11.38.csv")
 ```
  
 ```{r}
