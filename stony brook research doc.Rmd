@@ -10,7 +10,15 @@ library(tidyverse)
 library(dplyr)
 covid_data <- read_csv("~/Stony Brook Research/COVID-19_December 2, 2020_11.38.csv")
 ```
- 
+
+# Deleting First Two Rows from each column
+They were irrelevant and messed with classification of variables
+```{r}
+covid_data <- covid_data %>% 
+   filter(row_number() > (n() - 673))
+```
+
+# Green Variables
 ```{r}
 # Renaming Green variables
 covid_data <- covid_data %>%
@@ -73,10 +81,57 @@ covid_data <- covid_data %>%
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
          Green_Short_B10w = fct_recode(Green_Short_B10w, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"))
+```
 
-# issue - recoding these as factors turns them into character variables
-# we can deal with this later after removing NAs and weird values
-# sounds good. do you know how to reverse them from being character variables?
-# I think you can use the parse_number command but I'll look into it!
+```{r}
+
+# use this reduced dataset to calculate green scores. by removing NAs, the data recodes into a factor class which works for calculations I think. But I don't think we want to remove NAs generally, because it gets rid of all that persons responses for all scales, which is why I made a separate dataset for it 
+
+covid_data_calc_green <- covid_data %>%
+  filter(!is.na(Green_Short_A1w)) 
+```
+
+
+
+
+
+# Rotters Locus of Control Variables 
+
+```{r}
+# Renaming RLOC variables
+covid_data <- covid_data %>%
+  rename(RLOC_1 = QID106,
+         RLOC_2 = QID107,
+         RLOC_3 = QID108,
+         RLOC_4 = QID109,
+         RLOC_5 = QID110,
+         RLOC_6 = QID111,
+         RLOC_7 = QID112,
+         RLOC_8 = QID113,
+         RLOC_9 = QID114,
+         RLOC_10 = QID135,
+         RLOC_11 = QID136,
+         RLOC_12 = QID137,
+         RLOC_13 = QID138,
+         RLOC_14 = QID139,
+         RLOC_15 = QID140,
+         RLOC_16 = QID141,
+         RLOC_17 = QID142,
+         RLOC_18 = QID143,
+         RLOC_19 = QID144,
+         RLOC_20 = QID145,
+         RLOC_21 = QID146,
+         RLOC_22 = QID147,
+         RLOC_23 = QID148,
+         RLOC_24 = QID149,
+         RLOC_25 = QID150,
+         RLOC_26 = QID151,
+         RLOC_27 = QID152,
+         RLOC_28 = QID153,
+         RLOC_29 = QID154)
+```
+
+```{r}
+# Recoding RLOC variables
 ```
 
