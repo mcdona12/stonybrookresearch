@@ -133,5 +133,91 @@ covid_data <- covid_data %>%
 
 ```{r}
 # Recoding RLOC variables
+covid_data <- covid_data %>%
+  dplyr::mutate(RLOC_2_score = fct_recode(RLOC_2,
+                                   "1" = "a) Many of the unhappy things in people's lives are partly due to bad luck.", "0" = "b) People's misfortunes result from the mistakes they make."),
+                RLOC_6_score = fct_recode(RLOC_6,
+                                   "1" = "a) Without the right breaks one cannot be an effective leader.", "0" = "b) Capable people who fail to become leaders have not taken advantage of their opportunities."),
+                RLOC_7_score = fct_recode(RLOC_7,
+                                   "1" = "a) No matter how hard you try some people just don't like you.", "0" = "b) People who can't get others to like them don't understand how to get along with others."),
+                RLOC_9_score = fct_recode(RLOC_9,
+                                   "1" = "a) I have often found that what is going to happen will happen.", "0" = "b) Trusting to fate has never turned out as well for me as making a decision to make a definite course of action."),
+                RLOC_16_score = fct_recode(RLOC_16,
+                                   "1" = "a) Who gets to be the boss often depends on who was lucky enough to be in the right place first.", "0" = "b) Getting people to do the right thing depends upon ability, luck has little or nothing to do with it."),
+                RLOC_17_score = fct_recode(RLOC_17,
+                                   "1" = "a) As far as world affairs are concerned, most of us are the victims of forces we can neither understand, nor control.", "0" = "b) By taking an active part in political and social affairs the people can control world events."),
+                RLOC_18_score = fct_recode(RLOC_18,
+                                   "1" = "a) Most people don't realize the extent to which their lives are controlled by accidental happenings.", "0" = "b) There really is no such thing as \"luck.\""),
+                
+                RLOC_20_score = fct_recode(RLOC_20,
+                                   "1" = "a) It is hard to know whether or not a person really likes you.", "0" = "b) How many friends you have depends upon how nice a person you are."),
+                RLOC_21_score = fct_recode(RLOC_21,
+                                   "1" = "a) In the long run the bad things that happen to us are balanced by the good ones.", "0" = "b) Most misfortunes are the result of lack of ability, ignorance, laziness, or all three."),
+                RLOC_23_score = fct_recode(RLOC_23,
+                                   "1" = "a) Sometimes I can't understand how teachers arrive at the grades they give.", "0" = "b) There is a direct connection between how hard I study and the grades I get."),
+                RLOC_25_score = fct_recode(RLOC_25,
+                                   "1" = "a) Many times I feel that I have little influence over the things that happen to me.", "0" = "b) It is impossible for me to believe that chance or luck plays an important role in my life."),
+                RLOC_29_score = fct_recode(RLOC_29,
+                                   "1" = "a) Most of the time I can't understand why politicians behave the way they do.", "0" = "b) In the long run the people are responsible for bad government on a national as well as on a local level."),
+                RLOC_3_score = fct_recode(RLOC_3,
+                                   "0" = "a) One of the major reasons why we have wars is because people don't take enough interest in politics.", "1" = "b) There will always be wars, no matter how hard people try to prevent them."),
+                RLOC_4_score = fct_recode(RLOC_4,
+                                   "0" = "a) In the long run people get the respect they deserve in this world.", "1" = "b) Unfortunately, an individual's worth often passes unrecognized no matter how hard he tries."),
+               RLOC_5_score = fct_recode(RLOC_5,
+                                   "0" = "a) The idea that teachers are unfair to students is nonsense.", "1" = "b) Most students don't realize the extent to which their grades are influenced by accidental happenings."), 
+               RLOC_10_score = fct_recode(RLOC_10,
+                                   "0" = "a) In the case of the well prepared student there is rarely if ever such a thing as an unfair test.", "1" = "b) Many times exam questions tend to be so unrelated to course work that studying is really useless."), 
+               RLOC_11_score = fct_recode(RLOC_11,
+                                   "0" = "a) Becoming a success is a matter of hard work, luck has little or nothing to do with it.", "1" = "b) Getting a good job depends mainly on being in the right place at the right time."),
+               RLOC_12_score = fct_recode(RLOC_12,
+                                   "0" = "a) The average citizen can have an influence in government decisions.", "1" = "b) This world is run by the few people in power, and there is not much the little guy can do about it."),
+               RLOC_13_score = fct_recode(RLOC_13,
+                                   "0" = "a) When I make plans, I am almost certain that I can make them work.", "1" = "b) It is not always wise to plan too far ahead because many things turn out to be a matter of good or bad fortune anyhow."),
+               RLOC_15_score = fct_recode(RLOC_15,
+                                   "0" = "a) In my case getting what I want has little or nothing to do with luck.", "1" = "b) Many times we might just as well decide what to do by flipping a coin."),
+               RLOC_22_score = fct_recode(RLOC_22,
+                                   "0" = "a) With enough effort we can wipe out political corruption", "1" = "b) It is difficult for people to have much control over the things politicians do in office"),
+               RLOC_26_score = fct_recode(RLOC_26,
+                                   "0" = "a) People are lonely because they don't try to be friendly.", "1" = "b) There's not much use in trying too hard to please people, if they like you, they like you."),
+               RLOC_28_score = fct_recode(RLOC_28,
+                                   "0" = "a) What happens to me is my own doing.", "1" = "b) Sometimes I feel that I don't have enough control over the direction my life is taking."))
+
+```
+
+```{r}
+# Computing RLOC Scores
+# made new dataset to avoid deleting participants that didn't respond to this questionnaire but did others
+covid_data_RLOC_score <- covid_data %>%
+  filter(!is.na(RLOC_2_score)) %>%
+  mutate(RLOC_2_score = parse_integer(as.character(RLOC_2_score)),
+         RLOC_3_score = parse_integer(as.character(RLOC_3_score)),
+         RLOC_4_score = parse_integer(as.character(RLOC_4_score)),
+         RLOC_5_score = parse_integer(as.character(RLOC_5_score)),
+         RLOC_6_score = parse_integer(as.character(RLOC_6_score)),
+         RLOC_7_score = parse_integer(as.character(RLOC_7_score)),
+         RLOC_9_score = parse_integer(as.character(RLOC_9_score)),
+         RLOC_10_score = parse_integer(as.character(RLOC_10_score)),
+         RLOC_11_score = parse_integer(as.character(RLOC_11_score)),
+         RLOC_12_score = parse_integer(as.character(RLOC_12_score)),
+         RLOC_13_score = parse_integer(as.character(RLOC_13_score)),
+         RLOC_15_score = parse_integer(as.character(RLOC_15_score)),
+         RLOC_16_score = parse_integer(as.character(RLOC_16_score)),
+         RLOC_17_score = parse_integer(as.character(RLOC_17_score)),
+         RLOC_18_score = parse_integer(as.character(RLOC_18_score)),
+         RLOC_20_score = parse_integer(as.character(RLOC_20_score)),
+         RLOC_21_score = parse_integer(as.character(RLOC_21_score)),
+         RLOC_22_score = parse_integer(as.character(RLOC_22_score)),
+         RLOC_23_score = parse_integer(as.character(RLOC_23_score)),
+         RLOC_25_score = parse_integer(as.character(RLOC_25_score)),
+         RLOC_26_score = parse_integer(as.character(RLOC_26_score)),
+         RLOC_28_score = parse_integer(as.character(RLOC_28_score)),
+         RLOC_29_score = parse_integer(as.character(RLOC_29_score))) %>%
+  mutate(Rotters_general = RLOC_5_score + RLOC_9_score + RLOC_11_score + RLOC_13_score + RLOC_15_score +
+           RLOC_16_score + RLOC_18_score + RLOC_25_score + RLOC_28_score,
+         Rotters_political = RLOC_3_score + RLOC_12_score + RLOC_17_score + RLOC_22_score,
+         RLOC_Total_Score = RLOC_2_score + RLOC_3_score + RLOC_4_score + RLOC_5_score + RLOC_6_score +  
+           RLOC_7_score + RLOC_9_score + RLOC_10_score + RLOC_11_score + RLOC_12_score + RLOC_13_score + 
+           RLOC_15_score + RLOC_16_score + RLOC_17_score + RLOC_18_score + RLOC_20_score + RLOC_21_score + 
+           RLOC_22_score + RLOC_23_score + RLOC_25_score + RLOC_26_score + RLOC_28_score + RLOC_29_score)
 ```
 
