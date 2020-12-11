@@ -72,3 +72,24 @@ covid_data <- covid_data %>%
 # we can deal with this later after removing NAs and weird values
 # sounds good. do you know how to reverse them from being character variables?
 ```
+
+```{r}
+# Renaming Green variables (again?!)
+covid_data <- covid_data %>%
+ rename(Green_Short_A1 = "Green_Short_A1w",
+         Green_Short_A2 = "Green_Short_A2w",
+         Green_Short_A3 = "Green_Short_A3w",
+         Green_Short_A4 = "Green_Short_A4w",
+         Green_Short_A5 = "Green_Short_A5w",
+         Green_Short_A6 = "Green_Short_A6w",
+         Green_Short_A7 = "Green_Short_A7w",
+         Green_Short_A8 = "Green_Short_A8w",
+         Green_Short_B1 = "Green_Short_B1w",
+         Green_Short_B2 = "Green_Short_B2w",
+         Green_Short_B3 = "Green_Short_B3w",
+         Green_Short_B4 = "Green_Short_B4w",
+         Green_Short_B5 = "Green_Short_B5w",
+         Green_Short_B6 = "Green_Short_B6w",
+         Green_Short_B7 = "Green_Short_B7w",
+         Green_Short_B8 = "Green_Short_B8w")
+```
