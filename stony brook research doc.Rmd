@@ -29,15 +29,13 @@ covid_data <- covid_data %>%
          Green_Short_B5w = "R-GPTS_Per_5",
          Green_Short_B6w = "R-GPTS_Per_6",
          Green_Short_B7w = "R-GPTS_Per_7",
-         Green_Short_B8w = "R-GPTS_Per_8",
-         Green_Short_B9w = "R-GPTS_Per_9",
-         Green_Short_B10w = "R-GPTS_Per_10")
+         Green_Short_B8w = "R-GPTS_Per_8")
 ```
 
 ```{r}
 # Recoding Green variables
 covid_data <- covid_data %>%
-  dplyr::mutate(Green_Short_A1w = fct_recode(Green_Short_A1w, 
+  mutate(Green_Short_A1w = fct_recode(Green_Short_A1w, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
          Green_Short_A2w = fct_recode(Green_Short_A2w, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
@@ -68,15 +66,9 @@ covid_data <- covid_data %>%
          Green_Short_B7w = fct_recode(Green_Short_B7w, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),               
          Green_Short_B8w = fct_recode(Green_Short_B8w, 
-                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
-         Green_Short_B9w = fct_recode(Green_Short_B9w, 
-                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
-         Green_Short_B10w = fct_recode(Green_Short_B10w, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"))
 
 # issue - recoding these as factors turns them into character variables
 # we can deal with this later after removing NAs and weird values
 # sounds good. do you know how to reverse them from being character variables?
-# I think you can use the parse_number command but I'll look into it!
 ```
-
