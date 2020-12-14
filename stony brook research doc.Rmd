@@ -75,6 +75,10 @@ covid_data <- covid_data %>%
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),               
          Green_Short_B8w = fct_recode(Green_Short_B8w, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"))
+# issue - recoding these as factors turns them into character variables
+# we can deal with this later after removing NAs and weird values
+# sounds good. do you know how to reverse them from being character variables?
+# use parse_integer command (see below or google doc)
 ```
 
 ```{r}
@@ -104,11 +108,105 @@ covid_data <- covid_data %>%
          Green_Short_B6 = "Green_Short_B6w",
          Green_Short_B7 = "Green_Short_B7w",
          Green_Short_B8 = "Green_Short_B8w")
+
+# why did you re-rename the variables?
+# nvm, i see, they took the w out in the recoding. that was my bad for not seeing that change. you can also just delete the "w" from the recoding I did for future reference! 
 ```
 
-# issue - recoding these as factors turns them into character variables
-# we can deal with this later after removing NAs and weird values
-# sounds good. do you know how to reverse them from being character variables?
+# COVID Predicted Consequences
+```{r}
+# renaming variables
+covid_data <- covid_data %>%
+  rename(COVID_19_2_1_Headache = "COVID-19_2_1",
+         COVID_19_2_1_Fever = "COVID-19_2_2",
+         COVID_19_2_1_Bodyache = "COVID-19_2_3",
+         COVID_19_2_1_Fatigue= "COVID-19_2_4",
+         COVID_19_2_1_Neckpain = "COVID-19_2_5",
+         COVID_19_2_1_Lossofsleep = "COVID-19_2_6",
+         COVID_19_2_1_Lossofappetite = "COVID-19_2_7",
+         COVID_19_2_1_Cough = "COVID-19_2_8",
+         COVID_19_2_1_Sorethroat = "COVID-19_2_9",
+         COVID_19_2_1_Nasalcongestion = "COVID-19_2_10",
+         COVID_19_2_1_Breathingproblems = "COVID-19_2_11",
+         COVID_19_2_2_getoutofbed = "COVID-19_2_1_1",
+         COVID_19_2_2_preparemeals = "COVID-19_2_2_1",
+         COVID_19_2_2_performdailyroutines = "COVID-19_2_3_1",
+         COVID_19_2_2_leavehome = "COVID-19_2_4_1",
+         COVID_19_2_2_concentrateonwork = "COVID-19_2_5_1",
+         COVID_19_2_2_completemywork = "COVID-19_2_6_1",
+         COVID_19_2_Irritable = "COVID-19_2_1_2",
+         COVID_19_2_Helpless = "COVID-19_2_2_2",
+         COVID_19_2_Worried = "COVID-19_2_3_2",
+         COVID_19_2_Frustrated = "COVID-19_2_4_2",
+         COVID_19_2_makingthemworry= "COVID-19_2_1_3",
+         COVID_19_2_beingaburden = "COVID-19_2_2_3",
+         COVID_19_2_limitingtheirlives = "COVID-19_2_3_3",
+         COVID_19_2_needingtodependonthem = "COVID-19_2_4_3",
+         COVID_19_2_takecareofpeople = "COVID-19_2_5_2",
+         COVID_19_2_spreadinginfectiontothem = "COVID-19_2_6_2",
+         COVID_19_2_sufferfinancially = "COVID-19_2_1_4",
+         COVID_19_2_personalrelationships = "COVID-19_2_2_4",
+         COVID_19_2_foodandhousing = "COVID-19_2_3_4")
+  
+```
+
+```{r}
+# Recoding COVID Consequences variables
+```
+
+```{r}
+# Scoring COVID Consequences variables
+```
+
+
+
+# Perceived Vulnerability to Disease Scale 
+
+```{r}
+# Recoding reversed scoring questions
+covid_data <- covid_data %>%
+  mutate(PVDS_3 = fct_recode(PVDS_3,
+                             "7" = "1", "6" = "2", "5" = "3", "4" = "4", "3" = "5", "2" = "6", "1" = "7"),
+         PVDS_5 = fct_recode(PVDS_5,
+                             "7" = "1", "6" = "2", "5" = "3", "4" = "4", "3" = "5", "2" = "6", "1" = "7"),
+         PVDS_11 = fct_recode(PVDS_11,
+                             "7" = "1", "6" = "2", "5" = "3", "4" = "4", "3" = "5", "2" = "6", "1" = "7"),
+         PVDS_12 = fct_recode(PVDS_12,
+                             "7" = "1", "6" = "2", "5" = "3", "4" = "4", "3" = "5", "2" = "6", "1" = "7"),
+         PVDS_13 = fct_recode(PVDS_13,
+                             "7" = "1", "6" = "2", "5" = "3", "4" = "4", "3" = "5", "2" = "6", "1" = "7"),
+         PVDS_14 = fct_recode(PVDS_14,
+                             "7" = "1", "6" = "2", "5" = "3", "4" = "4", "3" = "5", "2" = "6", "1" = "7"))
+```
+
+```{r}
+# Computing PVDS Scores
+covid_data_PVDS_score <- covid_data %>%
+    filter(!is.na(PVDS_1)) %>%
+    mutate(PVDS_1 = parse_integer(as.character(PVDS_1)),
+           PVDS_2 = parse_integer(as.character(PVDS_2)),
+           PVDS_3 = parse_integer(as.character(PVDS_3)),
+           PVDS_4 = parse_integer(as.character(PVDS_4)),
+           PVDS_5 = parse_integer(as.character(PVDS_5)),
+           PVDS_6 = parse_integer(as.character(PVDS_6)),
+           PVDS_7 = parse_integer(as.character(PVDS_7)),
+           PVDS_8 = parse_integer(as.character(PVDS_8)),
+           PVDS_9 = parse_integer(as.character(PVDS_9)),
+           PVDS_10 = parse_integer(as.character(PVDS_10)),
+           PVDS_11 = parse_integer(as.character(PVDS_11)),
+           PVDS_12 = parse_integer(as.character(PVDS_12)),
+           PVDS_13 = parse_integer(as.character(PVDS_13)),
+           PVDS_14 = parse_integer(as.character(PVDS_14)),
+           PVDS_15 = parse_integer(as.character(PVDS_15))) %>%
+  mutate(Factor_1 = PVDS_8 + PVDS_12 + PVDS_2 + PVDS_14 + PVDS_10 + PVDS_5 + PVDS_6,
+         Factor_2 = PVDS_7 + PVDS_15 + PVDS_4 + PVDS_9 + PVDS_3 + PVDS_3 + PVDS_1 + 
+                                PVDS_13 + PVDS_11,
+        Perceived_Infectability = mean(),
+         Germ_Aversion = mean())
+# not finished, waiting for Megan email
+```
+
+
 
 # Rotters Locus of Control Variables 
 ```{r}
@@ -234,3 +332,27 @@ covid_data_RLOC_score <- covid_data %>%
            RLOC_15_score + RLOC_16_score + RLOC_17_score + RLOC_18_score + RLOC_20_score + RLOC_21_score + 
            RLOC_22_score + RLOC_23_score + RLOC_25_score + RLOC_26_score + RLOC_28_score + RLOC_29_score)
 ```
+
+# Need for Closure Scale 
+
+```{r}
+covid_data_NFCS_score <- covid_data %>%
+  filter(!is.na(NFCS_1)) %>%
+  mutate(NFCS_1 = parse_integer(as.character(NFCS_1)),
+         NFCS_2 = parse_integer(as.character(NFCS_2)),
+         NFCS_3 = parse_integer(as.character(NFCS_3)),
+         NFCS_4 = parse_integer(as.character(NFCS_4)),
+         NFCS_5 = parse_integer(as.character(NFCS_5)),
+         NFCS_6 = parse_integer(as.character(NFCS_6)),
+         NFCS_7 = parse_integer(as.character(NFCS_7)),
+         NFCS_8 = parse_integer(as.character(NFCS_8)),
+         NFCS_9 = parse_integer(as.character(NFCS_9)),
+         NFCS_10 = parse_integer(as.character(NFCS_10)),
+         NFCS_11 = parse_integer(as.character(NFCS_11)),
+         NFCS_12 = parse_integer(as.character(NFCS_12)),
+         NFCS_13 = parse_integer(as.character(NFCS_13)),
+         NFCS_14 = parse_integer(as.character(NFCS_14)),
+         NFCS_15 = parse_integer(as.character(NFCS_15))) %>%
+  mutate(NFCS_Total_Score = NFCS_1 + NFCS_2 + NFCS_3 + NFCS_4 + NFCS_5 + NFCS_6 + NFCS_7 + NFCS_8 + NFCS_9 + NFCS_10 + NFCS_11 + NFCS_12 + NFCS_13 + NFCS_14 + NFCS_15)
+```
+
