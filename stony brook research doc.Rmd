@@ -38,7 +38,7 @@ covid_data <- covid_data %>%
          Green_Short_B6 = "R-GPTS_Per_6",
          Green_Short_B7 = "R-GPTS_Per_7",
          Green_Short_B8 = "R-GPTS_Per_8")
-# fixed renaming up here and just got rid of the "w" originally
+# fixed renaming up here and just got rid of the "w" originally. thanks for noticing that!
 ```
 
 ```{r}
