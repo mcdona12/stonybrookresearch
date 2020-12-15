@@ -8,7 +8,7 @@ output: pdf_document
 ```{r setup, include = FALSE}
 library(tidyverse)
 library(dplyr)
-covid_data <- read_csv("~/Stony Brook Research/COVID-19_December 2, 2020_11.38.csv")
+covid_data <- read_csv("~/Stony Brook Research/COVID-19_December 14, 2020_14.40 .csv")
 ```
 
 # Deleting First Two Rows from each column
@@ -37,7 +37,9 @@ covid_data <- covid_data %>%
          Green_Short_B5w = "R-GPTS_Per_5",
          Green_Short_B6w = "R-GPTS_Per_6",
          Green_Short_B7w = "R-GPTS_Per_7",
-         Green_Short_B8w = "R-GPTS_Per_8")
+         Green_Short_B8w = "R-GPTS_Per_8",
+         Green_Short_B9w = "R-GPTS_Per_9",
+         Green_Short_B10w = "R-GPTS_Per_10")
 ```
 
 ```{r}
@@ -74,6 +76,10 @@ covid_data <- covid_data %>%
          Green_Short_B7w = fct_recode(Green_Short_B7w, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),               
          Green_Short_B8w = fct_recode(Green_Short_B8w, 
+                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
+         Green_Short_B9w = fct_recode(Green_Short_B9w, 
+                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
+         Green_Short_B10w = fct_recode(Green_Short_B10w, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"))
 # issue - recoding these as factors turns them into character variables
 # we can deal with this later after removing NAs and weird values
@@ -107,10 +113,13 @@ covid_data <- covid_data %>%
          Green_Short_B5 = "Green_Short_B5w",
          Green_Short_B6 = "Green_Short_B6w",
          Green_Short_B7 = "Green_Short_B7w",
-         Green_Short_B8 = "Green_Short_B8w")
+         Green_Short_B8 = "Green_Short_B8w",
+         Green_Short_B9 = "Green_Short_B8w",
+         Green_Short_B10 = "Green_Short_B8w")
 
 # why did you re-rename the variables?
 # nvm, i see, they took the w out in the recoding. that was my bad for not seeing that change. you can also just delete the "w" from the recoding I did for future reference! 
+#lol you are so right
 ```
 
 # COVID Predicted Consequences
