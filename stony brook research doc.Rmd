@@ -8,11 +8,11 @@ output: pdf_document
 ```{r setup, include = FALSE}
 library(tidyverse)
 library(dplyr)
-covid_data <- read_csv("~/Stony Brook Research/COVID-19_December 2, 2020_11.38.csv")
+covid_data <- read_csv("~/Stony Brook Research/COVID-19_December 14, 2020_14.40 .csv")
 ```
 
-# Deleting First Two Rows from each column
-They were irrelevant and messed with classification of variables
+# Deleting First Row from each column
+It was irrelevant and messed with classification of variables
 ```{r}
 covid_data <- covid_data %>% 
    filter(row_number() > (n() - 673))
@@ -22,58 +22,59 @@ covid_data <- covid_data %>%
 ```{r}
 # Renaming Green variables
 covid_data <- covid_data %>%
-  rename(Green_Short_A1w = "R-GPTS_Ref_1",
-         Green_Short_A2w = "R-GPTS_Ref_2",
-         Green_Short_A3w = "R-GPTS_Ref_3",
-         Green_Short_A4w = "R-GPTS_Ref_4",
-         Green_Short_A5w = "R-GPTS_Ref_5",
-         Green_Short_A6w = "R-GPTS_Ref_6",
-         Green_Short_A7w = "R-GPTS_Ref_7",
-         Green_Short_A8w = "R-GPTS_Ref_8",
-         Green_Short_B1w = "R-GPTS_Per_1",
-         Green_Short_B2w = "R-GPTS_Per_2",
-         Green_Short_B3w = "R-GPTS_Per_3",
-         Green_Short_B4w = "R-GPTS_Per_4",
-         Green_Short_B5w = "R-GPTS_Per_5",
-         Green_Short_B6w = "R-GPTS_Per_6",
-         Green_Short_B7w = "R-GPTS_Per_7",
-         Green_Short_B8w = "R-GPTS_Per_8")
+  rename(Green_Short_A1 = "R-GPTS_Ref_1",
+         Green_Short_A2 = "R-GPTS_Ref_2",
+         Green_Short_A3 = "R-GPTS_Ref_3",
+         Green_Short_A4 = "R-GPTS_Ref_4",
+         Green_Short_A5 = "R-GPTS_Ref_5",
+         Green_Short_A6 = "R-GPTS_Ref_6",
+         Green_Short_A7 = "R-GPTS_Ref_7",
+         Green_Short_A8 = "R-GPTS_Ref_8",
+         Green_Short_B1 = "R-GPTS_Per_1",
+         Green_Short_B2 = "R-GPTS_Per_2",
+         Green_Short_B3 = "R-GPTS_Per_3",
+         Green_Short_B4 = "R-GPTS_Per_4",
+         Green_Short_B5 = "R-GPTS_Per_5",
+         Green_Short_B6 = "R-GPTS_Per_6",
+         Green_Short_B7 = "R-GPTS_Per_7",
+         Green_Short_B8 = "R-GPTS_Per_8")
+# fixed renaming up here and just got rid of the "w" originally
 ```
 
 ```{r}
 # Recoding Green variables
 covid_data <- covid_data %>%
-  mutate(Green_Short_A1w = fct_recode(Green_Short_A1w, 
+  mutate(Green_Short_A1 = fct_recode(Green_Short_A1, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
-         Green_Short_A2w = fct_recode(Green_Short_A2w, 
+         Green_Short_A2 = fct_recode(Green_Short_A2, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
-         Green_Short_A3w = fct_recode(Green_Short_A3w, 
+         Green_Short_A3 = fct_recode(Green_Short_A3, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
-         Green_Short_A4w = fct_recode(Green_Short_A4w, 
+         Green_Short_A4 = fct_recode(Green_Short_A4, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),  
-         Green_Short_A5w = fct_recode(Green_Short_A5w, 
+         Green_Short_A5 = fct_recode(Green_Short_A5, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),  
-         Green_Short_A6w = fct_recode(Green_Short_A6w, 
+         Green_Short_A6 = fct_recode(Green_Short_A6, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),  
-         Green_Short_A7w = fct_recode(Green_Short_A7w, 
+         Green_Short_A7 = fct_recode(Green_Short_A7, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"), 
-         Green_Short_A8w = fct_recode(Green_Short_A8w, 
+         Green_Short_A8 = fct_recode(Green_Short_A8, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
-         Green_Short_B1w = fct_recode(Green_Short_B1w, 
+         Green_Short_B1 = fct_recode(Green_Short_B1, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
-         Green_Short_B2w = fct_recode(Green_Short_B2w, 
+         Green_Short_B2 = fct_recode(Green_Short_B2, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
-         Green_Short_B3w = fct_recode(Green_Short_B3w, 
+         Green_Short_B3w = fct_recode(Green_Short_B3, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
-         Green_Short_B4w = fct_recode(Green_Short_B4w, 
+         Green_Short_B4w = fct_recode(Green_Short_B4, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
-         Green_Short_B5w = fct_recode(Green_Short_B5w, 
+         Green_Short_B5w = fct_recode(Green_Short_B5, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
-         Green_Short_B6w = fct_recode(Green_Short_B6w, 
+         Green_Short_B6w = fct_recode(Green_Short_B6, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
-         Green_Short_B7w = fct_recode(Green_Short_B7w, 
+         Green_Short_B7w = fct_recode(Green_Short_B7, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),               
-         Green_Short_B8w = fct_recode(Green_Short_B8w, 
+         Green_Short_B8w = fct_recode(Green_Short_B8, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"))
 # issue - recoding these as factors turns them into character variables
 # we can deal with this later after removing NAs and weird values
@@ -83,34 +84,6 @@ covid_data <- covid_data %>%
 
 ```{r}
 
-# use this reduced dataset to calculate green scores. by removing NAs, the data recodes into a factor class which works for calculations I think. But I don't think we want to remove NAs generally, because it gets rid of all that persons responses for all scales, which is why I made a separate dataset for it 
-
-covid_data_calc_green <- covid_data %>%
-  filter(!is.na(Green_Short_A1w)) 
-```
-
-```{r}
-# Renaming Green variables (again?!)
-covid_data <- covid_data %>%
- rename(Green_Short_A1 = "Green_Short_A1w",
-         Green_Short_A2 = "Green_Short_A2w",
-         Green_Short_A3 = "Green_Short_A3w",
-         Green_Short_A4 = "Green_Short_A4w",
-         Green_Short_A5 = "Green_Short_A5w",
-         Green_Short_A6 = "Green_Short_A6w",
-         Green_Short_A7 = "Green_Short_A7w",
-         Green_Short_A8 = "Green_Short_A8w",
-         Green_Short_B1 = "Green_Short_B1w",
-         Green_Short_B2 = "Green_Short_B2w",
-         Green_Short_B3 = "Green_Short_B3w",
-         Green_Short_B4 = "Green_Short_B4w",
-         Green_Short_B5 = "Green_Short_B5w",
-         Green_Short_B6 = "Green_Short_B6w",
-         Green_Short_B7 = "Green_Short_B7w",
-         Green_Short_B8 = "Green_Short_B8w")
-
-# why did you re-rename the variables?
-# nvm, i see, they took the w out in the recoding. that was my bad for not seeing that change. you can also just delete the "w" from the recoding I did for future reference! 
 ```
 
 # COVID Predicted Consequences
@@ -151,117 +124,8 @@ covid_data <- covid_data %>%
 ```
 
 ```{r}
-# Recoding COVID Consequences variables
-# not working, troubleshoot later
-covid_data <- covid_data %>%
-  mutate(COVID_19_2_1_Headache = fct_recode(COVID_19_2_1_Headache,
-                                            "1" = "Not distressing 1", "2" = "Very mildly distressing 2",
-                                            "3" = "Mildly distressing 3", "4" = "Moderately distressing 4",
-                                            "5" = "Severely distressing 5"),
-         COVID_19_2_1_Fever = fct_recode(COVID_19_2_1_Fever,
-                                            "1" = "Not distressing 1", "2" = "Very mildly distressing 2",
-                                            "3" = "Mildly distressing 3", "4" = "Moderately distressing 4",
-                                            "5" = "Severely distressing 5"),
-         COVID_19_2_1_Bodyache = fct_recode(COVID_19_2_1_Bodyache,
-                                            "1" = "Not distressing 1", "2" = "Very mildly distressing 2",
-                                            "3" = "Mildly distressing 3", "4" = "Moderately distressing 4",
-                                            "5" = "Severely distressing 5"),
-         COVID_19_2_1_Fatigue = fct_recode(COVID_19_2_1_Fatigue,
-                                            "1" = "Not distressing 1", "2" = "Very mildly distressing 2",
-                                            "3" = "Mildly distressing 3", "4" = "Moderately distressing 4",
-                                            "5" = "Severely distressing 5"),
-         COVID_19_2_1_Neckpain = fct_recode(COVID_19_2_1_Neckpain,
-                                            "1" = "Not distressing 1", "2" = "Very mildly distressing 2",
-                                            "3" = "Mildly distressing 3", "4" = "Moderately distressing 4",
-                                            "5" = "Severely distressing 5"),
-         COVID_19_2_1_Lossofsleep = fct_recode(COVID_19_2_1_Lossofsleep,
-                                            "1" = "Not distressing 1", "2" = "Very mildly distressing 2",
-                                            "3" = "Mildly distressing 3", "4" = "Moderately distressing 4",
-                                            "5" = "Severely distressing 5"),
-         COVID_19_2_1_Lossofappetite = fct_recode(COVID_19_2_1_Lossofappetite,
-                                            "1" = "Not distressing 1", "2" = "Very mildly distressing 2",
-                                            "3" = "Mildly distressing 3", "4" = "Moderately distressing 4",
-                                            "5" = "Severely distressing 5"),
-         COVID_19_2_1_Cough = fct_recode(COVID_19_2_1_Cough,
-                                            "1" = "Not distressing 1", "2" = "Very mildly distressing 2",
-                                            "3" = "Mildly distressing 3", "4" = "Moderately distressing 4",
-                                            "5" = "Severely distressing 5"),
-         COVID_19_2_1_Sorethroat = fct_recode(COVID_19_2_1_Sorethroat,
-                                            "1" = "Not distressing 1", "2" = "Very mildly distressing 2",
-                                            "3" = "Mildly distressing 3", "4" = "Moderately distressing 4",
-                                            "5" = "Severely distressing 5"),
-         COVID_19_2_1_Nasalcongestion = fct_recode(COVID_19_2_1_Nasalcongestion,
-                                            "1" = "Not distressing 1", "2" = "Very mildly distressing 2",
-                                            "3" = "Mildly distressing 3", "4" = "Moderately distressing 4",
-                                            "5" = "Severely distressing 5"),
-         COVID_19_2_1_Breathingproblems = fct_recode(COVID_19_2_1_Breathingproblems,
-                                            "1" = "Not distressing 1", "2" = "Very mildly distressing 2",
-                                            "3" = "Mildly distressing 3", "4" = "Moderately distressing 4",
-                                            "5" = "Severely distressing 5"),
-         COVID_19_2_2_getoutofbed = fct_recode(COVID_19_2_2_getoutofbed,
-                                            "1" = "Not at all", "2" = "Very mildly", "3" = "Mildly",
-                                            "4" = "Moderately", "5" = "Severely"),
-         COVID_19_2_2_preparemeals = fct_recode(COVID_19_2_2_preparemeals,
-                                            "1" = "Not at all", "2" = "Very mildly", "3" = "Mildly",
-                                            "4" = "Moderately", "5" = "Severely"),
-         COVID_19_2_2_performdailyroutines = fct_recode(COVID_19_2_2_performdailyroutines,
-                                            "1" = "Not at all", "2" = "Very mildly", "3" = "Mildly",
-                                            "4" = "Moderately", "5" = "Severely"),
-         COVID_19_2_2_leavehome = fct_recode(COVID_19_2_2_leavehome,
-                                            "1" = "Not at all", "2" = "Very mildly", "3" = "Mildly",
-                                            "4" = "Moderately", "5" = "Severely"),
-         COVID_19_2_2_concentrateonwork = fct_recode(COVID_19_2_2_concentrateonwork,
-                                            "1" = "Not at all", "2" = "Very mildly", "3" = "Mildly",
-                                            "4" = "Moderately", "5" = "Severely"),
-         COVID_19_2_2_completemywork = fct_recode(COVID_19_2_2_completemywork,
-                                            "1" = "Not at all", "2" = "Very mildly", "3" = "Mildly",
-                                            "4" = "Moderately", "5" = "Severely"),
-         COVID_19_2_Irritable = fct_recode(COVID_19_2_Irritable,
-                                            "1" = "None", "2" = "Very mild", "3" = "Mild",
-                                            "4" = "Moderate", "5" = "Severe"),
-         COVID_19_2_Helpless = fct_recode(COVID_19_2_Helpless,
-                                            "1" = "None", "2" = "Very mild", "3" = "Mild",
-                                            "4" = "Moderate", "5" = "Severe"),
-         COVID_19_2_Worried = fct_recode(COVID_19_2_Worried,
-                                            "1" = "None", "2" = "Very mild", "3" = "Mild",
-                                            "4" = "Moderate", "5" = "Severe"),
-         COVID_19_2_Frustrated = fct_recode(COVID_19_2_Frustrated,
-                                            "1" = "None", "2" = "Very mild", "3" = "Mild",
-                                           "4" = "Moderate", "5" = "Severe"),
-         COVID_19_2_makingthemworry = fct_recode(COVID_19_2_makingthemworry,
-                                            "1" = "None", "2" = "Very mild", "3" = "Mild",
-                                            "4" = "Moderate", "5" = "Severe"),
-         COVID_19_2_beingaburden = fct_recode(COVID_19_2_beingaburden,
-                                            "1" = "None", "2" = "Very mild", "3" = "Mild",
-                                            "4" = "Moderate", "5" = "Severe"),
-         COVID_19_2_limitingtheirlives = fct_recode(COVID_19_2_limitingtheirlives,
-                                            "1" = "None", "2" = "Very mild", "3" = "Mild",
-                                            "4" = "Moderate", "5" = "Severe"),
-         COVID_19_2_needingtodependonthem = fct_recode(COVID_19_2_needingtodependonthem,
-                                            "1" = "None", "2" = "Very mild", "3" = "Mild",
-                                            "4" = "Moderate", "5" = "Severe"),
-         COVID_19_2_takecareofpeople = fct_recode(COVID_19_2_takecareofpeople,
-                                            "1" = "None", "2" = "Very mild", "3" = "Mild",
-                                            "4" = "Moderate", "5" = "Severe"),
-         COVID_19_2_spreadinginfectiontothem = fct_recode(COVID_19_2_spreadinginfectiontothem,
-                                            "1" = "None", "2" = "Very mild", "3" = "Mild",
-                                            "4" = "Moderate", "5" = "Severe"),
-         COVID_19_2_sufferfinancially = fct_recode(COVID_19_2_sufferfinancially,
-                                            "1" = "None", "2" = "Very mild", "3" = "Mild",
-                                            "4" = "Moderate", "5" = "Severe"),
-         COVID_19_2_personalrelationships = fct_recode(COVID_19_2_personalrelationships,
-                                            "1" = "None", "2" = "Very mild", "3" = "Mild",
-                                            "4" = "Moderate", "5" = "Severe"),
-         COVID_19_2_foodandhousing = fct_recode(COVID_19_2_foodandhousing,
-                                            "1" = "None", "2" = "Very mild", "3" = "Mild",
-                                            "4" = "Moderate", "5" = "Severe"))
-```
-
-```{r}
 # Scoring COVID Consequences variables
 ```
-
-
 
 # Perceived Vulnerability to Disease Scale 
 
@@ -284,8 +148,7 @@ covid_data <- covid_data %>%
 
 ```{r}
 # Computing PVDS Scores
-covid_data_PVDS_score <- covid_data %>%
-    filter(!is.na(PVDS_1)) %>%
+covid_data <- covid_data %>%
     mutate(PVDS_1 = parse_integer(as.character(PVDS_1)),
            PVDS_2 = parse_integer(as.character(PVDS_2)),
            PVDS_3 = parse_integer(as.character(PVDS_3)),
@@ -300,15 +163,15 @@ covid_data_PVDS_score <- covid_data %>%
            PVDS_12 = parse_integer(as.character(PVDS_12)),
            PVDS_13 = parse_integer(as.character(PVDS_13)),
            PVDS_14 = parse_integer(as.character(PVDS_14)),
-           PVDS_15 = parse_integer(as.character(PVDS_15))) %>%
+           PVDS_15 = parse_integer(as.character(PVDS_15))) 
+
+covid_data <- covid_data %>%
   mutate(Factor_1 = PVDS_8 + PVDS_12 + PVDS_2 + PVDS_14 + PVDS_10 + PVDS_5 + PVDS_6,
          Factor_2 = PVDS_7 + PVDS_15 + PVDS_4 + PVDS_9 + PVDS_3 + PVDS_3 + PVDS_1 + 
                                 PVDS_13 + PVDS_11,
-        Perceived_Infectability = mean(),
-         Germ_Aversion = mean())
-# not finished, waiting for Megan email
+        Perceived_Infectability = rowMeans(subset(covid_data, select = c(PVDS_8, PVDS_12, PVDS_2, PVDS_14, PVDS_10, PVDS_5, PVDS_6), na.rm = TRUE)),
+         Germ_Aversion = rowMeans(subset(covid_data, select = c(PVDS_7, PVDS_15, PVDS_4, PVDS_9, PVDS_3, PVDS_13, PVDS_11), na.rm = TRUE)))
 ```
-
 
 
 # Rotters Locus of Control Variables 
@@ -350,60 +213,56 @@ covid_data <- covid_data %>%
 # Recoding RLOC variables
 covid_data <- covid_data %>%
   dplyr::mutate(RLOC_2_score = fct_recode(RLOC_2,
-                                   "1" = "a) Many of the unhappy things in people's lives are partly due to bad luck.", "0" = "b) People's misfortunes result from the mistakes they make."),
+                                   "1" = "1", "0" = "2"),
                 RLOC_6_score = fct_recode(RLOC_6,
-                                   "1" = "a) Without the right breaks one cannot be an effective leader.", "0" = "b) Capable people who fail to become leaders have not taken advantage of their opportunities."),
+                                   "1" = "1", "0" = "2"),
                 RLOC_7_score = fct_recode(RLOC_7,
-                                   "1" = "a) No matter how hard you try some people just don't like you.", "0" = "b) People who can't get others to like them don't understand how to get along with others."),
+                                   "1" = "1", "0" = "2"),
                 RLOC_9_score = fct_recode(RLOC_9,
-                                   "1" = "a) I have often found that what is going to happen will happen.", "0" = "b) Trusting to fate has never turned out as well for me as making a decision to make a definite course of action."),
+                                  "1" = "1", "0" = "2"),
                 RLOC_16_score = fct_recode(RLOC_16,
-                                   "1" = "a) Who gets to be the boss often depends on who was lucky enough to be in the right place first.", "0" = "b) Getting people to do the right thing depends upon ability, luck has little or nothing to do with it."),
+                                   "1" = "1", "0" = "2"),
                 RLOC_17_score = fct_recode(RLOC_17,
-                                   "1" = "a) As far as world affairs are concerned, most of us are the victims of forces we can neither understand, nor control.", "0" = "b) By taking an active part in political and social affairs the people can control world events."),
+                                   "1" = "1", "0" = "2"),
                 RLOC_18_score = fct_recode(RLOC_18,
-                                   "1" = "a) Most people don't realize the extent to which their lives are controlled by accidental happenings.", "0" = "b) There really is no such thing as \"luck.\""),
-                
+                                   "1" = "1", "0" = "2"),
                 RLOC_20_score = fct_recode(RLOC_20,
-                                   "1" = "a) It is hard to know whether or not a person really likes you.", "0" = "b) How many friends you have depends upon how nice a person you are."),
+                                  "1" = "1", "0" = "2"),
                 RLOC_21_score = fct_recode(RLOC_21,
-                                   "1" = "a) In the long run the bad things that happen to us are balanced by the good ones.", "0" = "b) Most misfortunes are the result of lack of ability, ignorance, laziness, or all three."),
+                                   "1" = "1", "0" = "2"),
                 RLOC_23_score = fct_recode(RLOC_23,
-                                   "1" = "a) Sometimes I can't understand how teachers arrive at the grades they give.", "0" = "b) There is a direct connection between how hard I study and the grades I get."),
+                                   "1" = "1", "0" = "2"),
                 RLOC_25_score = fct_recode(RLOC_25,
-                                   "1" = "a) Many times I feel that I have little influence over the things that happen to me.", "0" = "b) It is impossible for me to believe that chance or luck plays an important role in my life."),
+                                   "1" = "1", "0" = "2"),
                 RLOC_29_score = fct_recode(RLOC_29,
-                                   "1" = "a) Most of the time I can't understand why politicians behave the way they do.", "0" = "b) In the long run the people are responsible for bad government on a national as well as on a local level."),
+                                   "1" = "1", "0" = "2"),
                 RLOC_3_score = fct_recode(RLOC_3,
-                                   "0" = "a) One of the major reasons why we have wars is because people don't take enough interest in politics.", "1" = "b) There will always be wars, no matter how hard people try to prevent them."),
+                                   "0" = "1", "1" = "2"),
                 RLOC_4_score = fct_recode(RLOC_4,
-                                   "0" = "a) In the long run people get the respect they deserve in this world.", "1" = "b) Unfortunately, an individual's worth often passes unrecognized no matter how hard he tries."),
+                                   "0" = "1", "1" = "2"),
                RLOC_5_score = fct_recode(RLOC_5,
-                                   "0" = "a) The idea that teachers are unfair to students is nonsense.", "1" = "b) Most students don't realize the extent to which their grades are influenced by accidental happenings."), 
+                                   "0" = "1", "1" = "2"), 
                RLOC_10_score = fct_recode(RLOC_10,
-                                   "0" = "a) In the case of the well prepared student there is rarely if ever such a thing as an unfair test.", "1" = "b) Many times exam questions tend to be so unrelated to course work that studying is really useless."), 
+                                   "0" = "1", "1" = "2"), 
                RLOC_11_score = fct_recode(RLOC_11,
-                                   "0" = "a) Becoming a success is a matter of hard work, luck has little or nothing to do with it.", "1" = "b) Getting a good job depends mainly on being in the right place at the right time."),
+                                   "0" = "1", "1" = "2"),
                RLOC_12_score = fct_recode(RLOC_12,
-                                   "0" = "a) The average citizen can have an influence in government decisions.", "1" = "b) This world is run by the few people in power, and there is not much the little guy can do about it."),
+                                   "0" = "1", "1" = "2"),
                RLOC_13_score = fct_recode(RLOC_13,
-                                   "0" = "a) When I make plans, I am almost certain that I can make them work.", "1" = "b) It is not always wise to plan too far ahead because many things turn out to be a matter of good or bad fortune anyhow."),
+                                   "0" = "1", "1" = "2"),
                RLOC_15_score = fct_recode(RLOC_15,
-                                   "0" = "a) In my case getting what I want has little or nothing to do with luck.", "1" = "b) Many times we might just as well decide what to do by flipping a coin."),
+                                  "0" = "1", "1" = "2"),
                RLOC_22_score = fct_recode(RLOC_22,
-                                   "0" = "a) With enough effort we can wipe out political corruption", "1" = "b) It is difficult for people to have much control over the things politicians do in office"),
+                                   "0" = "1", "1" = "2"),
                RLOC_26_score = fct_recode(RLOC_26,
-                                   "0" = "a) People are lonely because they don't try to be friendly.", "1" = "b) There's not much use in trying too hard to please people, if they like you, they like you."),
+                                   "0" = "1", "1" = "2"),
                RLOC_28_score = fct_recode(RLOC_28,
-                                   "0" = "a) What happens to me is my own doing.", "1" = "b) Sometimes I feel that I don't have enough control over the direction my life is taking."))
-
+                                   "0" = "1", "1" = "2"))
 ```
 
 ```{r}
 # Computing RLOC Scores
-# made new dataset to avoid deleting participants that didn't respond to this questionnaire but did others
-covid_data_RLOC_score <- covid_data %>%
-  filter(!is.na(RLOC_2_score)) %>%
+covid_data <- covid_data %>%
   mutate(RLOC_2_score = parse_integer(as.character(RLOC_2_score)),
          RLOC_3_score = parse_integer(as.character(RLOC_3_score)),
          RLOC_4_score = parse_integer(as.character(RLOC_4_score)),
@@ -439,8 +298,7 @@ covid_data_RLOC_score <- covid_data %>%
 # Need for Closure Scale 
 
 ```{r}
-covid_data_NFCS_score <- covid_data %>%
-  filter(!is.na(NFCS_1)) %>%
+covid_data <- covid_data %>%
   mutate(NFCS_1 = parse_integer(as.character(NFCS_1)),
          NFCS_2 = parse_integer(as.character(NFCS_2)),
          NFCS_3 = parse_integer(as.character(NFCS_3)),
