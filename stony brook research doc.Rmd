@@ -37,7 +37,9 @@ covid_data <- covid_data %>%
          Green_Short_B5 = "R-GPTS_Per_5",
          Green_Short_B6 = "R-GPTS_Per_6",
          Green_Short_B7 = "R-GPTS_Per_7",
-         Green_Short_B8 = "R-GPTS_Per_8")
+         Green_Short_B8 = "R-GPTS_Per_8",
+         Green_Short_B9 = "R-GPTS_Per_9",
+         Green_Short_B10 = "R-GPTS_Per_10")
 # fixed renaming up here and just got rid of the "w" originally. thanks for noticing that!
 ```
 
@@ -64,17 +66,21 @@ covid_data <- covid_data %>%
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
          Green_Short_B2 = fct_recode(Green_Short_B2, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
-         Green_Short_B3w = fct_recode(Green_Short_B3, 
+         Green_Short_B3 = fct_recode(Green_Short_B3, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
-         Green_Short_B4w = fct_recode(Green_Short_B4, 
+         Green_Short_B4 = fct_recode(Green_Short_B4, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
-         Green_Short_B5w = fct_recode(Green_Short_B5, 
+         Green_Short_B5 = fct_recode(Green_Short_B5, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
-         Green_Short_B6w = fct_recode(Green_Short_B6, 
+         Green_Short_B6 = fct_recode(Green_Short_B6, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
-         Green_Short_B7w = fct_recode(Green_Short_B7, 
+         Green_Short_B7 = fct_recode(Green_Short_B7, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),               
-         Green_Short_B8w = fct_recode(Green_Short_B8, 
+         Green_Short_B8 = fct_recode(Green_Short_B8, 
+                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
+         Green_Short_B9 = fct_recode(Green_Short_B9, 
+                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
+         Green_Short_B10 = fct_recode(Green_Short_B10, 
                                       "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"))
 # issue - recoding these as factors turns them into character variables
 # we can deal with this later after removing NAs and weird values
@@ -83,8 +89,227 @@ covid_data <- covid_data %>%
 ```
 
 ```{r}
-
 ```
+
+# COVID Conspiracy Beliefs Questions
+
+```{r} 
+# renaming (not on SPSS but formatted weird on R
+covid_data <- covid_data %>%
+  rename(COVID_19_3_1 = `COVID-19_3_1`,
+         COVID_19_3_2 = `COVID-19_3_2`,
+         COVID_19_3_3 = `COVID-19_3_3`,
+         COVID_19_3_4 = `COVID-19_3_4`,
+         COVID_19_3_5 = `COVID-19_3_5`,
+         COVID_19_3_6 = `COVID-19_3_6`,
+         COVID_19_3_7 = `COVID-19_3_7`,
+         COVID_19_3_8 = `COVID-19_3_8`,
+         COVID_19_3_9 = `COVID-19_3_9`,
+         COVID_19_3_10 = `COVID-19_3_10`,
+         COVID_19_3_11 = `COVID-19_3_11`,
+         COVID_19_3_12 = `COVID-19_3_12`,
+         COVID_19_3_13 = `COVID-19_3_13`,
+         COVID_19_3_14 = `COVID-19_3_14`,
+         COVID_19_3_15 = `COVID-19_3_15`,
+         COVID_19_3_16 = `COVID-19_3_16`)
+```
+
+```{r}
+# recoding variables
+covid_data <- covid_data %>%
+   mutate(COVID_19_3_1 = fct_recode(COVID_19_3_1, "1" = "2", "2" = "3", "3" = "4", "4" = "5", "5" = "6"),
+          COVID_19_3_2 = fct_recode(COVID_19_3_2, "1" = "2", "2" = "3", "3" = "4", "4" = "5", "5" = "6"),
+          COVID_19_3_3 = fct_recode(COVID_19_3_3, "1" = "2", "2" = "3", "3" = "4", "4" = "5", "5" = "6"),
+          COVID_19_3_4 = fct_recode(COVID_19_3_4, "1" = "2", "2" = "3", "3" = "4", "4" = "5", "5" = "6"),
+          COVID_19_3_5 = fct_recode(COVID_19_3_5, "1" = "2", "2" = "3", "3" = "4", "4" = "5", "5" = "6"),
+          COVID_19_3_6 = fct_recode(COVID_19_3_6, "1" = "2", "2" = "3", "3" = "4", "4" = "5", "5" = "6"),
+          COVID_19_3_7 = fct_recode(COVID_19_3_7, "1" = "2", "2" = "3", "3" = "4", "4" = "5", "5" = "6"),
+          COVID_19_3_8 = fct_recode(COVID_19_3_8, "1" = "2", "2" = "3", "3" = "4", "4" = "5", "5" = "6"),
+          COVID_19_3_9 = fct_recode(COVID_19_3_9, "1" = "2", "2" = "3", "3" = "4", "4" = "5", "5" = "6"),
+          COVID_19_3_10 = fct_recode(COVID_19_3_10, "1" = "2", "2" = "3", "3" = "4", "4" = "5", "5" = "6"),
+          COVID_19_3_11 = fct_recode(COVID_19_3_11, "1" = "2", "2" = "3", "3" = "4", "4" = "5", "5" = "6"),
+          COVID_19_3_12 = fct_recode(COVID_19_3_12, "1" = "2", "2" = "3", "3" = "4", "4" = "5", "5" = "6"),
+          COVID_19_3_13 = fct_recode(COVID_19_3_13, "1" = "2", "2" = "3", "3" = "4", "4" = "5", "5" = "6"),
+          COVID_19_3_14 = fct_recode(COVID_19_3_14, "1" = "2", "2" = "3", "3" = "4", "4" = "5", "5" = "6"),
+          COVID_19_3_15 = fct_recode(COVID_19_3_15, "1" = "2", "2" = "3", "3" = "4", "4" = "5", "5" = "6"),
+          COVID_19_3_16 = fct_recode(COVID_19_3_16, "1" = "2", "2" = "3", "3" = "4", "4" = "5", "5" = "6")) %>%
+  mutate(COVID_19_3_1_true = fct_recode(COVID_19_3_1, "0" = "1", "0" = "2", "0" = "3", "1" = "4", "1" = "5"),
+         COVID_19_3_2_true = fct_recode(COVID_19_3_2, "0" = "1", "0" = "2", "0" = "3", "1" = "4", "1" = "5"),
+         COVID_19_3_3_true = fct_recode(COVID_19_3_3, "0" = "1", "0" = "2", "0" = "3", "1" = "4", "1" = "5"),
+         COVID_19_3_4_true = fct_recode(COVID_19_3_4, "0" = "1", "0" = "2", "0" = "3", "1" = "4", "1" = "5"),
+         COVID_19_3_5_true = fct_recode(COVID_19_3_5, "0" = "1", "0" = "2", "0" = "3", "1" = "4", "1" = "5"),
+         COVID_19_3_6_true = fct_recode(COVID_19_3_6, "0" = "1", "0" = "2", "0" = "3", "1" = "4", "1" = "5"),
+         COVID_19_3_7_true = fct_recode(COVID_19_3_7, "0" = "1", "0" = "2", "0" = "3", "1" = "4", "1" = "5"),
+         COVID_19_3_8_true = fct_recode(COVID_19_3_8, "0" = "1", "0" = "2", "0" = "3", "1" = "4", "1" = "5"),
+         COVID_19_3_9_true = fct_recode(COVID_19_3_9, "0" = "1", "0" = "2", "0" = "3", "1" = "4", "1" = "5"),
+         COVID_19_3_10_true = fct_recode(COVID_19_3_10, "0" = "1", "0" = "2", "0" = "3", "1" = "4", "1" = "5"),
+         COVID_19_3_11_true = fct_recode(COVID_19_3_11, "0" = "1", "0" = "2", "0" = "3", "1" = "4", "1" = "5"),
+         COVID_19_3_12_true = fct_recode(COVID_19_3_12, "0" = "1", "0" = "2", "0" = "3", "1" = "4", "1" = "5"),
+         COVID_19_3_13_true = fct_recode(COVID_19_3_13, "0" = "1", "0" = "2", "0" = "3", "1" = "4", "1" = "5"),
+         COVID_19_3_14_true = fct_recode(COVID_19_3_14, "0" = "1", "0" = "2", "0" = "3", "1" = "4", "1" = "5"),
+         COVID_19_3_15_true = fct_recode(COVID_19_3_15, "0" = "1", "0" = "2", "0" = "3", "1" = "4", "1" = "5"),
+         COVID_19_3_16_true = fct_recode(COVID_19_3_16, "0" = "1", "0" = "2", "0" = "3", "1" = "4", "1" = "5"))
+```
+
+```{r}
+# scoring
+class(covid_data$COVID_19_3_1)
+covid_data <- covid_data %>%
+  mutate(COVID_19_3_1 = parse_integer(as.character(COVID_19_3_1)),
+         COVID_19_3_2 = parse_integer(as.character(COVID_19_3_2)),
+         COVID_19_3_3 = parse_integer(as.character(COVID_19_3_3)),
+         COVID_19_3_4 = parse_integer(as.character(COVID_19_3_4)),
+         COVID_19_3_5 = parse_integer(as.character(COVID_19_3_5)),
+         COVID_19_3_6 = parse_integer(as.character(COVID_19_3_6)),
+         COVID_19_3_7 = parse_integer(as.character(COVID_19_3_7)),
+         COVID_19_3_8 = parse_integer(as.character(COVID_19_3_8)),
+         COVID_19_3_9 = parse_integer(as.character(COVID_19_3_9)),
+         COVID_19_3_10 = parse_integer(as.character(COVID_19_3_10)),
+         COVID_19_3_11 = parse_integer(as.character(COVID_19_3_11)),
+         COVID_19_3_12 = parse_integer(as.character(COVID_19_3_12)),
+         COVID_19_3_13 = parse_integer(as.character(COVID_19_3_13)),
+         COVID_19_3_14 = parse_integer(as.character(COVID_19_3_14)),
+         COVID_19_3_15 = parse_integer(as.character(COVID_19_3_15)),
+         COVID_19_3_16 = parse_integer(as.character(COVID_19_3_16)),
+         COVID_19_3_1_true = parse_integer(as.character(COVID_19_3_1_true)),
+         COVID_19_3_2_true = parse_integer(as.character(COVID_19_3_2_true)),
+         COVID_19_3_3_true = parse_integer(as.character(COVID_19_3_3_true)),
+         COVID_19_3_4_true = parse_integer(as.character(COVID_19_3_4_true)),
+         COVID_19_3_5_true = parse_integer(as.character(COVID_19_3_5_true)),
+         COVID_19_3_6_true = parse_integer(as.character(COVID_19_3_6_true)),
+         COVID_19_3_7_true = parse_integer(as.character(COVID_19_3_7_true)),
+         COVID_19_3_8_true = parse_integer(as.character(COVID_19_3_8_true)),
+         COVID_19_3_9_true = parse_integer(as.character(COVID_19_3_9_true)),
+         COVID_19_3_10_true = parse_integer(as.character(COVID_19_3_10_true)),
+         COVID_19_3_11_true = parse_integer(as.character(COVID_19_3_11_true)),
+         COVID_19_3_12_true = parse_integer(as.character(COVID_19_3_12_true)),
+         COVID_19_3_13_true = parse_integer(as.character(COVID_19_3_13_true)),
+         COVID_19_3_14_true = parse_integer(as.character(COVID_19_3_14_true)),
+         COVID_19_3_15_true = parse_integer(as.character(COVID_19_3_15_true)),
+         COVID_19_3_16_true = parse_integer(as.character(COVID_19_3_16_true))) 
+
+covid_data <- covid_data %>%
+  mutate(COVID_conspiracies_total = rowMeans(subset(covid_data, select = c(COVID_19_3_1, COVID_19_3_2, COVID_19_3_3,
+             COVID_19_3_4, COVID_19_3_5, COVID_19_3_6, COVID_19_3_7, COVID_19_3_8, COVID_19_3_9, COVID_19_3_10,
+             COVID_19_3_11, COVID_19_3_12, COVID_19_3_13, COVID_19_3_14, COVID_19_3_15, COVID_19_3_16), na.rm = TRUE)),
+         Conspiracies_endorsed = COVID_19_3_1_true + COVID_19_3_2_true + COVID_19_3_3_true + COVID_19_3_4_true + 
+             COVID_19_3_5_true + COVID_19_3_6_true + COVID_19_3_7_true + COVID_19_3_8_true + COVID_19_3_9_true +
+             COVID_19_3_10_true + COVID_19_3_11_true + COVID_19_3_12_true + COVID_19_3_13_true + COVID_19_3_14_true +
+             COVID_19_3_15_true + COVID_19_3_16_true,
+         Conspiracies_endorsed_lgtrans = log(Conspiracies_endorsed + 1))
+```
+
+# COVID 19 Facts v Misinfo
+
+```{r}
+# renaming (not on SPSS but they formatted weird on R)
+covid_data <- covid_data %>%
+  rename(Facts_vs_misinfo_1 = `Facts vs misinfo_1`,
+         Facts_vs_misinfo_2 = `Facts vs misinfo_2`,
+         Facts_vs_misinfo_3 = `Facts vs misinfo_3`,
+         Facts_vs_misinfo_4 = `Facts vs misinfo_4`,
+         Facts_vs_misinfo_5 = `Facts vs misinfo_5`,
+         Facts_vs_misinfo_6 = `Facts vs misinfo_6`,
+         Facts_vs_misinfo_7 = `Facts vs misinfo_7`,
+         Facts_vs_misinfo_8 = `Facts vs misinfo_8`,
+         Facts_vs_misinfo_9 = `Facts vs misinfo_9`,
+         Facts_vs_misinfo_10 = `Facts vs misinfo_10`,
+         Facts_vs_misinfo_11 = `Facts vs misinfo_11`,
+         Facts_vs_misinfo_12 = `Facts vs misinfo_12`,
+         Facts_vs_misinfo_13 = `Facts vs misinfo_13`,
+         Facts_vs_misinfo_14 = `Facts vs misinfo_14`,
+         Facts_vs_misinfo_15 = `Facts vs misinfo_15`,
+         Facts_vs_misinfo_16 = `Facts vs misinfo_16`)
+```
+
+```{r}
+# recoding facts v misinfo
+covid_data <- covid_data %>%
+  mutate(Facts_vs_misinfo_2 = fct_recode(Facts_vs_misinfo_2, "0" = "2"),
+         Facts_vs_misinfo_5 = fct_recode(Facts_vs_misinfo_5, "0" = "2"),
+         Facts_vs_misinfo_7 = fct_recode(Facts_vs_misinfo_7, "0" = "2"),
+         Facts_vs_misinfo_11 = fct_recode(Facts_vs_misinfo_11, "0" = "2"),
+         Facts_vs_misinfo_1 = fct_recode(Facts_vs_misinfo_1, "0" = "1", "1" = "2"),
+         Facts_vs_misinfo_3 = fct_recode(Facts_vs_misinfo_3, "0" = "1", "1" = "2"),
+         Facts_vs_misinfo_4 = fct_recode(Facts_vs_misinfo_4, "0" = "1", "1" = "2"),
+         Facts_vs_misinfo_6 = fct_recode(Facts_vs_misinfo_6, "0" = "1", "1" = "2"),
+         Facts_vs_misinfo_8 = fct_recode(Facts_vs_misinfo_8, "0" = "1", "1" = "2"),
+         Facts_vs_misinfo_9 = fct_recode(Facts_vs_misinfo_9, "0" = "1", "1" = "2"),
+         Facts_vs_misinfo_10 = fct_recode(Facts_vs_misinfo_10, "0" = "1", "1" = "2"),
+         Facts_vs_misinfo_12 = fct_recode(Facts_vs_misinfo_12, "0" = "1", "1" = "2"),
+         Facts_vs_misinfo_13 = fct_recode(Facts_vs_misinfo_13, "0" = "1", "1" = "2"),
+         Facts_vs_misinfo_14 = fct_recode(Facts_vs_misinfo_14, "0" = "1", "1" = "2"),
+         Facts_vs_misinfo_15 = fct_recode(Facts_vs_misinfo_15, "0" = "1", "1" = "2"),
+         Facts_vs_misinfo_16 = fct_recode(Facts_vs_misinfo_16, "0" = "1", "1" = "2"))
+```
+
+```{r}
+# scoring
+class(covid_data$Facts_vs_misinfo_1)
+covid_data <- covid_data %>%
+  mutate(Facts_vs_misinfo_1 = parse_integer(as.character(Facts_vs_misinfo_1)),
+         Facts_vs_misinfo_2 = parse_integer(as.character(Facts_vs_misinfo_2)),
+         Facts_vs_misinfo_3 = parse_integer(as.character(Facts_vs_misinfo_3)),
+         Facts_vs_misinfo_4 = parse_integer(as.character(Facts_vs_misinfo_4)),
+         Facts_vs_misinfo_5 = parse_integer(as.character(Facts_vs_misinfo_5)),
+         Facts_vs_misinfo_6 = parse_integer(as.character(Facts_vs_misinfo_6)),
+         Facts_vs_misinfo_7 = parse_integer(as.character(Facts_vs_misinfo_7)),
+         Facts_vs_misinfo_8 = parse_integer(as.character(Facts_vs_misinfo_8)),
+         Facts_vs_misinfo_9 = parse_integer(as.character(Facts_vs_misinfo_9)),
+         Facts_vs_misinfo_10 = parse_integer(as.character(Facts_vs_misinfo_10)),
+         Facts_vs_misinfo_11 = parse_integer(as.character(Facts_vs_misinfo_11)),
+         Facts_vs_misinfo_12 = parse_integer(as.character(Facts_vs_misinfo_12)),
+         Facts_vs_misinfo_13 = parse_integer(as.character(Facts_vs_misinfo_13)),
+         Facts_vs_misinfo_14 = parse_integer(as.character(Facts_vs_misinfo_14)),
+         Facts_vs_misinfo_15 = parse_integer(as.character(Facts_vs_misinfo_15)),
+         Facts_vs_misinfo_16 = parse_integer(as.character(Facts_vs_misinfo_16))) %>%
+  mutate(COVID_factsvmisinfo_score = Facts_vs_misinfo_1 + Facts_vs_misinfo_2 + Facts_vs_misinfo_3 + Facts_vs_misinfo_4 +
+           Facts_vs_misinfo_5 + Facts_vs_misinfo_6 + Facts_vs_misinfo_7 + Facts_vs_misinfo_8 + Facts_vs_misinfo_9 + 
+           Facts_vs_misinfo_10 + Facts_vs_misinfo_11 + Facts_vs_misinfo_12 + Facts_vs_misinfo_13 + Facts_vs_misinfo_14 +
+           Facts_vs_misinfo_15 + Facts_vs_misinfo_16)
+```
+
+# COVID 19 Health Behavior
+
+```{r}
+# renaming variables
+covid_data <- covid_data %>%
+  rename(Health_Behavior_1 = Health_Behavior,
+         Health_Behavior_1a = Health_Behavior_1,
+         Health_Behavior_2 = Health_Behavior_2,
+         Health_Behavior_2a = Health_Behavior_3,
+         Health_Behavior_3 = Health_Behavior_4,
+         Health_Behavior_4 = Health_Behavior_5,
+         Health_Behavior_5 = Health_Behavior_6,
+         Health_Behavior_6 = Health_Behavior_7,
+         Health_Behavior_7 = Health_Behavior_8,
+         Health_Behavior_8 = Health_Behavior_9,
+         Health_Behavior_9 = Health_Behavior_10)
+```
+
+```{r}
+# scoring
+class(covid_data$Health_Behavior_1)
+covid_data <- covid_data %>%
+  mutate(Health_Behavior_1 = parse_integer(Health_Behavior_1),
+         Health_Behavior_1a = parse_integer(Health_Behavior_1a),
+         Health_Behavior_2 = parse_integer(Health_Behavior_2),
+         Health_Behavior_2a = parse_integer(Health_Behavior_2a),
+         Health_Behavior_3 = parse_integer(Health_Behavior_3),
+         Health_Behavior_4 = parse_integer(Health_Behavior_4),
+         Health_Behavior_5 = parse_integer(Health_Behavior_5),
+         Health_Behavior_6 = parse_integer(Health_Behavior_6),
+         Health_Behavior_7 = parse_integer(Health_Behavior_7),
+         Health_Behavior_8 = parse_integer(Health_Behavior_8),
+         Health_Behavior_9 = parse_integer(Health_Behavior_9)) %>%
+  mutate(Health_Behavior_Score = Health_Behavior_1a + Health_Behavior_2 + Health_Behavior_2a + Health_Behavior_3 +
+           Health_Behavior_4 + Health_Behavior_5 + Health_Behavior_6)
+# awaiting megan clarification
+  
+```
+
+
+
 
 # COVID Predicted Consequences
 ```{r}
@@ -125,6 +350,49 @@ covid_data <- covid_data %>%
 
 ```{r}
 # Scoring COVID Consequences variables
+class(covid_data$COVID_19_2_takecareofpeople)
+covid_data <- covid_data %>%
+  mutate(COVID_19_2_1_Headache = parse_integer(as.character(COVID_19_2_1_Headache)),
+         COVID_19_2_1_Fever = parse_integer(as.character(COVID_19_2_1_Fever)),
+         COVID_19_2_1_Bodyache = parse_integer(as.character(COVID_19_2_1_Bodyache)),
+         COVID_19_2_1_Fatigue = parse_integer(as.character(COVID_19_2_1_Fatigue)),
+         COVID_19_2_1_Neckpain = parse_integer(as.character(COVID_19_2_1_Neckpain)),
+         COVID_19_2_1_Lossofsleep = parse_integer(as.character(COVID_19_2_1_Lossofsleep)),                               
+         COVID_19_2_1_Lossofappetite = parse_integer(as.character(COVID_19_2_1_Lossofappetite)), 
+         COVID_19_2_1_Cough = parse_integer(as.character(COVID_19_2_1_Cough)),
+         COVID_19_2_1_Sorethroat = parse_integer(as.character(COVID_19_2_1_Sorethroat)),
+         COVID_19_2_1_Nasalcongestion = parse_integer(as.character(COVID_19_2_1_Nasalcongestion)),
+         COVID_19_2_1_Breathingproblems = parse_integer(as.character(COVID_19_2_1_Breathingproblems)),
+         COVID_19_2_2_getoutofbed = parse_integer(as.character(COVID_19_2_2_getoutofbed)),
+         COVID_19_2_2_preparemeals = parse_integer(as.character(COVID_19_2_2_preparemeals)),
+         COVID_19_2_2_performdailyroutines = parse_integer(as.character(COVID_19_2_2_performdailyroutines)),  
+         COVID_19_2_2_leavehome = parse_integer(as.character(COVID_19_2_2_leavehome)), 
+         COVID_19_2_2_concentrateonwork = parse_integer(as.character(COVID_19_2_2_concentrateonwork)),
+         COVID_19_2_2_completemywork = parse_integer(as.character(COVID_19_2_2_completemywork)),  
+         COVID_19_2_Irritable = parse_integer(as.character(COVID_19_2_Irritable)),                       
+         COVID_19_2_Worried = parse_integer(as.character(COVID_19_2_Worried)),
+         COVID_19_2_Helpless = parse_integer(as.character(COVID_19_2_Helpless)),
+         COVID_19_2_Frustrated = parse_integer(as.character(COVID_19_2_Frustrated)),                                                      COVID_19_2_makingthemworry = parse_integer(as.character(COVID_19_2_makingthemworry)),
+         COVID_19_2_beingaburden = parse_integer(as.character(COVID_19_2_beingaburden)),
+         COVID_19_2_limitingtheirlives = parse_integer(as.character(COVID_19_2_limitingtheirlives)),
+         COVID_19_2_needingtodependonthem = parse_integer(as.character(COVID_19_2_needingtodependonthem)),
+         COVID_19_2_takecareofpeople = parse_integer(as.character(COVID_19_2_takecareofpeople)),
+         COVID_19_2_spreadinginfectiontothem = parse_integer(as.character(COVID_19_2_spreadinginfectiontothem)),
+         COVID_19_2_sufferfinancially = parse_integer(as.character(COVID_19_2_sufferfinancially)),
+         COVID_19_2_personalrelationships = parse_integer(as.character(COVID_19_2_personalrelationships)),
+         COVID_19_2_foodandhousing = parse_integer(as.character(COVID_19_2_foodandhousing)))                                     
+covid_data <- covid_data %>%                                        
+  mutate(COVID_conseq_sxs = COVID_19_2_1_Headache + COVID_19_2_1_Fever + COVID_19_2_1_Bodyache + COVID_19_2_1_Fatigue +
+              COVID_19_2_1_Neckpain + COVID_19_2_1_Lossofsleep + COVID_19_2_1_Lossofappetite + COVID_19_2_1_Cough + 
+              COVID_19_2_1_Sorethroat + COVID_19_2_1_Nasalcongestion + COVID_19_2_1_Breathingproblems,
+         COVID_conseq_abilities = COVID_19_2_2_getoutofbed + COVID_19_2_2_preparemeals + COVID_19_2_2_performdailyroutines +
+              COVID_19_2_2_leavehome + COVID_19_2_2_concentrateonwork + COVID_19_2_2_completemywork,
+         COVID_conseq_mood = COVID_19_2_Irritable + COVID_19_2_Worried + COVID_19_2_Helpless + COVID_19_2_Frustrated,
+         COVID_conseq_burden_to_others = COVID_19_2_makingthemworry + COVID_19_2_beingaburden + COVID_19_2_limitingtheirlives +
+              COVID_19_2_needingtodependonthem + COVID_19_2_takecareofpeople + COVID_19_2_spreadinginfectiontothem,
+         COVID_conseq_realworld = COVID_19_2_sufferfinancially + COVID_19_2_personalrelationships + COVID_19_2_foodandhousing,
+         COVID_conseq_total = COVID_conseq_sxs + COVID_conseq_abilities + COVID_conseq_mood + COVID_conseq_burden_to_others +
+              COVID_conseq_realworld)
 ```
 
 # Perceived Vulnerability to Disease Scale 
@@ -166,10 +434,7 @@ covid_data <- covid_data %>%
            PVDS_15 = parse_integer(as.character(PVDS_15))) 
 
 covid_data <- covid_data %>%
-  mutate(Factor_1 = PVDS_8 + PVDS_12 + PVDS_2 + PVDS_14 + PVDS_10 + PVDS_5 + PVDS_6,
-         Factor_2 = PVDS_7 + PVDS_15 + PVDS_4 + PVDS_9 + PVDS_3 + PVDS_3 + PVDS_1 + 
-                                PVDS_13 + PVDS_11,
-        Perceived_Infectability = rowMeans(subset(covid_data, select = c(PVDS_8, PVDS_12, PVDS_2, PVDS_14, PVDS_10, PVDS_5, PVDS_6), na.rm = TRUE)),
+  mutate(Perceived_Infectability = rowMeans(subset(covid_data, select = c(PVDS_8, PVDS_12, PVDS_2, PVDS_14, PVDS_10, PVDS_5, PVDS_6), na.rm = TRUE)),
          Germ_Aversion = rowMeans(subset(covid_data, select = c(PVDS_7, PVDS_15, PVDS_4, PVDS_9, PVDS_3, PVDS_13, PVDS_11), na.rm = TRUE)))
 ```
 
@@ -212,87 +477,62 @@ covid_data <- covid_data %>%
 ```{r}
 # Recoding RLOC variables
 covid_data <- covid_data %>%
-  dplyr::mutate(RLOC_2_score = fct_recode(RLOC_2,
-                                   "1" = "1", "0" = "2"),
-                RLOC_6_score = fct_recode(RLOC_6,
-                                   "1" = "1", "0" = "2"),
-                RLOC_7_score = fct_recode(RLOC_7,
-                                   "1" = "1", "0" = "2"),
-                RLOC_9_score = fct_recode(RLOC_9,
-                                  "1" = "1", "0" = "2"),
-                RLOC_16_score = fct_recode(RLOC_16,
-                                   "1" = "1", "0" = "2"),
-                RLOC_17_score = fct_recode(RLOC_17,
-                                   "1" = "1", "0" = "2"),
-                RLOC_18_score = fct_recode(RLOC_18,
-                                   "1" = "1", "0" = "2"),
-                RLOC_20_score = fct_recode(RLOC_20,
-                                  "1" = "1", "0" = "2"),
-                RLOC_21_score = fct_recode(RLOC_21,
-                                   "1" = "1", "0" = "2"),
-                RLOC_23_score = fct_recode(RLOC_23,
-                                   "1" = "1", "0" = "2"),
-                RLOC_25_score = fct_recode(RLOC_25,
-                                   "1" = "1", "0" = "2"),
-                RLOC_29_score = fct_recode(RLOC_29,
-                                   "1" = "1", "0" = "2"),
-                RLOC_3_score = fct_recode(RLOC_3,
-                                   "0" = "1", "1" = "2"),
-                RLOC_4_score = fct_recode(RLOC_4,
-                                   "0" = "1", "1" = "2"),
-               RLOC_5_score = fct_recode(RLOC_5,
-                                   "0" = "1", "1" = "2"), 
-               RLOC_10_score = fct_recode(RLOC_10,
-                                   "0" = "1", "1" = "2"), 
-               RLOC_11_score = fct_recode(RLOC_11,
-                                   "0" = "1", "1" = "2"),
-               RLOC_12_score = fct_recode(RLOC_12,
-                                   "0" = "1", "1" = "2"),
-               RLOC_13_score = fct_recode(RLOC_13,
-                                   "0" = "1", "1" = "2"),
-               RLOC_15_score = fct_recode(RLOC_15,
-                                  "0" = "1", "1" = "2"),
-               RLOC_22_score = fct_recode(RLOC_22,
-                                   "0" = "1", "1" = "2"),
-               RLOC_26_score = fct_recode(RLOC_26,
-                                   "0" = "1", "1" = "2"),
-               RLOC_28_score = fct_recode(RLOC_28,
-                                   "0" = "1", "1" = "2"))
+  mutate(RLOC_2 = fct_recode(RLOC_2, "1" = "1", "0" = "2"),
+                RLOC_6 = fct_recode(RLOC_6, "1" = "1", "0" = "2"),
+                RLOC_7 = fct_recode(RLOC_7, "1" = "1", "0" = "2"),
+                RLOC_9 = fct_recode(RLOC_9, "1" = "1", "0" = "2"),
+                RLOC_16 = fct_recode(RLOC_16, "1" = "1", "0" = "2"),
+                RLOC_17 = fct_recode(RLOC_17, "1" = "1", "0" = "2"),
+                RLOC_18 = fct_recode(RLOC_18, "1" = "1", "0" = "2"),
+                RLOC_20 = fct_recode(RLOC_20, "1" = "1", "0" = "2"),
+                RLOC_21 = fct_recode(RLOC_21, "1" = "1", "0" = "2"),
+                RLOC_23 = fct_recode(RLOC_23, "1" = "1", "0" = "2"),
+                RLOC_25 = fct_recode(RLOC_25, "1" = "1", "0" = "2"),
+                RLOC_29 = fct_recode(RLOC_29, "1" = "1", "0" = "2"),
+                RLOC_3 = fct_recode(RLOC_3, "0" = "1", "1" = "2"),
+                RLOC_4 = fct_recode(RLOC_4, "0" = "1", "1" = "2"),
+                RLOC_5 = fct_recode(RLOC_5, "0" = "1", "1" = "2"), 
+                RLOC_10 = fct_recode(RLOC_10, "0" = "1", "1" = "2"), 
+                RLOC_11 = fct_recode(RLOC_11, "0" = "1", "1" = "2"),
+                RLOC_12 = fct_recode(RLOC_12, "0" = "1", "1" = "2"),
+                RLOC_13 = fct_recode(RLOC_13, "0" = "1", "1" = "2"),
+                RLOC_15 = fct_recode(RLOC_15, "0" = "1", "1" = "2"),
+                RLOC_22 = fct_recode(RLOC_22, "0" = "1", "1" = "2"),
+                RLOC_26 = fct_recode(RLOC_26, "0" = "1", "1" = "2"),
+                RLOC_28 = fct_recode(RLOC_28, "0" = "1", "1" = "2"))
 ```
 
 ```{r}
 # Computing RLOC Scores
 covid_data <- covid_data %>%
-  mutate(RLOC_2_score = parse_integer(as.character(RLOC_2_score)),
-         RLOC_3_score = parse_integer(as.character(RLOC_3_score)),
-         RLOC_4_score = parse_integer(as.character(RLOC_4_score)),
-         RLOC_5_score = parse_integer(as.character(RLOC_5_score)),
-         RLOC_6_score = parse_integer(as.character(RLOC_6_score)),
-         RLOC_7_score = parse_integer(as.character(RLOC_7_score)),
-         RLOC_9_score = parse_integer(as.character(RLOC_9_score)),
-         RLOC_10_score = parse_integer(as.character(RLOC_10_score)),
-         RLOC_11_score = parse_integer(as.character(RLOC_11_score)),
-         RLOC_12_score = parse_integer(as.character(RLOC_12_score)),
-         RLOC_13_score = parse_integer(as.character(RLOC_13_score)),
-         RLOC_15_score = parse_integer(as.character(RLOC_15_score)),
-         RLOC_16_score = parse_integer(as.character(RLOC_16_score)),
-         RLOC_17_score = parse_integer(as.character(RLOC_17_score)),
-         RLOC_18_score = parse_integer(as.character(RLOC_18_score)),
-         RLOC_20_score = parse_integer(as.character(RLOC_20_score)),
-         RLOC_21_score = parse_integer(as.character(RLOC_21_score)),
-         RLOC_22_score = parse_integer(as.character(RLOC_22_score)),
-         RLOC_23_score = parse_integer(as.character(RLOC_23_score)),
-         RLOC_25_score = parse_integer(as.character(RLOC_25_score)),
-         RLOC_26_score = parse_integer(as.character(RLOC_26_score)),
-         RLOC_28_score = parse_integer(as.character(RLOC_28_score)),
-         RLOC_29_score = parse_integer(as.character(RLOC_29_score))) %>%
-  mutate(Rotters_general = RLOC_5_score + RLOC_9_score + RLOC_11_score + RLOC_13_score + RLOC_15_score +
-           RLOC_16_score + RLOC_18_score + RLOC_25_score + RLOC_28_score,
-         Rotters_political = RLOC_3_score + RLOC_12_score + RLOC_17_score + RLOC_22_score,
-         RLOC_Total_Score = RLOC_2_score + RLOC_3_score + RLOC_4_score + RLOC_5_score + RLOC_6_score +  
-           RLOC_7_score + RLOC_9_score + RLOC_10_score + RLOC_11_score + RLOC_12_score + RLOC_13_score + 
-           RLOC_15_score + RLOC_16_score + RLOC_17_score + RLOC_18_score + RLOC_20_score + RLOC_21_score + 
-           RLOC_22_score + RLOC_23_score + RLOC_25_score + RLOC_26_score + RLOC_28_score + RLOC_29_score)
+  mutate(RLOC_2 = parse_integer(as.character(RLOC_2)),
+         RLOC_3 = parse_integer(as.character(RLOC_3)),
+         RLOC_4 = parse_integer(as.character(RLOC_4)),
+         RLOC_5 = parse_integer(as.character(RLOC_5)),
+         RLOC_6 = parse_integer(as.character(RLOC_6)),
+         RLOC_7 = parse_integer(as.character(RLOC_7)),
+         RLOC_9 = parse_integer(as.character(RLOC_9)),
+         RLOC_10 = parse_integer(as.character(RLOC_10)),
+         RLOC_11= parse_integer(as.character(RLOC_11)),
+         RLOC_12 = parse_integer(as.character(RLOC_12)),
+         RLOC_13 = parse_integer(as.character(RLOC_13)),
+         RLOC_15 = parse_integer(as.character(RLOC_15)),
+         RLOC_16 = parse_integer(as.character(RLOC_16)),
+         RLOC_17= parse_integer(as.character(RLOC_17)),
+         RLOC_18 = parse_integer(as.character(RLOC_18)),
+         RLOC_20 = parse_integer(as.character(RLOC_20)),
+         RLOC_21 = parse_integer(as.character(RLOC_21)),
+         RLOC_22 = parse_integer(as.character(RLOC_22)),
+         RLOC_23 = parse_integer(as.character(RLOC_23)),
+         RLOC_25 = parse_integer(as.character(RLOC_25)),
+         RLOC_26 = parse_integer(as.character(RLOC_26)),
+         RLOC_28 = parse_integer(as.character(RLOC_28)),
+         RLOC_29 = parse_integer(as.character(RLOC_29))) %>%
+  mutate(Rotters_general = RLOC_5 + RLOC_9 + RLOC_11 + RLOC_13 + RLOC_15 + RLOC_16 + RLOC_18 + RLOC_25 + RLOC_28,
+         Rotters_political = RLOC_3 + RLOC_12 + RLOC_17 + RLOC_22,
+         RLOC_Total_Score = RLOC_2 + RLOC_3 + RLOC_4 + RLOC_5 + RLOC_6 + RLOC_7 + RLOC_9 + RLOC_10 + RLOC_11 + 
+           RLOC_12 + RLOC_13 + RLOC_15 + RLOC_16 + RLOC_17 + RLOC_18 + RLOC_20 + RLOC_21 + RLOC_22 + RLOC_23 + 
+           RLOC_25 + RLOC_26 + RLOC_28 + RLOC_29)
 ```
 
 # Need for Closure Scale 
