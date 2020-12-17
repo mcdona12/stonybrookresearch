@@ -88,13 +88,139 @@ covid_data <- covid_data %>%
 # use parse_integer command (see below or google doc)
 ```
 
+# STAIT
 ```{r}
+# recoding reverse scored questions
+covid_data <- covid_data %>%
+  mutate(STAIT_1 = fct_recode(STAIT_1, "4" = "1", "3" = "2", "2" = "3", "1" = "4"),
+         STAIT_3 = fct_recode(STAIT_3, "4" = "1", "3" = "2", "2" = "3", "1" = "4"),
+         STAIT_6 = fct_recode(STAIT_6, "4" = "1", "3" = "2", "2" = "3", "1" = "4"),
+         STAIT_7 = fct_recode(STAIT_7, "4" = "1", "3" = "2", "2" = "3", "1" = "4"),
+         STAIT_10 = fct_recode(STAIT_10, "4" = "1", "3" = "2", "2" = "3", "1" = "4"),
+         STAIT_13 = fct_recode(STAIT_13, "4" = "1", "3" = "2", "2" = "3", "1" = "4"),
+         STAIT_14 = fct_recode(STAIT_14, "4" = "1", "3" = "2", "2" = "3", "1" = "4"),
+         STAIT_16 = fct_recode(STAIT_16, "4" = "1", "3" = "2", "2" = "3", "1" = "4"),
+         STAIT_19 = fct_recode(STAIT_19, "4" = "1", "3" = "2", "2" = "3", "1" = "4"))
 ```
+
+```{r}
+# scoring
+covid_data <- covid_data %>%
+   mutate(STAIT_1 = parse_integer(as.character(STAIT_1)),
+          STAIT_2 = parse_integer(as.character(STAIT_2)),
+          STAIT_3 = parse_integer(as.character(STAIT_3)),
+          STAIT_4 = parse_integer(as.character(STAIT_4)),
+          STAIT_5 = parse_integer(as.character(STAIT_5)),
+          STAIT_6 = parse_integer(as.character(STAIT_6)),
+          STAIT_7 = parse_integer(as.character(STAIT_7)),
+          STAIT_8 = parse_integer(as.character(STAIT_8)),
+          STAIT_9 = parse_integer(as.character(STAIT_9)),
+          STAIT_10 = parse_integer(as.character(STAIT_10)),
+          STAIT_11 = parse_integer(as.character(STAIT_11)),
+          STAIT_12 = parse_integer(as.character(STAIT_12)),
+          STAIT_13 = parse_integer(as.character(STAIT_13)),
+          STAIT_14 = parse_integer(as.character(STAIT_14)),
+          STAIT_15 = parse_integer(as.character(STAIT_15)),
+          STAIT_16 = parse_integer(as.character(STAIT_16)),
+          STAIT_17 = parse_integer(as.character(STAIT_17)),
+          STAIT_18 = parse_integer(as.character(STAIT_18)),
+          STAIT_19 = parse_integer(as.character(STAIT_19)),
+          STAIT_20 = parse_integer(as.character(STAIT_20)))
+
+covid_data <- covid_data %>%
+  mutate(STAIT_total = STAIT_1 + STAIT_2 + STAIT_3 + STAIT_4 + STAIT_5 + STAIT_6 + STAIT_7 + 
+           STAIT_8 + STAIT_9 + STAIT_10 + STAIT_11 + STAIT_12 + STAIT_13 + STAIT_14 + STAIT_15 +
+           STAIT_16 + STAIT_17 + STAIT_18 + STAIT_19 + STAIT_20)
+```
+
+# STAIS
+```{r}
+# recoding reverse scored questions
+covid_data <- covid_data %>%
+  mutate(STAIS_1 = fct_recode(STAIS_1, "4" = "1", "3" = "2", "2" = "3", "1" = "4"),
+         STAIS_2 = fct_recode(STAIS_2, "4" = "1", "3" = "2", "2" = "3", "1" = "4"),
+         STAIS_5 = fct_recode(STAIS_5, "4" = "1", "3" = "2", "2" = "3", "1" = "4"),
+         STAIS_8 = fct_recode(STAIS_8, "4" = "1", "3" = "2", "2" = "3", "1" = "4"),
+         STAIS_10 = fct_recode(STAIS_10, "4" = "1", "3" = "2", "2" = "3", "1" = "4"),
+         STAIS_11 = fct_recode(STAIS_11, "4" = "1", "3" = "2", "2" = "3", "1" = "4"),
+         STAIS_15 = fct_recode(STAIS_15, "4" = "1", "3" = "2", "2" = "3", "1" = "4"),
+         STAIS_16 = fct_recode(STAIS_16, "4" = "1", "3" = "2", "2" = "3", "1" = "4"),
+         STAIS_19 = fct_recode(STAIS_19, "4" = "1", "3" = "2", "2" = "3", "1" = "4"),
+         STAIS_20 = fct_recode(STAIS_20, "4" = "1", "3" = "2", "2" = "3", "1" = "4"))
+```
+
+```{r}
+# scoring
+covid_data <- covid_data %>%
+   mutate(STAIS_1 = parse_integer(as.character(STAIS_1)),
+          STAIS_2 = parse_integer(as.character(STAIS_2)),
+          STAIS_3 = parse_integer(as.character(STAIS_3)),
+          STAIS_4 = parse_integer(as.character(STAIS_4)),
+          STAIS_5 = parse_integer(as.character(STAIS_5)),
+          STAIS_6 = parse_integer(as.character(STAIS_6)),
+          STAIS_7 = parse_integer(as.character(STAIS_7)),
+          STAIS_8 = parse_integer(as.character(STAIS_8)),
+          STAIS_9 = parse_integer(as.character(STAIS_9)),
+          STAIS_10 = parse_integer(as.character(STAIS_10)),
+          STAIS_11 = parse_integer(as.character(STAIS_11)),
+          STAIS_12 = parse_integer(as.character(STAIS_12)),
+          STAIS_13 = parse_integer(as.character(STAIS_13)),
+          STAIS_14 = parse_integer(as.character(STAIS_14)),
+          STAIS_15 = parse_integer(as.character(STAIS_15)),
+          STAIS_16 = parse_integer(as.character(STAIS_16)),
+          STAIS_17 = parse_integer(as.character(STAIS_17)),
+          STAIS_18 = parse_integer(as.character(STAIS_18)),
+          STAIS_19 = parse_integer(as.character(STAIS_19)),
+          STAIS_20 = parse_integer(as.character(STAIS_20)))
+
+covid_data <- covid_data %>%
+  mutate(STAIS_total = STAIS_1 + STAIS_2 + STAIS_3 + STAIS_4 + STAIS_5 + STAIS_6 + STAIS_7 + 
+           STAIS_8 + STAIS_9 + STAIS_10 + STAIS_11 + STAIS_12 + STAIS_13 + STAIS_14 + STAIS_15 +
+           STAIS_16 + STAIS_17 + STAIS_18 + STAIS_19 + STAIS_20)
+```
+
+
+# PSWQ 
+```{r}
+# recoding reverse scored questions
+covid_data <- covid_data %>%
+  mutate(PSWQ_1 = fct_recode(PSWQ_1, "5" = "1", "4" = "2", "3" = "3", "2" = "4", "1" = "5"),
+         PSWQ_3 = fct_recode(PSWQ_3, "5" = "1", "4" = "2", "3" = "3", "2" = "4", "1" = "5"),
+         PSWQ_8 = fct_recode(PSWQ_8, "5" = "1", "4" = "2", "3" = "3", "2" = "4", "1" = "5"),
+         PSWQ_10 = fct_recode(PSWQ_10, "5" = "1", "4" = "2", "3" = "3", "2" = "4", "1" = "5"),
+         PSWQ_11 = fct_recode(PSWQ_11, "5" = "1", "4" = "2", "3" = "3", "2" = "4", "1" = "5"))
+```
+
+```{r}
+# scoring
+covid_data <- covid_data %>%
+   mutate(PSWQ_1 = parse_integer(as.character(PSWQ_1)),
+          PSWQ_2 = parse_integer(as.character(PSWQ_2)),
+          PSWQ_3 = parse_integer(as.character(PSWQ_3)),
+          PSWQ_4 = parse_integer(as.character(PSWQ_4)),
+          PSWQ_5 = parse_integer(as.character(PSWQ_5)),
+          PSWQ_6 = parse_integer(as.character(PSWQ_6)),
+          PSWQ_7 = parse_integer(as.character(PSWQ_7)),
+          PSWQ_8 = parse_integer(as.character(PSWQ_8)),
+          PSWQ_9 = parse_integer(as.character(PSWQ_9)),
+          PSWQ_10 = parse_integer(as.character(PSWQ_10)),
+          PSWQ_11 = parse_integer(as.character(PSWQ_11)),
+          PSWQ_12 = parse_integer(as.character(PSWQ_12)),
+          PSWQ_13 = parse_integer(as.character(PSWQ_13)),
+          PSWQ_14 = parse_integer(as.character(PSWQ_14)),
+          PSWQ_15 = parse_integer(as.character(PSWQ_15)),
+          PSWQ_16 = parse_integer(as.character(PSWQ_16)))
+
+covid_data <- covid_data %>%
+  mutate(PSWQ_total = PSWQ_1 + PSWQ_2 + PSWQ_3 + PSWQ_4 + PSWQ_5 + PSWQ_6 + PSWQ_7 + PSWQ_8 +
+           PSWQ_9 + PSWQ_10 + PSWQ_11 + PSWQ_12 + PSWQ_13 + PSWQ_14 + PSWQ_15 + PSWQ_16) 
+```
+
 
 # COVID Conspiracy Beliefs Questions
 
 ```{r} 
-# renaming (not on SPSS but formatted weird on R
+# renaming (not on SPSS but formatted weird on R)
 covid_data <- covid_data %>%
   rename(COVID_19_3_1 = `COVID-19_3_1`,
          COVID_19_3_2 = `COVID-19_3_2`,
@@ -153,7 +279,6 @@ covid_data <- covid_data %>%
 
 ```{r}
 # scoring
-class(covid_data$COVID_19_3_1)
 covid_data <- covid_data %>%
   mutate(COVID_19_3_1 = parse_integer(as.character(COVID_19_3_1)),
          COVID_19_3_2 = parse_integer(as.character(COVID_19_3_2)),
@@ -245,7 +370,6 @@ covid_data <- covid_data %>%
 
 ```{r}
 # scoring
-class(covid_data$Facts_vs_misinfo_1)
 covid_data <- covid_data %>%
   mutate(Facts_vs_misinfo_1 = parse_integer(as.character(Facts_vs_misinfo_1)),
          Facts_vs_misinfo_2 = parse_integer(as.character(Facts_vs_misinfo_2)),
@@ -289,7 +413,6 @@ covid_data <- covid_data %>%
 
 ```{r}
 # scoring
-class(covid_data$Health_Behavior_1)
 covid_data <- covid_data %>%
   mutate(Health_Behavior_1 = parse_integer(Health_Behavior_1),
          Health_Behavior_1a = parse_integer(Health_Behavior_1a),
@@ -302,14 +425,10 @@ covid_data <- covid_data %>%
          Health_Behavior_7 = parse_integer(Health_Behavior_7),
          Health_Behavior_8 = parse_integer(Health_Behavior_8),
          Health_Behavior_9 = parse_integer(Health_Behavior_9)) %>%
-  mutate(Health_Behavior_Score = Health_Behavior_1a + Health_Behavior_2 + Health_Behavior_2a + Health_Behavior_3 +
-           Health_Behavior_4 + Health_Behavior_5 + Health_Behavior_6)
-# awaiting megan clarification
-  
+  mutate(Health_Behavior_Score = Health_Behavior_1 + Health_Behavior_1a + Health_Behavior_2 + 
+           Health_Behavior_2a + Health_Behavior_3 + Health_Behavior_4 + Health_Behavior_5 + Health_Behavior_6 +
+           Health_Behavior_7 + Health_Behavior_8)
 ```
-
-
-
 
 # COVID Predicted Consequences
 ```{r}
@@ -372,7 +491,7 @@ covid_data <- covid_data %>%
          COVID_19_2_Irritable = parse_integer(as.character(COVID_19_2_Irritable)),                       
          COVID_19_2_Worried = parse_integer(as.character(COVID_19_2_Worried)),
          COVID_19_2_Helpless = parse_integer(as.character(COVID_19_2_Helpless)),
-         COVID_19_2_Frustrated = parse_integer(as.character(COVID_19_2_Frustrated)),                                                      COVID_19_2_makingthemworry = parse_integer(as.character(COVID_19_2_makingthemworry)),
+         COVID_19_2_Frustrated = parse_integer(as.character(COVID_19_2_Frustrated)),                                               COVID_19_2_makingthemworry = parse_integer(as.character(COVID_19_2_makingthemworry)),
          COVID_19_2_beingaburden = parse_integer(as.character(COVID_19_2_beingaburden)),
          COVID_19_2_limitingtheirlives = parse_integer(as.character(COVID_19_2_limitingtheirlives)),
          COVID_19_2_needingtodependonthem = parse_integer(as.character(COVID_19_2_needingtodependonthem)),
