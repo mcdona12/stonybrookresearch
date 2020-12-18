@@ -16,6 +16,7 @@ It was irrelevant and messed with classification of variables
 ```{r}
 covid_data <- covid_data %>% 
    filter(row_number() > (n() - 673))
+# note - remember to delete spring participants, ask Megan what specifically should be done
 ```
 
 # Green Variables
@@ -88,6 +89,49 @@ covid_data <- covid_data %>%
 # use parse_integer command (see below or google doc)
 ```
 
+# Magical Ideation
+```{r}
+# recoding
+covid_data <- covid_data %>%
+  mutate(MIS_1 = fct_recode(MIS_1, "0" = "2"),
+         MIS_2 = fct_recode(MIS_2, "0" = "2"),
+         MIS_3 = fct_recode(MIS_3, "0" = "2"),
+         MIS_4 = fct_recode(MIS_4, "0" = "2"),
+         MIS_5 = fct_recode(MIS_5, "0" = "2"),
+         MIS_6 = fct_recode(MIS_6, "0" = "2"),
+         MIS_7 = fct_recode(MIS_7, "0" = "2"),
+         MIS_8 = fct_recode(MIS_8, "0" = "2"),
+         MIS_9 = fct_recode(MIS_9, "0" = "2"),
+         MIS_10 = fct_recode(MIS_10, "0" = "2"),
+         MIS_12 = fct_recode(MIS_12, "0" = "2"),
+         MIS_13 = fct_recode(MIS_13, "0" = "2"),
+         MIS_14 = fct_recode(MIS_14, "0" = "2"),
+         MIS_15 = fct_recode(MIS_15, "0" = "2"),
+         MIS_11 = fct_recode(MIS_11, "0" = "1", "1" = "2"))
+```
+
+```{r}
+# scoring
+covid_data <- covid_data %>%
+  mutate(MIS_1 = parse_integer(as.character(MIS_1)),
+         MIS_2 = parse_integer(as.character(MIS_2)),
+         MIS_3 = parse_integer(as.character(MIS_3)),
+         MIS_4 = parse_integer(as.character(MIS_4)),
+         MIS_5 = parse_integer(as.character(MIS_5)),
+         MIS_6 = parse_integer(as.character(MIS_6)),
+         MIS_7 = parse_integer(as.character(MIS_7)),
+         MIS_8 = parse_integer(as.character(MIS_8)),
+         MIS_9 = parse_integer(as.character(MIS_9)),
+         MIS_10 = parse_integer(as.character(MIS_10)),
+         MIS_11 = parse_integer(as.character(MIS_11)),
+         MIS_12 = parse_integer(as.character(MIS_12)),
+         MIS_13 = parse_integer(as.character(MIS_13)),
+         MIS_14 = parse_integer(as.character(MIS_14)),
+         MIS_15 = parse_integer(as.character(MIS_15)))
+covid_data <- covid_data %>%
+  mutate(MIS_total = MIS_1 + MIS_2 + MIS_3 + MIS_4 + MIS_5 + MIS_6 + MIS_7 + MIS_8 + MIS_9 + MIS_10 + MIS_11 +
+         MIS_12 + MIS_13 + MIS_14 + MIS_15)
+```
 
 # Perceptual Aberration Scale
 ```{r}
@@ -243,7 +287,10 @@ covid_data <- covid_data %>%
 
 # Overall Schizotypy Scores 
 ```{r}
-# can't calculate yet
+covid_data <- covid_data %>%
+  mutate(pos_sxtypy_total = PAS_total + MIS_total,
+         neg_sxtypy_total = Social_Anhedonia_Score + PhAnS_score,
+         overall_sxtypy_total = pos_sxtypy_total + neg_sxtypy_total)
 ```
 
 # STAIT
@@ -551,7 +598,6 @@ covid_data <- covid_data %>%
 ```
 
 # COVID 19 Health Behavior
-
 ```{r}
 # renaming variables
 covid_data <- covid_data %>%
