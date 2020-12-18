@@ -41,6 +41,13 @@ covid_data <- covid_data %>%
          Green_Short_B9 = "R-GPTS_Per_9",
          Green_Short_B10 = "R-GPTS_Per_10")
 # fixed renaming up here and just got rid of the "w" originally. thanks for noticing that!
+#messing around with learning how to make loops. disregard.
+#for (n in 1:8) {
+#covid_data <- covid_data %>% rename(sym(paste("Green_Short_A", n, sep="")) = paste("R-GPTS_Ref_", n, sep=""))
+#}
+#n = 2
+#covid_data <- covid_data %>% rename(Green_Short_A2 = "R-GPTS_Ref_2")
+#names(covid_data)[ names(covid_data) == paste0("NFCS_", 1) ] = "OK"
 ```
 
 ```{r}
@@ -89,6 +96,12 @@ covid_data <- covid_data %>%
 ```
 
 ```{r}
+replace(covid_data$Green_Short_A1,covid_data[274, Green_Short_A1],NA)
+for (i in c(Green_Short_A1, Green_Short_A2, Green_Short_A3, Green_Short_A4, Green_Short_A5, Green_Short_A6, Green_Short_A7, Green_Short_A8, Green_Short_B1, Green_Short_B2, Green_Short_B3, Green_Short_B4, Green_Short_B5, Green_Short_B6, Green_Short_B7, Green_Short_B8, Green_Short_B9, Green_Short_B10)) {
+    for (j in 273<row.names(covid_data<301)) {
+        fct_recode(j, 
+                                      "0" = "NA", "1" = "NA", "2" = "NA", "3" = "NA", "4" = "NA")
+    }
 ```
 
 # COVID Conspiracy Beliefs Questions
