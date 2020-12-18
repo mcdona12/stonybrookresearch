@@ -88,6 +88,164 @@ covid_data <- covid_data %>%
 # use parse_integer command (see below or google doc)
 ```
 
+
+# Perceptual Aberration Scale
+```{r}
+# recoding
+covid_data <- covid_data %>%
+  mutate(PAS_1 = fct_recode(PAS_1, "0" = "2"),
+         PAS_2 = fct_recode(PAS_2, "0" = "2"),
+         PAS_3 = fct_recode(PAS_3, "0" = "2"),
+         PAS_4 = fct_recode(PAS_4, "0" = "2"),
+         PAS_5 = fct_recode(PAS_5, "0" = "2"),
+         PAS_6 = fct_recode(PAS_6, "0" = "2"),
+         PAS_7 = fct_recode(PAS_7, "0" = "2"),
+         PAS_8 = fct_recode(PAS_8, "0" = "2"),
+         PAS_9 = fct_recode(PAS_9, "0" = "2"),
+         PAS_10 = fct_recode(PAS_10, "0" = "2"),
+         PAS_11 = fct_recode(PAS_11, "0" = "2"),
+         PAS_12 = fct_recode(PAS_12, "0" = "2"),
+         PAS_13 = fct_recode(PAS_13, "0" = "2"),
+         PAS_14 = fct_recode(PAS_14, "0" = "2"),
+         PAS_15 = fct_recode(PAS_15, "0" = "2"))
+```
+
+```{r}
+# scoring
+covid_data <- covid_data %>%
+  mutate(PAS_1 = parse_integer(as.character(PAS_1)),
+         PAS_2 = parse_integer(as.character(PAS_2)),
+         PAS_3 = parse_integer(as.character(PAS_3)),
+         PAS_4 = parse_integer(as.character(PAS_4)),
+         PAS_5 = parse_integer(as.character(PAS_5)),
+         PAS_6 = parse_integer(as.character(PAS_6)),
+         PAS_7 = parse_integer(as.character(PAS_7)),
+         PAS_8 = parse_integer(as.character(PAS_8)),
+         PAS_9 = parse_integer(as.character(PAS_9)),
+         PAS_10 = parse_integer(as.character(PAS_10)),
+         PAS_11 = parse_integer(as.character(PAS_11)),
+         PAS_12 = parse_integer(as.character(PAS_12)),
+         PAS_13 = parse_integer(as.character(PAS_13)),
+         PAS_14 = parse_integer(as.character(PAS_14)),
+         PAS_15 = parse_integer(as.character(PAS_15)))
+covid_data <- covid_data %>%
+  mutate(PAS_total = PAS_1 + PAS_2 + PAS_3 + PAS_4 + PAS_5 + PAS_6 + PAS_7 + PAS_8 + PAS_9 + PAS_10 + PAS_11 +
+           PAS_12 + PAS_13 + PAS_14 + PAS_15)
+```
+
+# Revised Social Anhedonia Scale
+```{r}
+# recoding variables
+covid_data <- covid_data %>%
+  mutate(R_SAS_1 = fct_recode(R_SAS_1, "0" = "2"),
+         R_SAS_2 = fct_recode(R_SAS_2, "0" = "2"),
+         R_SAS_3 = fct_recode(R_SAS_3, "0" = "2"),
+         R_SAS_5 = fct_recode(R_SAS_5, "0" = "2"),
+         R_SAS_6 = fct_recode(R_SAS_6, "0" = "2"),
+         R_SAS_7 = fct_recode(R_SAS_7, "0" = "2"),
+         R_SAS_8 = fct_recode(R_SAS_8, "0" = "2"),
+         R_SAS_10 = fct_recode(R_SAS_10, "0" = "2"),
+         R_SAS_15 = fct_recode(R_SAS_15, "0" = "2"),
+         R_SAS_4 = fct_recode(R_SAS_4, "0" = "1", "1" = "2"),
+         R_SAS_9 = fct_recode(R_SAS_9, "0" = "1", "1" = "2"),
+         R_SAS_11 = fct_recode(R_SAS_11, "0" = "1", "1" = "2"),
+         R_SAS_12 = fct_recode(R_SAS_12, "0" = "1", "1" = "2"),
+         R_SAS_13 = fct_recode(R_SAS_13, "0" = "1", "1" = "2"),
+         R_SAS_14 = fct_recode(R_SAS_14, "0" = "1", "1" = "2"))
+```
+
+```{r}
+# scoring
+covid_data <- covid_data %>%
+  mutate(R_SAS_1 = parse_integer(as.character(R_SAS_1)),
+         R_SAS_2 = parse_integer(as.character(R_SAS_2)),
+         R_SAS_3 = parse_integer(as.character(R_SAS_3)),
+         R_SAS_4 = parse_integer(as.character(R_SAS_4)),
+         R_SAS_5 = parse_integer(as.character(R_SAS_5)),
+         R_SAS_6 = parse_integer(as.character(R_SAS_6)),
+         R_SAS_7 = parse_integer(as.character(R_SAS_7)),
+         R_SAS_8 = parse_integer(as.character(R_SAS_8)),
+         R_SAS_9 = parse_integer(as.character(R_SAS_9)),
+         R_SAS_10 = parse_integer(as.character(R_SAS_10)),
+         R_SAS_11 = parse_integer(as.character(R_SAS_11)),
+         R_SAS_12 = parse_integer(as.character(R_SAS_12)),
+         R_SAS_13 = parse_integer(as.character(R_SAS_13)),
+         R_SAS_14 = parse_integer(as.character(R_SAS_14)),
+         R_SAS_15 = parse_integer(as.character(R_SAS_15)))
+covid_data <- covid_data %>%
+  mutate(Social_Anhedonia_Score = R_SAS_1 + R_SAS_2 + R_SAS_3 + R_SAS_4 + R_SAS_5 + R_SAS_6 + R_SAS_7 +
+           R_SAS_8 + R_SAS_9 + R_SAS_10 + R_SAS_11 + R_SAS_12 + R_SAS_13 + R_SAS_14 + R_SAS_15)
+```
+
+# Physical Anhedonia Scale
+```{r}
+# renaming variables
+covid_data <- covid_data %>%
+  rename(PhAnS_1 = PAS_1_1,
+         PhAnS_2 = PAS_2_1,
+         PhAnS_3 = PAS_3_1,
+         PhAnS_4 = PAS_4_1,
+         PhAnS_5 = PAS_5_1,
+         PhAnS_6 = PAS_6_1,
+         PhAnS_7 = PAS_7_1,
+         PhAnS_8 = PAS_8_1,
+         PhAnS_9 = PAS_9_1,
+         PhAnS_10 = PAS_10_1,
+         PhAnS_11 = PAS_11_1,
+         PhAnS_12 = PAS_12_1,
+         PhAnS_13 = PAS_13_1,
+         PhAnS_14 = PAS_14_1,
+         PhAnS_15 = PAS_15_1)
+```
+
+```{r}
+# recoding 
+covid_data <- covid_data %>%
+  mutate(PhAnS_5 = fct_recode(PhAnS_5, "0" = "2"),
+         PhAnS_6 = fct_recode(PhAnS_6, "0" = "2"),
+         PhAnS_8 = fct_recode(PhAnS_8, "0" = "2"),
+         PhAnS_10 = fct_recode(PhAnS_10, "0" = "2"),
+         PhAnS_1 = fct_recode(PhAnS_1, "0" = "1", "1" = "2"),
+         PhAnS_2 = fct_recode(PhAnS_2, "0" = "1", "1" = "2"),
+         PhAnS_3 = fct_recode(PhAnS_3, "0" = "1", "1" = "2"),
+         PhAnS_4 = fct_recode(PhAnS_4, "0" = "1", "1" = "2"),
+         PhAnS_7 = fct_recode(PhAnS_7, "0" = "1", "1" = "2"),
+         PhAnS_9 = fct_recode(PhAnS_9, "0" = "1", "1" = "2"),
+         PhAnS_11 = fct_recode(PhAnS_11, "0" = "1", "1" = "2"),
+         PhAnS_12 = fct_recode(PhAnS_12, "0" = "1", "1" = "2"),
+         PhAnS_13 = fct_recode(PhAnS_13, "0" = "1", "1" = "2"),
+         PhAnS_14 = fct_recode(PhAnS_14, "0" = "1", "1" = "2"),
+         PhAnS_15 = fct_recode(PhAnS_15, "0" = "1", "1" = "2"))
+```
+
+```{r}
+# scoring
+covid_data <- covid_data %>%
+  mutate(PhAnS_1 = parse_integer(as.character(PhAnS_1)),
+         PhAnS_2 = parse_integer(as.character(PhAnS_2)),
+         PhAnS_3 = parse_integer(as.character(PhAnS_3)),
+         PhAnS_4 = parse_integer(as.character(PhAnS_4)),
+         PhAnS_5 = parse_integer(as.character(PhAnS_5)),
+         PhAnS_6 = parse_integer(as.character(PhAnS_6)),
+         PhAnS_7 = parse_integer(as.character(PhAnS_7)),
+         PhAnS_8 = parse_integer(as.character(PhAnS_8)),
+         PhAnS_9 = parse_integer(as.character(PhAnS_9)),
+         PhAnS_10 = parse_integer(as.character(PhAnS_10)),
+         PhAnS_11 = parse_integer(as.character(PhAnS_11)),
+         PhAnS_12 = parse_integer(as.character(PhAnS_12)),
+         PhAnS_13 = parse_integer(as.character(PhAnS_13)),
+         PhAnS_14 = parse_integer(as.character(PhAnS_14)),
+         PhAnS_15 = parse_integer(as.character(PhAnS_15)))
+covid_data <- covid_data %>%
+  mutate(PhAnS_score = PhAnS_1 + PhAnS_2 + PhAnS_3 + PhAnS_4 + PhAnS_5 + PhAnS_6 + PhAnS_7 + PhAnS_8 + PhAnS_9 +
+           PhAnS_10 + PhAnS_11 + PhAnS_12 + PhAnS_13 + PhAnS_14 + PhAnS_15)
+```
+
+# Overall Schizotypy Scores 
+```{r}
+# can't calculate yet
+```
+
 # STAIT
 ```{r}
 # recoding reverse scored questions
@@ -178,7 +336,6 @@ covid_data <- covid_data %>%
            STAIS_8 + STAIS_9 + STAIS_10 + STAIS_11 + STAIS_12 + STAIS_13 + STAIS_14 + STAIS_15 +
            STAIS_16 + STAIS_17 + STAIS_18 + STAIS_19 + STAIS_20)
 ```
-
 
 # PSWQ 
 ```{r}
@@ -655,7 +812,6 @@ covid_data <- covid_data %>%
 ```
 
 # Need for Closure Scale 
-
 ```{r}
 covid_data <- covid_data %>%
   mutate(NFCS_1 = parse_integer(as.character(NFCS_1)),
@@ -675,4 +831,3 @@ covid_data <- covid_data %>%
          NFCS_15 = parse_integer(as.character(NFCS_15))) %>%
   mutate(NFCS_Total_Score = NFCS_1 + NFCS_2 + NFCS_3 + NFCS_4 + NFCS_5 + NFCS_6 + NFCS_7 + NFCS_8 + NFCS_9 + NFCS_10 + NFCS_11 + NFCS_12 + NFCS_13 + NFCS_14 + NFCS_15)
 ```
-
