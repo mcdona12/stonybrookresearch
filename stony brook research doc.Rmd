@@ -98,9 +98,14 @@ covid_data <- covid_data %>%
 ```
 
 ```{r}
-#this will become a loop to replace June 4-17 for Green Short soon
+#loop to replace June 4-17 for Green Short
 
-#replace(covid_data$Green_Short_A1,covid_data[274, Green_Short_A1],NA)
+for (n in 1:8)
+     covid_data[[paste0("Green_Short_A", n)]] <- replace(covid_data[[paste0("Green_Short_A", n)]], 274:300, NA)
+
+for (n in 1:10)
+     covid_data[[paste0("Green_Short_B", n)]] <- replace(covid_data[[paste0("Green_Short_B", n)]], 274:300, NA)
+
 #for (i in c(Green_Short_A1, Green_Short_A2, Green_Short_A3, Green_Short_A4, Green_Short_A5, Green_Short_A6, Green_Short_A7, Green_Short_A8, Green_Short_B1, Green_Short_B2, Green_Short_B3, Green_Short_B4, Green_Short_B5, Green_Short_B6, Green_Short_B7, Green_Short_B8, Green_Short_B9, Green_Short_B10)) {
 #    for (j in 273<row.names(covid_data<301)) {
 #        fct_recode(j, 
