@@ -113,6 +113,56 @@ for (n in 1:10)
 #    }
 ```
 
+#Short Version Scoring for Green Paranoia
+```{r}
+#Green Part A score
+#all of my ideas are not working but I'll get it eventually!
+#covid_data %>%
+#mutate(Green_PartA_short_score = Green_Short_A1)
+
+#covid_data %>% mutate("Green_Short_A1") = parse_integer(as.character("Green_Short_A1"))
+                                                         
+#covid_data %>%
+#for (n in 1:8)
+  #mutate(sym(paste0("Green_Short_A", n)) = parse_integer(as.character(paste0("Green_Short_A", n))
+
+
+#covid_data %>%
+#mutate(Green_PartA_short_score = 
+        # for (n in 1:8) 
+         # Green_PartA_short_score + paste0("Green_Short_A", n)
+          # )
+
+#covid_data$Green_PartA_short_score <- 0
+#covid_data$Green_PartA_short_score <- covid_data$Green_PartA_short_score + covid_data$Green_Short_A1
+
+#Green Part B score
+
+```
+
+#IUS (short form)
+```{r}
+#Short Version Scoring for IUS
+#Inhibitory Anxiety Scoring
+
+#Prospective Anxiety Scoring
+
+#Clear IUS variable values from June 4-17
+for (n in 1:12)
+     covid_data[[paste0("IUS_Short_", n)]] <- replace(covid_data[[paste0("IUS_Short_", n)]], 274:300, NA)
+```
+
+#Demographics
+```{r}
+#Rename variables
+covid_data <- covid_data %>%
+  rename(Demographics_age = "1)",
+         Demographics_gender = "2)",
+         Demographics_gender_text = "2)_6_TEXT",
+         Demographics_ethnicity = "3)",
+         Demographics_ethnicity_text = "3)_8_TEXT")
+
+```
 
 # Magical Ideation
 ```{r}
