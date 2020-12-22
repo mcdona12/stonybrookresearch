@@ -952,3 +952,8 @@ covid_data <- covid_data %>%
          NFCS_15 = parse_integer(as.character(NFCS_15))) %>%
   mutate(NFCS_Total_Score = NFCS_1 + NFCS_2 + NFCS_3 + NFCS_4 + NFCS_5 + NFCS_6 + NFCS_7 + NFCS_8 + NFCS_9 + NFCS_10 + NFCS_11 + NFCS_12 + NFCS_13 + NFCS_14 + NFCS_15)
 ```
+
+```{r}
+write_csv(covid_data, "COVID_19_December_2020_Cleaned_Data.csv")
+```
+
