@@ -100,17 +100,24 @@ covid_data <- covid_data %>%
 
 ```{r}
 # use this reduced dataset to calculate green scores. by removing NAs, the data recodes into a factor class which works for calculations I think. But I don't think we want to remove NAs generally, because it gets rid of all that persons responses for all scales, which is why I made a separate dataset for it 
-
 covid_data_calc_green <- covid_data %>%
   filter(!is.na(Green_Short_A1w)) 
+```
 
-#loop to replace June 4-17 for Green Short
-
+#Make Green NA until June 17
+```{r}
 for (n in 1:8)
-     covid_data[[paste0("Green_Short_A", n)]] <- replace(covid_data[[paste0("Green_Short_A", n)]], 274:300, NA)
+     covid_data[[paste0("Green_Short_A", n)]] <- replace(covid_data[[paste0("Green_Short_A", n)]], 1:300, NA)
 
 for (n in 1:10)
-     covid_data[[paste0("Green_Short_B", n)]] <- replace(covid_data[[paste0("Green_Short_B", n)]], 274:300, NA)
+      covid_data[[paste0("Green_Short_B", n)]] <- replace(covid_data[[paste0("Green_Short_B", n)]], 1:300, NA)
+
+#loop to replace June 4-17 for Green Short
+#for (n in 1:8)
+#     covid_data[[paste0("Green_Short_A", n)]] <- replace(covid_data[[paste0("Green_Short_A", n)]], 274:300, NA)
+
+#for (n in 1:10)
+#     covid_data[[paste0("Green_Short_B", n)]] <- replace(covid_data[[paste0("Green_Short_B", n)]], 274:300, NA)
 
 #for (i in c(Green_Short_A1, Green_Short_A2, Green_Short_A3, Green_Short_A4, Green_Short_A5, Green_Short_A6, Green_Short_A7, Green_Short_A8, Green_Short_B1, Green_Short_B2, Green_Short_B3, Green_Short_B4, Green_Short_B5, Green_Short_B6, Green_Short_B7, Green_Short_B8, Green_Short_B9, Green_Short_B10)) {
 #    for (j in 273<row.names(covid_data<301)) {
@@ -153,9 +160,9 @@ for (n in 1:10)
 
 #Prospective Anxiety Scoring
 
-#Clear IUS variable values from June 4-17
+##Make IUS NA until June 17
 for (n in 1:12)
-     covid_data[[paste0("IUS_Short_", n)]] <- replace(covid_data[[paste0("IUS_Short_", n)]], 274:300, NA)
+     covid_data[[paste0("IUS_Short_", n)]] <- replace(covid_data[[paste0("IUS_Short_", n)]], 1:300, NA)
 ```
 
 #Demographics
