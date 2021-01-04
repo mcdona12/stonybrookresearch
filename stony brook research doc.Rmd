@@ -164,11 +164,17 @@ covid_data$Green_Total_Short_Score <- covid_data$Green_PartA_short_score + covid
 ```{r}
 #Short Version Scoring for IUS
 #Inhibitory Anxiety Scoring
-covid_data$Green_PartA_short_score <- 0
-for (n in 1:8)
-      covid_data$Green_PartA_short_score <- covid_data$Green_PartA_short_score + parse_integer(as.character(covid_data[[paste0("Green_Short_A", n)]]))
+covid_data$IUS_Inhibitory_score <- 0
+for (n in 8:12)
+      covid_data$IUS_Inhibitory_score <- covid_data$IUS_Inhibitory_score + parse_integer(as.character(covid_data[[paste0("IUS_Short_", n)]]))
 
 #Prospective Anxiety Scoring
+covid_data$IUS_Prospective_score <- 0
+for (n in 1:7)
+      covid_data$IUS_Prospective_score <- covid_data$IUS_Prospective_score + parse_integer(as.character(covid_data[[paste0("IUS_Short_", n)]]))
+
+#IUS Total Score
+covid_data$IUS_Total_Score <- covid_data$IUS_Prospective_score + covid_data$IUS_Inhibitory_score
 
 ##Make IUS NA until June 17
 for (n in 1:12)
