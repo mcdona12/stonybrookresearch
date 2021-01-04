@@ -129,7 +129,19 @@ for (n in 1:10)
 #Short Version Scoring for Green Paranoia
 ```{r}
 #Green Part A score
-#all of my ideas are not working but I'll get it eventually!
+
+covid_data$Green_PartA_short_score <- 0
+for (n in 1:8)
+      covid_data$Green_PartA_short_score <- covid_data$Green_PartA_short_score + parse_integer(as.character(covid_data[[paste0("Green_Short_A", n)]]))
+
+#Green Part B score
+covid_data$Green_PartB_short_score <- 0
+for (n in 1:10)
+      covid_data$Green_PartB_short_score <- covid_data$Green_PartB_short_score + parse_integer(as.character(covid_data[[paste0("Green_Short_B", n)]]))
+
+#Green Total Short Score
+covid_data$Green_Total_Short_Score <- covid_data$Green_PartA_short_score + covid_data$Green_PartB_short_score
+
 #covid_data %>%
 #mutate(Green_PartA_short_score = Green_Short_A1)
 
@@ -146,17 +158,15 @@ for (n in 1:10)
          # Green_PartA_short_score + paste0("Green_Short_A", n)
           # )
 
-#covid_data$Green_PartA_short_score <- 0
-#covid_data$Green_PartA_short_score <- covid_data$Green_PartA_short_score + covid_data$Green_Short_A1
-
-#Green Part B score
-
 ```
 
 #IUS (short form)
 ```{r}
 #Short Version Scoring for IUS
 #Inhibitory Anxiety Scoring
+covid_data$Green_PartA_short_score <- 0
+for (n in 1:8)
+      covid_data$Green_PartA_short_score <- covid_data$Green_PartA_short_score + parse_integer(as.character(covid_data[[paste0("Green_Short_A", n)]]))
 
 #Prospective Anxiety Scoring
 
