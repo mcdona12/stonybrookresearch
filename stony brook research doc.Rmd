@@ -5,7 +5,7 @@ date: "12/2/2020"
 output: pdf_document
 ---
 
-```{r setup, include = FALSE}
+```{r setup, include = FALSE} 
 library(tidyverse)
 library(dplyr)
 covid_data <- read_csv("~/Stony Brook Research/COVID-19_December 14, 2020_14.40 .csv")
