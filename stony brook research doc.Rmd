@@ -189,9 +189,55 @@ covid_data <- covid_data %>%
          Demographics_gender = "2)",
          Demographics_gender_text = "2)_6_TEXT",
          Demographics_ethnicity = "3)",
-         Demographics_ethnicity_text = "3)_8_TEXT")
+         Demographics_ethnicity_text = "3)_8_TEXT",
+         Demographics_political_general = "5)",
+         Demographics_political_general_text = "5)_8_TEXT",
+         Demographics_societal = "6)",
+         Demographics_economic = "7)",
+         Demographics_family_income = "8)")
 
 ```
+
+#Duration from seconds to minutes
+```{r}
+covid_data$duration_in_minutes <- parse_integer(as.character(covid_data[["Duration (in seconds)"]])) /60
+```
+
+#GCBS Scoring
+```{r}
+#for (n in 1:15)
+#  paste0("World_Beliefs_", n) <- parse_integer(as.character(paste0("World_Beliefs_", n)))
+
+#Factor 1:  Government malfeasance (GM): Allegations of routine criminal conspiracy within governments (Item #s: 1, 6, 11).
+#covid_data <- covid_data %>%
+#  mutate(GCBS_gm = rowMeans(subset(covid_data, select = c(parse_integer(as.character(World_Beliefs_1)), World_Beliefs_6, World_Beliefs_11), na.rm = TRUE))
+covid_data$GCBS_gm <-  (parse_integer(as.character(covid_data$World_Beliefs_1)) + parse_integer(as.character(covid_data$World_Beliefs_6)) + parse_integer(as.character(covid_data$World_Beliefs_11)))/3
+
+#Factor 2: Extraterrestrial cover-up (ET): Deception of the public about the existence of aliens (Item #s: 2, 7 ,12).
+covid_data$GCBS_et <- (parse_integer(as.character(covid_data$World_Beliefs_2)) + parse_integer(as.character(covid_data$World_Beliefs_7)) + parse_integer(as.character(covid_data$World_Beliefs_12)))/3 
+#covid_data <- covid_data %>%
+#  mutate(GCBS_et = rowMeans(subset(covid_data, select = c(World_Beliefs_2, World_Beliefs_7, World_Beliefs_12), na.rm = TRUE))
+
+#Factor 3: Malevolent Global Conspiracies (MG): Allegations that small, secret groups exert total control over global events (Item #s: 3, 8, 13).
+covid_data$GCBS_mg <- (parse_integer(as.character(covid_data$World_Beliefs_3)) + parse_integer(as.character(covid_data$World_Beliefs_8)) + parse_integer(as.character(covid_data$World_Beliefs_13)))/3 
+#covid_data <- covid_data %>%
+#  mutate(GCBS_mg = rowMeans(subset(covid_data, select = c(World_Beliefs_3, World_Beliefs_8, World_Beliefs_13), na.rm = TRUE))
+
+#Factor 4; Personal well-being (PW): Conspiracist concerns over personal health and liberty such as the spread of diseases and the use of mind-control technology (Item #s: 4, 9,14).
+covid_data$GCBS_pw <- (parse_integer(as.character(covid_data$World_Beliefs_4)) + parse_integer(as.character(covid_data$World_Beliefs_9)) + parse_integer(as.character(covid_data$World_Beliefs_14)))/3 
+#covid_data <- covid_data %>%
+#  mutate(GCBS_pw = rowMeans(subset(covid_data, select = c(World_Beliefs_4, World_Beliefs_9, World_Beliefs_14), na.rm = TRUE))
+
+#Factor 5: Control of Information (CI): Unethical control and suppression of information by organizations including the government, the media, scientists, and corporations (Item #s: 5,10,15).
+covid_data$GCBS_ci <- (parse_integer(as.character(covid_data$World_Beliefs_5)) + parse_integer(as.character(covid_data$World_Beliefs_10)) + parse_integer(as.character(covid_data$World_Beliefs_15)))/3 
+#covid_data <- covid_data %>%
+#  mutate(GCBS_ci = rowMeans(subset(covid_data, select = c(World_Beliefs_5, World_Beliefs_10, World_Beliefs_15), na.rm = TRUE))
+
+
+#Total Score
+covid_data$GCBS_total <- covid_data$GCBS_gm + covid_data$GCBS_et + covid_data$GCBS_mg + covid_data$GCBS_pw + covid_data$GCBS_ci
+```
+
 
 # Magical Ideation
 ```{r}
