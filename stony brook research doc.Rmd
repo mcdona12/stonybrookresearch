@@ -2,7 +2,9 @@
 title: "Stony Brook Data Cleaning"
 author: "Clare McDonald & Viveka Hall-Holt"
 date: "12/2/2020"
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 ---
 
 ```{r setup, include = FALSE} 
@@ -16,8 +18,9 @@ It was irrelevant and messed with classification of variables
 ```{r}
 covid_data <- covid_data %>% 
    filter(row_number() > (n() - 673))
-# note - remember to delete spring participants, ask Megan what specifically should be done
-# thanks!
+
+# NAs per column
+colSums(is.na(covid_data))
 ```
 
 # Green Variables
@@ -98,7 +101,7 @@ covid_data <- covid_data %>%
 # use parse_integer command (see below or google doc)
 ```
 
-#Make Green NA until June 17
+# Make Green NA until June 17
 ```{r}
 for (n in 1:8)
      covid_data[[paste0("Green_Short_A", n)]] <- replace(covid_data[[paste0("Green_Short_A", n)]], 1:300, NA)
@@ -120,7 +123,7 @@ for (n in 1:10)
 #    }
 ```
 
-#Short Version Scoring for Green Paranoia
+# Short Version Scoring for Green Paranoia
 ```{r}
 #Green Part A score
 
@@ -154,7 +157,7 @@ covid_data$Green_Total_Short_Score <- covid_data$Green_PartA_short_score + covid
 
 ```
 
-#IUS (short form)
+# IUS (short form)
 ```{r}
 #Short Version Scoring for IUS
 #Inhibitory Anxiety Scoring
@@ -175,7 +178,7 @@ for (n in 1:12)
      covid_data[[paste0("IUS_Short_", n)]] <- replace(covid_data[[paste0("IUS_Short_", n)]], 1:300, NA)
 ```
 
-#Demographics
+# Demographics
 ```{r}
 #Rename variables
 covid_data <- covid_data %>%
@@ -192,12 +195,12 @@ covid_data <- covid_data %>%
 
 ```
 
-#Duration from seconds to minutes
+# Duration from seconds to minutes
 ```{r}
 covid_data$duration_in_minutes <- parse_integer(as.character(covid_data[["Duration (in seconds)"]])) /60
 ```
 
-#GCBS Scoring
+# GCBS Scoring
 ```{r}
 #for (n in 1:15)
 #  paste0("World_Beliefs_", n) <- parse_integer(as.character(paste0("World_Beliefs_", n)))
@@ -231,7 +234,6 @@ covid_data$GCBS_ci <- (parse_integer(as.character(covid_data$World_Beliefs_5)) +
 #Total Score
 covid_data$GCBS_total <- covid_data$GCBS_gm + covid_data$GCBS_et + covid_data$GCBS_mg + covid_data$GCBS_pw + covid_data$GCBS_ci
 ```
-
 
 # Magical Ideation
 ```{r}
@@ -1024,5 +1026,14 @@ covid_data <- covid_data %>%
 
 ```{r}
 write_csv(covid_data, "COVID_19_December_2020_Cleaned_Data.csv")
+```
+
+```{r, include= FALSE}
+# Merge
+library(foreign)
+covid_data2 <- read.spss("~/Stony Brook Research/covidsurvey_data_merged_clean_8.30.20 (1).sav", to.data.frame=TRUE)
+
+covid_data2 %>%
+  select(ResponseId, Green_Total_Short_Score, IUS_Total_Score)
 ```
 
