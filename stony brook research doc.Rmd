@@ -3,6 +3,7 @@ title: "Stony Brook Data Cleaning"
 author: "Clare McDonald & Viveka Hall-Holt"
 date: "12/2/2020"
 output:
+  pdf_document: default
   html_document:
     df_print: paged
 ---
@@ -18,9 +19,6 @@ It was irrelevant and messed with classification of variables
 ```{r}
 covid_data <- covid_data %>% 
    filter(row_number() > (n() - 673))
-
-# NAs per column
-colSums(is.na(covid_data))
 ```
 
 # Green Variables
@@ -60,41 +58,41 @@ covid_data <- covid_data %>%
 # Recoding Green variables
 covid_data <- covid_data %>%
   mutate(Green_Short_A1 = fct_recode(Green_Short_A1, 
-                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
+                                  "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
          Green_Short_A2 = fct_recode(Green_Short_A2, 
-                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
+                                  "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
          Green_Short_A3 = fct_recode(Green_Short_A3, 
-                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
+                                  "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
          Green_Short_A4 = fct_recode(Green_Short_A4, 
-                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),  
+                                  "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),  
          Green_Short_A5 = fct_recode(Green_Short_A5, 
-                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),  
+                                  "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),  
          Green_Short_A6 = fct_recode(Green_Short_A6, 
-                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),  
+                                  "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),  
          Green_Short_A7 = fct_recode(Green_Short_A7, 
-                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"), 
+                                  "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"), 
          Green_Short_A8 = fct_recode(Green_Short_A8, 
-                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
+                                  "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
          Green_Short_B1 = fct_recode(Green_Short_B1, 
-                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
+                                  "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
          Green_Short_B2 = fct_recode(Green_Short_B2, 
-                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
+                                  "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
          Green_Short_B3 = fct_recode(Green_Short_B3, 
-                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
+                                  "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
          Green_Short_B4 = fct_recode(Green_Short_B4, 
-                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
+                                  "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
          Green_Short_B5 = fct_recode(Green_Short_B5, 
-                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
+                                  "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
          Green_Short_B6 = fct_recode(Green_Short_B6, 
-                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
+                                  "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),   
          Green_Short_B7 = fct_recode(Green_Short_B7, 
-                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),               
+                                  "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),               
          Green_Short_B8 = fct_recode(Green_Short_B8, 
-                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
+                                  "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
          Green_Short_B9 = fct_recode(Green_Short_B9, 
-                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
+                                  "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"),
          Green_Short_B10 = fct_recode(Green_Short_B10, 
-                                      "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"))
+                                  "0" = "1", "1" = "2", "2" = "3", "3" = "4", "4" = "5"))
 # issue - recoding these as factors turns them into character variables
 # we can deal with this later after removing NAs and weird values
 # sounds good. do you know how to reverse them from being character variables?
@@ -275,8 +273,8 @@ covid_data <- covid_data %>%
          MIS_14 = parse_integer(as.character(MIS_14)),
          MIS_15 = parse_integer(as.character(MIS_15)))
 covid_data <- covid_data %>%
-  mutate(MIS_total = MIS_1 + MIS_2 + MIS_3 + MIS_4 + MIS_5 + MIS_6 + MIS_7 + MIS_8 + MIS_9 + MIS_10 + MIS_11 +
-         MIS_12 + MIS_13 + MIS_14 + MIS_15)
+  mutate(MIS_total = MIS_1 + MIS_2 + MIS_3 + MIS_4 + MIS_5 + MIS_6 + MIS_7 + MIS_8 + 
+           MIS_9 + MIS_10 + MIS_11 + MIS_12 + MIS_13 + MIS_14 + MIS_15)
 ```
 
 # Perceptual Aberration Scale
@@ -319,8 +317,8 @@ covid_data <- covid_data %>%
          PAS_14 = parse_integer(as.character(PAS_14)),
          PAS_15 = parse_integer(as.character(PAS_15)))
 covid_data <- covid_data %>%
-  mutate(PAS_total = PAS_1 + PAS_2 + PAS_3 + PAS_4 + PAS_5 + PAS_6 + PAS_7 + PAS_8 + PAS_9 + PAS_10 + PAS_11 +
-           PAS_12 + PAS_13 + PAS_14 + PAS_15)
+  mutate(PAS_total = PAS_1 + PAS_2 + PAS_3 + PAS_4 + PAS_5 + PAS_6 + 
+           PAS_7 + PAS_8 + PAS_9 + PAS_10 + PAS_11 + PAS_12 + PAS_13 + PAS_14 + PAS_15)
 ```
 
 # Revised Social Anhedonia Scale
@@ -427,8 +425,8 @@ covid_data <- covid_data %>%
          PhAnS_14 = parse_integer(as.character(PhAnS_14)),
          PhAnS_15 = parse_integer(as.character(PhAnS_15)))
 covid_data <- covid_data %>%
-  mutate(PhAnS_score = PhAnS_1 + PhAnS_2 + PhAnS_3 + PhAnS_4 + PhAnS_5 + PhAnS_6 + PhAnS_7 + PhAnS_8 + PhAnS_9 +
-           PhAnS_10 + PhAnS_11 + PhAnS_12 + PhAnS_13 + PhAnS_14 + PhAnS_15)
+  mutate(PhAnS_score = PhAnS_1 + PhAnS_2 + PhAnS_3 + PhAnS_4 + PhAnS_5 + PhAnS_6 + PhAnS_7 + 
+           PhAnS_8 + PhAnS_9 + PhAnS_10 + PhAnS_11 + PhAnS_12 + PhAnS_13 + PhAnS_14 + PhAnS_15)
 ```
 
 # Overall Schizotypy Scores 
@@ -664,13 +662,14 @@ covid_data <- covid_data %>%
          COVID_19_3_16_true = parse_integer(as.character(COVID_19_3_16_true))) 
 
 covid_data <- covid_data %>%
-  mutate(COVID_conspiracies_total = rowMeans(subset(covid_data, select = c(COVID_19_3_1, COVID_19_3_2, COVID_19_3_3,
-             COVID_19_3_4, COVID_19_3_5, COVID_19_3_6, COVID_19_3_7, COVID_19_3_8, COVID_19_3_9, COVID_19_3_10,
-             COVID_19_3_11, COVID_19_3_12, COVID_19_3_13, COVID_19_3_14, COVID_19_3_15, COVID_19_3_16), na.rm = TRUE)),
-         Conspiracies_endorsed = COVID_19_3_1_true + COVID_19_3_2_true + COVID_19_3_3_true + COVID_19_3_4_true + 
-             COVID_19_3_5_true + COVID_19_3_6_true + COVID_19_3_7_true + COVID_19_3_8_true + COVID_19_3_9_true +
-             COVID_19_3_10_true + COVID_19_3_11_true + COVID_19_3_12_true + COVID_19_3_13_true + COVID_19_3_14_true +
-             COVID_19_3_15_true + COVID_19_3_16_true,
+  mutate(COVID_conspiracies_total = rowMeans(subset(covid_data, select = c(COVID_19_3_1, COVID_19_3_2, 
+             COVID_19_3_3, COVID_19_3_4, COVID_19_3_5, COVID_19_3_6, COVID_19_3_7, COVID_19_3_8, 
+             COVID_19_3_9, COVID_19_3_10, COVID_19_3_11, COVID_19_3_12, COVID_19_3_13, COVID_19_3_14, 
+             COVID_19_3_15, COVID_19_3_16), na.rm = TRUE)),
+         Conspiracies_endorsed = COVID_19_3_1_true + COVID_19_3_2_true + COVID_19_3_3_true + 
+             COVID_19_3_4_true + COVID_19_3_5_true + COVID_19_3_6_true + COVID_19_3_7_true + 
+             COVID_19_3_8_true +  COVID_19_3_9_true + COVID_19_3_10_true + COVID_19_3_11_true + 
+             COVID_19_3_12_true + COVID_19_3_13_true + COVID_19_3_14_true + COVID_19_3_15_true + COVID_19_3_16_true,
          Conspiracies_endorsed_lgtrans = log(Conspiracies_endorsed + 1))
 ```
 
@@ -737,10 +736,10 @@ covid_data <- covid_data %>%
          Facts_vs_misinfo_14 = parse_integer(as.character(Facts_vs_misinfo_14)),
          Facts_vs_misinfo_15 = parse_integer(as.character(Facts_vs_misinfo_15)),
          Facts_vs_misinfo_16 = parse_integer(as.character(Facts_vs_misinfo_16))) %>%
-  mutate(COVID_factsvmisinfo_score = Facts_vs_misinfo_1 + Facts_vs_misinfo_2 + Facts_vs_misinfo_3 + Facts_vs_misinfo_4 +
-           Facts_vs_misinfo_5 + Facts_vs_misinfo_6 + Facts_vs_misinfo_7 + Facts_vs_misinfo_8 + Facts_vs_misinfo_9 + 
-           Facts_vs_misinfo_10 + Facts_vs_misinfo_11 + Facts_vs_misinfo_12 + Facts_vs_misinfo_13 + Facts_vs_misinfo_14 +
-           Facts_vs_misinfo_15 + Facts_vs_misinfo_16)
+  mutate(COVID_factsvmisinfo_score = Facts_vs_misinfo_1 + Facts_vs_misinfo_2 + Facts_vs_misinfo_3 + 
+           Facts_vs_misinfo_4 + Facts_vs_misinfo_5 + Facts_vs_misinfo_6 + Facts_vs_misinfo_7 + 
+           Facts_vs_misinfo_8 + Facts_vs_misinfo_9 + Facts_vs_misinfo_10 + Facts_vs_misinfo_11 + 
+           Facts_vs_misinfo_12 + Facts_vs_misinfo_13 + Facts_vs_misinfo_14 + Facts_vs_misinfo_15 + Facts_vs_misinfo_16)
 ```
 
 # COVID 19 Health Behavior
@@ -775,8 +774,8 @@ covid_data <- covid_data %>%
          Health_Behavior_8 = parse_integer(Health_Behavior_8),
          Health_Behavior_9 = parse_integer(Health_Behavior_9)) %>%
   mutate(Health_Behavior_Score = Health_Behavior_1 + Health_Behavior_1a + Health_Behavior_2 + 
-           Health_Behavior_2a + Health_Behavior_3 + Health_Behavior_4 + Health_Behavior_5 + Health_Behavior_6 +
-           Health_Behavior_7 + Health_Behavior_8)
+           Health_Behavior_2a + Health_Behavior_3 + Health_Behavior_4 + Health_Behavior_5 + 
+           Health_Behavior_6 + Health_Behavior_7 + Health_Behavior_8)
 ```
 
 # COVID Predicted Consequences
@@ -818,7 +817,6 @@ covid_data <- covid_data %>%
 
 ```{r}
 # Scoring COVID Consequences variables
-class(covid_data$COVID_19_2_takecareofpeople)
 covid_data <- covid_data %>%
   mutate(COVID_19_2_1_Headache = parse_integer(as.character(COVID_19_2_1_Headache)),
          COVID_19_2_1_Fever = parse_integer(as.character(COVID_19_2_1_Fever)),
@@ -850,17 +848,22 @@ covid_data <- covid_data %>%
          COVID_19_2_personalrelationships = parse_integer(as.character(COVID_19_2_personalrelationships)),
          COVID_19_2_foodandhousing = parse_integer(as.character(COVID_19_2_foodandhousing)))                                     
 covid_data <- covid_data %>%                                        
-  mutate(COVID_conseq_sxs = COVID_19_2_1_Headache + COVID_19_2_1_Fever + COVID_19_2_1_Bodyache + COVID_19_2_1_Fatigue +
-              COVID_19_2_1_Neckpain + COVID_19_2_1_Lossofsleep + COVID_19_2_1_Lossofappetite + COVID_19_2_1_Cough + 
-              COVID_19_2_1_Sorethroat + COVID_19_2_1_Nasalcongestion + COVID_19_2_1_Breathingproblems,
-         COVID_conseq_abilities = COVID_19_2_2_getoutofbed + COVID_19_2_2_preparemeals + COVID_19_2_2_performdailyroutines +
-              COVID_19_2_2_leavehome + COVID_19_2_2_concentrateonwork + COVID_19_2_2_completemywork,
-         COVID_conseq_mood = COVID_19_2_Irritable + COVID_19_2_Worried + COVID_19_2_Helpless + COVID_19_2_Frustrated,
-         COVID_conseq_burden_to_others = COVID_19_2_makingthemworry + COVID_19_2_beingaburden + COVID_19_2_limitingtheirlives +
-              COVID_19_2_needingtodependonthem + COVID_19_2_takecareofpeople + COVID_19_2_spreadinginfectiontothem,
-         COVID_conseq_realworld = COVID_19_2_sufferfinancially + COVID_19_2_personalrelationships + COVID_19_2_foodandhousing,
-         COVID_conseq_total = COVID_conseq_sxs + COVID_conseq_abilities + COVID_conseq_mood + COVID_conseq_burden_to_others +
-              COVID_conseq_realworld)
+  mutate(COVID_conseq_sxs = COVID_19_2_1_Headache + COVID_19_2_1_Fever + COVID_19_2_1_Bodyache +
+              COVID_19_2_1_Fatigue + COVID_19_2_1_Neckpain + COVID_19_2_1_Lossofsleep + 
+              COVID_19_2_1_Lossofappetite + COVID_19_2_1_Cough + COVID_19_2_1_Sorethroat + 
+           COVID_19_2_1_Nasalcongestion + COVID_19_2_1_Breathingproblems,
+         COVID_conseq_abilities = COVID_19_2_2_getoutofbed + COVID_19_2_2_preparemeals + 
+              COVID_19_2_2_performdailyroutines + COVID_19_2_2_leavehome + 
+              COVID_19_2_2_concentrateonwork + COVID_19_2_2_completemywork,
+         COVID_conseq_mood = COVID_19_2_Irritable + COVID_19_2_Worried + COVID_19_2_Helpless + 
+              COVID_19_2_Frustrated,
+         COVID_conseq_burden_to_others = COVID_19_2_makingthemworry + COVID_19_2_beingaburden +
+              COVID_19_2_limitingtheirlives + COVID_19_2_needingtodependonthem + 
+              COVID_19_2_takecareofpeople + COVID_19_2_spreadinginfectiontothem,
+         COVID_conseq_realworld = COVID_19_2_sufferfinancially + COVID_19_2_personalrelationships +
+              COVID_19_2_foodandhousing,
+         COVID_conseq_total = COVID_conseq_sxs + COVID_conseq_abilities + COVID_conseq_mood +
+              COVID_conseq_burden_to_others + COVID_conseq_realworld)
 ```
 
 # Perceived Vulnerability to Disease Scale 
@@ -902,8 +905,10 @@ covid_data <- covid_data %>%
            PVDS_15 = parse_integer(as.character(PVDS_15))) 
 
 covid_data <- covid_data %>%
-  mutate(Perceived_Infectability = rowMeans(subset(covid_data, select = c(PVDS_8, PVDS_12, PVDS_2, PVDS_14, PVDS_10, PVDS_5, PVDS_6), na.rm = TRUE)),
-         Germ_Aversion = rowMeans(subset(covid_data, select = c(PVDS_7, PVDS_15, PVDS_4, PVDS_9, PVDS_3, PVDS_13, PVDS_11), na.rm = TRUE)))
+  mutate(Perceived_Infectability = rowMeans(subset(covid_data, select = c(PVDS_8, PVDS_12, PVDS_2, 
+                                                    PVDS_14, PVDS_10, PVDS_5, PVDS_6), na.rm = TRUE)),
+         Germ_Aversion = rowMeans(subset(covid_data, select = c(PVDS_7, PVDS_15, PVDS_4, 
+                                      PVDS_9, PVDS_3, PVDS_13, PVDS_11), na.rm = TRUE)))
 ```
 
 
@@ -996,11 +1001,13 @@ covid_data <- covid_data %>%
          RLOC_26 = parse_integer(as.character(RLOC_26)),
          RLOC_28 = parse_integer(as.character(RLOC_28)),
          RLOC_29 = parse_integer(as.character(RLOC_29))) %>%
-  mutate(Rotters_general = RLOC_5 + RLOC_9 + RLOC_11 + RLOC_13 + RLOC_15 + RLOC_16 + RLOC_18 + RLOC_25 + RLOC_28,
+  mutate(Rotters_general = RLOC_5 + RLOC_9 + RLOC_11 + RLOC_13 + RLOC_15 + RLOC_16 + 
+                           RLOC_18 + RLOC_25 + RLOC_28,
          Rotters_political = RLOC_3 + RLOC_12 + RLOC_17 + RLOC_22,
-         RLOC_Total_Score = RLOC_2 + RLOC_3 + RLOC_4 + RLOC_5 + RLOC_6 + RLOC_7 + RLOC_9 + RLOC_10 + RLOC_11 + 
-           RLOC_12 + RLOC_13 + RLOC_15 + RLOC_16 + RLOC_17 + RLOC_18 + RLOC_20 + RLOC_21 + RLOC_22 + RLOC_23 + 
-           RLOC_25 + RLOC_26 + RLOC_28 + RLOC_29)
+         RLOC_Total_Score = RLOC_2 + RLOC_3 + RLOC_4 + RLOC_5 + RLOC_6 + RLOC_7 + 
+                            RLOC_9 + RLOC_10 + RLOC_11 + RLOC_12 + RLOC_13 + RLOC_15 + 
+                            RLOC_16 + RLOC_17 + RLOC_18 + RLOC_20 + RLOC_21 + RLOC_22 +
+                            RLOC_23 + RLOC_25 + RLOC_26 + RLOC_28 + RLOC_29)
 ```
 
 # Need for Closure Scale 
@@ -1021,152 +1028,38 @@ covid_data <- covid_data %>%
          NFCS_13 = parse_integer(as.character(NFCS_13)),
          NFCS_14 = parse_integer(as.character(NFCS_14)),
          NFCS_15 = parse_integer(as.character(NFCS_15))) %>%
-  mutate(NFCS_Total_Score = NFCS_1 + NFCS_2 + NFCS_3 + NFCS_4 + NFCS_5 + NFCS_6 + NFCS_7 + NFCS_8 + NFCS_9 + NFCS_10 + NFCS_11 + NFCS_12 + NFCS_13 + NFCS_14 + NFCS_15)
+  mutate(NFCS_Total_Score = NFCS_1 + NFCS_2 + NFCS_3 + NFCS_4 + NFCS_5 + NFCS_6 + 
+          NFCS_7 + NFCS_8 + NFCS_9 + NFCS_10 + NFCS_11 + NFCS_12 + NFCS_13 + NFCS_14 + NFCS_15)
 ```
 
-#Counting NAs in each column
 ```{r}
-sum(is.na(covid_data$CRT_1))
-sum(is.na(covid_data$CRT_2))
-sum(is.na(covid_data$CRT_3))
-sum(is.na(covid_data$CRT_4))
-sum(is.na(covid_data$CRT_5))
-sum(is.na(covid_data$CRT_6))
-sum(is.na(covid_data$CRT_7))
+write_csv(covid_data, "COVID_19_December_2020_Cleaned_Data.csv")
+```
 
-sum(is.na(covid_data$World_Beliefs_1))
-sum(is.na(covid_data$World_Beliefs_2))
-sum(is.na(covid_data$World_Beliefs_3))
-sum(is.na(covid_data$World_Beliefs_4))
-sum(is.na(covid_data$World_Beliefs_5))
-sum(is.na(covid_data$World_Beliefs_6))
-sum(is.na(covid_data$World_Beliefs_7))
-sum(is.na(covid_data$World_Beliefs_8))
-sum(is.na(covid_data$World_Beliefs_9))
-sum(is.na(covid_data$World_Beliefs_10))
-sum(is.na(covid_data$World_Beliefs_11))
-sum(is.na(covid_data$World_Beliefs_12))
-sum(is.na(covid_data$World_Beliefs_13))
-sum(is.na(covid_data$World_Beliefs_14))
-sum(is.na(covid_data$World_Beliefs_15))
+```{r, include= FALSE}
+# Merge
+library(foreign)
+covid_data2 <- read.spss("~/Stony Brook Research/covidsurvey_data_merged_clean_8.30.20 (1).sav", to.data.frame=TRUE)
 
-sum(is.na(covid_data$Green_Short_A1))
-sum(is.na(covid_data$Green_Short_A2))
-sum(is.na(covid_data$Green_Short_A3))
-sum(is.na(covid_data$Green_Short_A4))
-sum(is.na(covid_data$Green_Short_A5))
-sum(is.na(covid_data$Green_Short_A6))
-sum(is.na(covid_data$Green_Short_A7))
-sum(is.na(covid_data$Green_Short_A8))
-sum(is.na(covid_data$Green_Short_B1))
-sum(is.na(covid_data$Green_Short_B2))
-sum(is.na(covid_data$Green_Short_B3))
-sum(is.na(covid_data$Green_Short_B4))
-sum(is.na(covid_data$Green_Short_B5))
-sum(is.na(covid_data$Green_Short_B6))
-sum(is.na(covid_data$Green_Short_B7))
-sum(is.na(covid_data$Green_Short_B8))
-sum(is.na(covid_data$Green_Short_B9))
-sum(is.na(covid_data$Green_Short_B10))
+head(covid_data2)
+covid_data2 <- covid_data2 %>%
+  select(ResponseId, Green_Total_Short_Score, IUS_Total_Score) %>%
+  mutate(ResponseId = parse_character(as.character(ResponseId)))
 
-sum(is.na(covid_data$IUS_Short_1))
-sum(is.na(covid_data$IUS_Short_2))
-sum(is.na(covid_data$IUS_Short_3))
-sum(is.na(covid_data$IUS_Short_4))
-sum(is.na(covid_data$IUS_Short_5))
-sum(is.na(covid_data$IUS_Short_6))
-sum(is.na(covid_data$IUS_Short_7))
-sum(is.na(covid_data$IUS_Short_8))
-sum(is.na(covid_data$IUS_Short_9))
-sum(is.na(covid_data$IUS_Short_10))
-sum(is.na(covid_data$IUS_Short_11))
-sum(is.na(covid_data$IUS_Short_12))
+covid_data_joined <- left_join(covid_data, covid_data2, by = "ResponseId")
 
-sum(is.na(covid_data$MIS_1))
-sum(is.na(covid_data$MIS_2))
-sum(is.na(covid_data$MIS_3))
-sum(is.na(covid_data$MIS_4))
-sum(is.na(covid_data$MIS_5))
-sum(is.na(covid_data$MIS_6))
-sum(is.na(covid_data$MIS_7))
-sum(is.na(covid_data$MIS_8))
-sum(is.na(covid_data$MIS_9))
-sum(is.na(covid_data$MIS_10))
-sum(is.na(covid_data$MIS_11))
-sum(is.na(covid_data$MIS_12))
-sum(is.na(covid_data$MIS_13))
-sum(is.na(covid_data$MIS_14))
-sum(is.na(covid_data$MIS_15))
+covid_data_joined %>%
+  select(Green_Total_Short_Score.x, Green_Total_Short_Score.y, ResponseId, StartDate, IUS_Total_Score.x, IUS_Total_Score.y) %>%
+  mutate(Green_Total_Short_Score = coalesce(Green_Total_Short_Score.x, Green_Total_Short_Score.y),
+         IUS_Total_Score = coalesce(IUS_Total_Score.x, IUS_Total_Score.y))
 
-sum(is.na(covid_data$PAS_1))
-sum(is.na(covid_data$PAS_2))
-sum(is.na(covid_data$PAS_3))
-sum(is.na(covid_data$PAS_4))
-sum(is.na(covid_data$PAS_5))
-sum(is.na(covid_data$PAS_6))
-sum(is.na(covid_data$PAS_7))
-sum(is.na(covid_data$PAS_8))
-sum(is.na(covid_data$PAS_9))
-sum(is.na(covid_data$PAS_10))
-sum(is.na(covid_data$PAS_11))
-sum(is.na(covid_data$PAS_12))
-sum(is.na(covid_data$PAS_13))
-sum(is.na(covid_data$PAS_14))
-sum(is.na(covid_data$PAS_15))
+# waiting on Emmett's response
+```
+# QUALITY CHECKS
 
-sum(is.na(covid_data$R_SAS_1))
-sum(is.na(covid_data$R_SAS_2))
-sum(is.na(covid_data$R_SAS_3))
-sum(is.na(covid_data$R_SAS_4))
-sum(is.na(covid_data$R_SAS_5))
-sum(is.na(covid_data$R_SAS_6))
-sum(is.na(covid_data$R_SAS_7))
-sum(is.na(covid_data$R_SAS_8))
-sum(is.na(covid_data$R_SAS_9))
-sum(is.na(covid_data$R_SAS_10))
-sum(is.na(covid_data$R_SAS_11))
-sum(is.na(covid_data$R_SAS_12))
-sum(is.na(covid_data$R_SAS_13))
-sum(is.na(covid_data$R_SAS_14))
-sum(is.na(covid_data$R_SAS_15))
-
-sum(is.na(covid_data$PhAnS_1))
-sum(is.na(covid_data$PhAnS_2))
-sum(is.na(covid_data$PhAnS_3))
-sum(is.na(covid_data$PhAnS_4))
-sum(is.na(covid_data$PhAnS_5))
-sum(is.na(covid_data$PhAnS_6))
-sum(is.na(covid_data$PhAnS_7))
-sum(is.na(covid_data$PhAnS_8))
-sum(is.na(covid_data$PhAnS_9))
-sum(is.na(covid_data$PhAnS_10))
-sum(is.na(covid_data$PhAnS_11))
-sum(is.na(covid_data$PhAnS_12))
-sum(is.na(covid_data$PhAnS_13))
-sum(is.na(covid_data$PhAnS_14))
-sum(is.na(covid_data$PhAnS_15))
-
-sum(is.na(covid_data$STAIT_1))
-sum(is.na(covid_data$STAIT_2))
-sum(is.na(covid_data$STAIT_3))
-sum(is.na(covid_data$STAIT_4))
-sum(is.na(covid_data$STAIT_5))
-sum(is.na(covid_data$STAIT_6))
-sum(is.na(covid_data$STAIT_7))
-sum(is.na(covid_data$STAIT_8))
-sum(is.na(covid_data$STAIT_9))
-sum(is.na(covid_data$STAIT_10))
-sum(is.na(covid_data$STAIT_11))
-sum(is.na(covid_data$STAIT_12))
-sum(is.na(covid_data$STAIT_13))
-sum(is.na(covid_data$STAIT_14))
-sum(is.na(covid_data$STAIT_15))
-sum(is.na(covid_data$STAIT_16))
-sum(is.na(covid_data$STAIT_17))
-sum(is.na(covid_data$STAIT_18))
-sum(is.na(covid_data$STAIT_19))
-sum(is.na(covid_data$STAIT_20))
-
+# Counting NAs in each column
+```{r, eval = FALSE}
+# deleted column by column code to save space
 colSums(is.na(covid_data))
 
 #CRT not as consistent (294, 298, 295 x 4, 297; 4)
@@ -1190,16 +1083,52 @@ colSums(is.na(covid_data))
 #NFCS consistent (354 x 2, 353 x 4, 354, 353 x 8; 1)
 ```
 
+# Frequency Distributions
 ```{r}
-write_csv(covid_data, "COVID_19_December_2020_Cleaned_Data.csv")
+# mean/sd
 ```
 
-```{r, include= FALSE}
-# Merge
-library(foreign)
-covid_data2 <- read.spss("~/Stony Brook Research/covidsurvey_data_merged_clean_8.30.20 (1).sav", to.data.frame=TRUE)
+```{r}
+# histograms
+ggplot(aes(x = Green_PartA_short_score), data = covid_data) +
+  geom_histogram(fill = "blue", color = "black", bins = 15)
+ggplot(aes(x = Green_PartB_short_score), data = covid_data) +
+  geom_histogram(fill = "blue", color = "black", bins = 15)
+ggplot(aes(x = Green_Total_Short_Score), data = covid_data) +
+  geom_histogram(fill = "blue", color = "black", bins = 15)
+ggplot(aes(x = IUS_Inhibitory_score), data = covid_data) +
+  geom_histogram(fill = "blue", color = "black", bins = 15)
+ggplot(aes(x = IUS_Prospective_score), data = covid_data) +
+  geom_histogram(fill = "blue", color = "black", bins = 15)
+ggplot(aes(x = IUS_Total_Score), data = covid_data) +
+  geom_histogram(fill = "blue", color = "black", bins = 15)
+ggplot(aes(x = GCBS_ci), data = covid_data) +
+  geom_histogram(fill = "blue", color = "black", bins = 15)
+ggplot(aes(x = GCBS_pw), data = covid_data) +
+  geom_histogram(fill = "blue", color = "black", bins = 15)
+ggplot(aes(x = GCBS_et), data = covid_data) +
+  geom_histogram(fill = "blue", color = "black", bins = 15)
+ggplot(aes(x = GCBS_mg), data = covid_data) +
+  geom_histogram(fill = "blue", color = "black", bins = 15)
+ggplot(aes(x = GCBS_gm), data = covid_data) +
+  geom_histogram(fill = "blue", color = "black", bins = 15)
+ggplot(aes(x = GCBS_total), data = covid_data) +
+  geom_histogram(fill = "blue", color = "black", bins = 15)
+```
 
-covid_data2 %>%
-  select(ResponseId, Green_Total_Short_Score, IUS_Total_Score)
+# N per Scale
+```{r}
+
+```
+
+# Verification of Variable Coding (Range)
+```{r}
+
+```
+
+
+# Scale Reliability
+```{r}
+
 ```
 
