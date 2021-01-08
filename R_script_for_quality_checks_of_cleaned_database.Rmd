@@ -8,6 +8,7 @@ output: html_document
 ```{r setup, include = FALSE} 
 library(tidyverse)
 library(dplyr)
+library(mosaic)
 covid_data <- read_csv("~/Stony Brook Research/COVID_19_December_2020_Cleaned_Data.csv")
 ```
 
@@ -41,6 +42,8 @@ colSums(is.na(covid_data))
 # Frequency Distributions
 ```{r}
 # mean/sd
+favstats(~ MIS_total, data = covid_data)
+
 ```
 
 ```{r}
