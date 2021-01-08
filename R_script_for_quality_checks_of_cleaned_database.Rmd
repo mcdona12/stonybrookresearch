@@ -1,0 +1,12 @@
+---
+title: "R_script_for_quality_checks_of_cleaned_database"
+author: "Clare McDonald & Viveka Hall-Holt"
+date: "1/8/2021"
+output: html_document
+---
+
+```{r setup, include = FALSE} 
+library(tidyverse)
+library(dplyr)
+covid_data <- read_csv("~/Stony Brook Research/COVID_19_December_2020_Cleaned_Data.csv")
+```
