@@ -9,14 +9,14 @@ output: html_document
 library(tidyverse)
 library(dplyr)
 library(descr)
-covid_data1 <- read_csv("~/Stony Brook Research/COVID_19_December_2020_Cleaned_Data.csv")
+covid_data <- read_csv("~/Stony Brook Research/COVID_19_December_2020_Cleaned_Data.csv")
 ```
 
 #Demographics
 ```{r}
 #Demographics_age
-covid_data1$Demographics_age <- as.numeric(as.character(covid_data1$Demographics_age))
-hist(covid_data1$Demographics_age)
+covid_data$Demographics_age <- as.numeric(as.character(covid_data$Demographics_age))
+hist(covid_data$Demographics_age)
 
 #Demographics_gender
 ```
