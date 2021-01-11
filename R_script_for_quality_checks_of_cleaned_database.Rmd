@@ -19,8 +19,6 @@ Example of format:
 
 # Histogram 
 
-# N per Scale
-
 # Verification of Variable Coding (Range)
 
 # Scale Reliability
@@ -30,24 +28,104 @@ Example of format:
 #Demographics
 ```{r}
 ##Demographics_age
-# Frequency Distributions (mean/sd)
-favstats(~ MIS_total, data = covid_data)
+# Frequency Distributions (mean/sd, n per scale)
+covid_data$Demographics_age <- as.numeric(as.character(covid_data$Demographics_age))
+favstats(~ Demographics_age, data = covid_data)#[c("mean","sd","n","missing")]
+#length(covid_data$Demographics_age)-sum(is.na(covid_data$Demographics_age))
 
 # Histogram 
-covid_data$Demographics_age <- as.numeric(as.character(covid_data$Demographics_age))
 hist(covid_data$Demographics_age)
 
-# N per Scale
+#length(covid_data$Demographics_age)-sum(is.na(covid_data$Demographics_age)) 
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+```
+
+```{r}
+##Demographics_gender
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ Demographics_gender, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$Demographics_gender)
 
 # Verification of Variable Coding (Range)
 
 # Scale Reliability
 
+```
 
-##Demographics_gender
+```{r}
+##Demographics_ethnicity
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ Demographics_ethnicity, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$Demographics_ethnicity)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
 
 ```
 
+```{r}
+##Demographics_political_general
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ Demographics_political_general, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$Demographics_political_general)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##Demographics_societal
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ Demographics_societal, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$Demographics_societal)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##Demographics_economic
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ Demographics_economic, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$Demographics_economic)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##Demographics_economic
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ Demographics_economic, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$Demographics_economic)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
 
 # Counting NAs in each column
 ```{r, eval = FALSE}
