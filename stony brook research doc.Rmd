@@ -157,6 +157,10 @@ covid_data$Green_Total_Short_Score <- covid_data$Green_PartA_short_score + covid
 
 # IUS (short form)
 ```{r}
+##Make IUS NA until June 17
+for (n in 1:12)
+     covid_data[[paste0("IUS_Short_", n)]] <- replace(covid_data[[paste0("IUS_Short_", n)]], 1:300, NA)
+
 #Short Version Scoring for IUS
 #Inhibitory Anxiety Scoring
 covid_data$IUS_Inhibitory_score <- 0
@@ -170,10 +174,6 @@ for (n in 1:7)
 
 #IUS Total Score
 covid_data$IUS_Total_Score <- covid_data$IUS_Prospective_score + covid_data$IUS_Inhibitory_score
-
-##Make IUS NA until June 17
-for (n in 1:12)
-     covid_data[[paste0("IUS_Short_", n)]] <- replace(covid_data[[paste0("IUS_Short_", n)]], 1:300, NA)
 ```
 
 # Demographics
@@ -1035,10 +1035,6 @@ covid_data <- covid_data %>%
           NFCS_7 + NFCS_8 + NFCS_9 + NFCS_10 + NFCS_11 + NFCS_12 + NFCS_13 + NFCS_14 + NFCS_15)
 ```
 
-```{r}
-write_csv(covid_data, "COVID_19_December_2020_Cleaned_Data.csv")
-```
-
 ```{r, include= FALSE}
 # Merge
 library(foreign)
@@ -1058,80 +1054,7 @@ covid_data_joined %>%
 
 # waiting on Emmett's response
 ```
-# QUALITY CHECKS
-
-# Counting NAs in each column
-```{r, eval = FALSE}
-# deleted column by column code to save space
-colSums(is.na(covid_data))
-
-#CRT not as consistent (294, 298, 295 x 4, 297; 4)
-#World Beliefs consistent (72 x 5,  71 x 3, 72, 71 x 6; 1)
-#Green Short consistent (71 x 8, 72, 71 x 3, 72, 71 x 2, 72 x 2, 71; 1)
-#IUS consistent (359 x 12; 0)
-#MIS consistent (96 x 8, 97, 96 x 5; 1)
-#PAS consistent (69 x 15; 0)
-#R_SAS consistent (86 x 15; 0)
-#PhAnS consistent (72 x 2, 73, 72 x 9, 73, 72 x 2; 1)
-#STAIT consistent (64 x 3, 65 x 9, 66, 65 x 2; 2)
-#STAIS consistent (84 x 12, 86, 84 x 2, 85, 84 x 4; 2)
-#PSWQ consistent (77 x 3, 78, 77 x 12)
-#COVID_19_3 consistent (86 x 13, 87, 86 x 2; 1)
-#Attitudes/Behaviors not totally consistent (66 x 8, 88, 66, 69 x 2; 22!)
-#Health_Behavior consistent (except for questions 7-9 which were added later) (72 x 8 and 337 x 3; 0 and 0)
-#Covid-19_1 consistent (88 x 3, 89, 88 x 9; 1)
-#Covid_19_2 consistent (70 x 4, 71, 70 x 25; 1)
-#PVDS consistent (81 x 15; 0)
-#RLOC consistent (353 x 9, 355 x 2, 354 x 3, 355 x 2, 354, 353 x 3, 354 x 5, 353 x 4; 2)
-#NFCS consistent (354 x 2, 353 x 4, 354, 353 x 8; 1)
-```
-
-# Frequency Distributions
-```{r}
-# mean/sd
-```
 
 ```{r}
-# histograms
-ggplot(aes(x = Green_PartA_short_score), data = covid_data) +
-  geom_histogram(fill = "blue", color = "black", bins = 15)
-ggplot(aes(x = Green_PartB_short_score), data = covid_data) +
-  geom_histogram(fill = "blue", color = "black", bins = 15)
-ggplot(aes(x = Green_Total_Short_Score), data = covid_data) +
-  geom_histogram(fill = "blue", color = "black", bins = 15)
-ggplot(aes(x = IUS_Inhibitory_score), data = covid_data) +
-  geom_histogram(fill = "blue", color = "black", bins = 15)
-ggplot(aes(x = IUS_Prospective_score), data = covid_data) +
-  geom_histogram(fill = "blue", color = "black", bins = 15)
-ggplot(aes(x = IUS_Total_Score), data = covid_data) +
-  geom_histogram(fill = "blue", color = "black", bins = 15)
-ggplot(aes(x = GCBS_ci), data = covid_data) +
-  geom_histogram(fill = "blue", color = "black", bins = 15)
-ggplot(aes(x = GCBS_pw), data = covid_data) +
-  geom_histogram(fill = "blue", color = "black", bins = 15)
-ggplot(aes(x = GCBS_et), data = covid_data) +
-  geom_histogram(fill = "blue", color = "black", bins = 15)
-ggplot(aes(x = GCBS_mg), data = covid_data) +
-  geom_histogram(fill = "blue", color = "black", bins = 15)
-ggplot(aes(x = GCBS_gm), data = covid_data) +
-  geom_histogram(fill = "blue", color = "black", bins = 15)
-ggplot(aes(x = GCBS_total), data = covid_data) +
-  geom_histogram(fill = "blue", color = "black", bins = 15)
+write_csv(covid_data, "COVID_19_December_2020_Cleaned_Data.csv")
 ```
-
-# N per Scale
-```{r}
-
-```
-
-# Verification of Variable Coding (Range)
-```{r}
-
-```
-
-
-# Scale Reliability
-```{r}
-
-```
-
