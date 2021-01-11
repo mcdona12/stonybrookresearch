@@ -200,8 +200,9 @@ covid_data$duration_in_minutes <- parse_integer(as.character(covid_data[["Durati
 
 # GCBS Scoring
 ```{r}
-#for (n in 1:15)
-#  paste0("World_Beliefs_", n) <- parse_integer(as.character(paste0("World_Beliefs_", n)))
+#Megan used 3*mean.2 for these scores but Emmett said to sum. Which one is correct?
+##for (n in 1:15)
+##  paste0("World_Beliefs_", n) <- parse_integer(as.character(paste0("World_Beliefs_", n)))
 
 #Factor 1:  Government malfeasance (GM): Allegations of routine criminal conspiracy within governments (Item #s: 1, 6, 11).
 #covid_data <- covid_data %>%
@@ -228,7 +229,7 @@ covid_data$GCBS_ci <- (parse_integer(as.character(covid_data$World_Beliefs_5)) +
 #covid_data <- covid_data %>%
 #  mutate(GCBS_ci = rowMeans(subset(covid_data, select = c(World_Beliefs_5, World_Beliefs_10, World_Beliefs_15), na.rm = TRUE))
 
-
+#This is just a sum, and not an average, if that is what Emmett meant?
 #Total Score
 covid_data$GCBS_total <- covid_data$GCBS_gm + covid_data$GCBS_et + covid_data$GCBS_mg + covid_data$GCBS_pw + covid_data$GCBS_ci
 ```
@@ -745,6 +746,7 @@ covid_data <- covid_data %>%
 # COVID 19 Health Behavior
 ```{r}
 # renaming variables
+#renamed by Megan. Should get rid of the renaming?
 covid_data <- covid_data %>%
   rename(Health_Behavior_1 = Health_Behavior,
          Health_Behavior_1a = Health_Behavior_1,
@@ -887,6 +889,7 @@ covid_data <- covid_data %>%
 
 ```{r}
 # Computing PVDS Scores
+#This is another place where Megan did 8*mean.7 but Emmett said to do sums. ?
 covid_data <- covid_data %>%
     mutate(PVDS_1 = parse_integer(as.character(PVDS_1)),
            PVDS_2 = parse_integer(as.character(PVDS_2)),
