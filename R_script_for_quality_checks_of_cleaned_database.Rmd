@@ -39,7 +39,7 @@ colSums(is.na(covid_data))
 #NFCS consistent (354 x 2, 353 x 4, 354, 353 x 8; 1)
 ```
 
-# Frequency Distributions
+
 ```{r}
 # mean/sd
 favstats(~ MIS_total, data = covid_data)
@@ -78,12 +78,6 @@ ggplot(aes(x = GCBS_total), data = covid_data) +
 ```{r}
 
 ```
-
-# Verification of Variable Coding (Range)
-```{r}
-
-```
-
 
 # Scale Reliability
 ```{r}
