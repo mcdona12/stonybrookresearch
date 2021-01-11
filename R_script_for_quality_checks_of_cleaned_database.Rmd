@@ -126,6 +126,93 @@ hist(covid_data$Demographics_economic)
 # Scale Reliability
 
 ```
+
+#Green Short Scores
+```{r}
+##Green_PartA_short_score
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ Green_PartA_short_score, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$Green_PartA_short_score)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##Green_PartB_short_score
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ Green_PartB_short_score, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$Green_PartB_short_score)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##Green_Total_Short_Score
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ Green_Total_Short_Score, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$Green_Total_Short_Score)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+#IUS Scores
+```{r}
+##IUS_Inhibitory_score
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ IUS_Inhibitory_score, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$IUS_Inhibitory_score)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##IUS_Prospective_score
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ IUS_Prospective_score, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$IUS_Prospective_score)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##IUS_Total_Score
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ IUS_Total_Score, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$IUS_Total_Score)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
 # CRT?
 
 # World Beliefs
@@ -558,48 +645,6 @@ hist(covid_data$Green_Short_B10)
 
 ```
 
-```{r}
-##Green_PartA_short_score
-# Frequency Distributions (mean/sd, n per scale)
-favstats(~ Green_PartA_short_score, data = covid_data)#[c("mean","sd","n","missing")]
-
-# Histogram 
-hist(covid_data$Green_PartA_short_score)
-
-# Verification of Variable Coding (Range)
-
-# Scale Reliability
-
-```
-
-```{r}
-##Green_PartB_short_score
-# Frequency Distributions (mean/sd, n per scale)
-favstats(~ Green_PartB_short_score, data = covid_data)#[c("mean","sd","n","missing")]
-
-# Histogram 
-hist(covid_data$Green_PartB_short_score)
-
-# Verification of Variable Coding (Range)
-
-# Scale Reliability
-
-```
-
-```{r}
-##Green_Total_Short_Score
-# Frequency Distributions (mean/sd, n per scale)
-favstats(~ Green_Total_Short_Score, data = covid_data)#[c("mean","sd","n","missing")]
-
-# Histogram 
-hist(covid_data$Green_Total_Short_Score)
-
-# Verification of Variable Coding (Range)
-
-# Scale Reliability
-
-```
-
 # IUS Short
 ```{r}
 ##IUS_Short_1
@@ -750,48 +795,6 @@ favstats(~ IUS_Short_12, data = covid_data)#[c("mean","sd","n","missing")]
 hist(covid_data$IUS_Short_12)
 
 # Verification of Variable Coding (Range)
-
-```
-
-```{r}
-##IUS_Inhibitory_score
-# Frequency Distributions (mean/sd, n per scale)
-favstats(~ IUS_Inhibitory_score, data = covid_data)#[c("mean","sd","n","missing")]
-
-# Histogram 
-hist(covid_data$IUS_Inhibitory_score)
-
-# Verification of Variable Coding (Range)
-
-# Scale Reliability
-
-```
-
-```{r}
-##IUS_Prospective_score
-# Frequency Distributions (mean/sd, n per scale)
-favstats(~ IUS_Prospective_score, data = covid_data)#[c("mean","sd","n","missing")]
-
-# Histogram 
-hist(covid_data$IUS_Prospective_score)
-
-# Verification of Variable Coding (Range)
-
-# Scale Reliability
-
-```
-
-```{r}
-##IUS_Total_Score
-# Frequency Distributions (mean/sd, n per scale)
-favstats(~ IUS_Total_Score, data = covid_data)#[c("mean","sd","n","missing")]
-
-# Histogram 
-hist(covid_data$IUS_Total_Score)
-
-# Verification of Variable Coding (Range)
-
-# Scale Reliability
 
 ```
 

@@ -100,6 +100,7 @@ covid_data <- covid_data %>%
 ```
 
 # Make Green NA until June 17
+##Make sure row 300 is the end of the June 17 rows!*************************
 ```{r}
 for (n in 1:8)
      covid_data[[paste0("Green_Short_A", n)]] <- replace(covid_data[[paste0("Green_Short_A", n)]], 1:300, NA)
@@ -124,7 +125,6 @@ for (n in 1:10)
 # Short Version Scoring for Green Paranoia
 ```{r}
 #Green Part A score
-
 covid_data$Green_PartA_short_score <- 0
 for (n in 1:8)
       covid_data$Green_PartA_short_score <- covid_data$Green_PartA_short_score + parse_integer(as.character(covid_data[[paste0("Green_Short_A", n)]]))
@@ -156,6 +156,7 @@ covid_data$Green_Total_Short_Score <- covid_data$Green_PartA_short_score + covid
 ```
 
 # IUS (short form)
+## Make sure 1-300 is still all rows up to June 17****************************
 ```{r}
 ##Make IUS NA until June 17
 for (n in 1:12)
@@ -200,34 +201,28 @@ covid_data$duration_in_minutes <- parse_integer(as.character(covid_data[["Durati
 
 # GCBS Scoring
 ```{r}
-#Megan used 3*mean.2 for these scores but Emmett said to sum. Which one is correct?
 ##for (n in 1:15)
 ##  paste0("World_Beliefs_", n) <- parse_integer(as.character(paste0("World_Beliefs_", n)))
 
 #Factor 1:  Government malfeasance (GM): Allegations of routine criminal conspiracy within governments (Item #s: 1, 6, 11).
 #covid_data <- covid_data %>%
-#  mutate(GCBS_gm = rowMeans(subset(covid_data, select = c(parse_integer(as.character(World_Beliefs_1)), World_Beliefs_6, World_Beliefs_11), na.rm = TRUE))
-covid_data$GCBS_gm <-  (parse_integer(as.character(covid_data$World_Beliefs_1)) + parse_integer(as.character(covid_data$World_Beliefs_6)) + parse_integer(as.character(covid_data$World_Beliefs_11)))/3
+covid_data$GCBS_gm <-  (parse_integer(as.character(covid_data$World_Beliefs_1)) + parse_integer(as.character(covid_data$World_Beliefs_6)) + parse_integer(as.character(covid_data$World_Beliefs_11)))
 
 #Factor 2: Extraterrestrial cover-up (ET): Deception of the public about the existence of aliens (Item #s: 2, 7 ,12).
-covid_data$GCBS_et <- (parse_integer(as.character(covid_data$World_Beliefs_2)) + parse_integer(as.character(covid_data$World_Beliefs_7)) + parse_integer(as.character(covid_data$World_Beliefs_12)))/3 
+covid_data$GCBS_et <- (parse_integer(as.character(covid_data$World_Beliefs_2)) + parse_integer(as.character(covid_data$World_Beliefs_7)) + parse_integer(as.character(covid_data$World_Beliefs_12)))
 #covid_data <- covid_data %>%
 #  mutate(GCBS_et = rowMeans(subset(covid_data, select = c(World_Beliefs_2, World_Beliefs_7, World_Beliefs_12), na.rm = TRUE))
 
 #Factor 3: Malevolent Global Conspiracies (MG): Allegations that small, secret groups exert total control over global events (Item #s: 3, 8, 13).
-covid_data$GCBS_mg <- (parse_integer(as.character(covid_data$World_Beliefs_3)) + parse_integer(as.character(covid_data$World_Beliefs_8)) + parse_integer(as.character(covid_data$World_Beliefs_13)))/3 
+covid_data$GCBS_mg <- (parse_integer(as.character(covid_data$World_Beliefs_3)) + parse_integer(as.character(covid_data$World_Beliefs_8)) + parse_integer(as.character(covid_data$World_Beliefs_13)))
 #covid_data <- covid_data %>%
 #  mutate(GCBS_mg = rowMeans(subset(covid_data, select = c(World_Beliefs_3, World_Beliefs_8, World_Beliefs_13), na.rm = TRUE))
 
 #Factor 4; Personal well-being (PW): Conspiracist concerns over personal health and liberty such as the spread of diseases and the use of mind-control technology (Item #s: 4, 9,14).
-covid_data$GCBS_pw <- (parse_integer(as.character(covid_data$World_Beliefs_4)) + parse_integer(as.character(covid_data$World_Beliefs_9)) + parse_integer(as.character(covid_data$World_Beliefs_14)))/3 
-#covid_data <- covid_data %>%
-#  mutate(GCBS_pw = rowMeans(subset(covid_data, select = c(World_Beliefs_4, World_Beliefs_9, World_Beliefs_14), na.rm = TRUE))
+covid_data$GCBS_pw <- (parse_integer(as.character(covid_data$World_Beliefs_4)) + parse_integer(as.character(covid_data$World_Beliefs_9)) + parse_integer(as.character(covid_data$World_Beliefs_14)))
 
 #Factor 5: Control of Information (CI): Unethical control and suppression of information by organizations including the government, the media, scientists, and corporations (Item #s: 5,10,15).
-covid_data$GCBS_ci <- (parse_integer(as.character(covid_data$World_Beliefs_5)) + parse_integer(as.character(covid_data$World_Beliefs_10)) + parse_integer(as.character(covid_data$World_Beliefs_15)))/3 
-#covid_data <- covid_data %>%
-#  mutate(GCBS_ci = rowMeans(subset(covid_data, select = c(World_Beliefs_5, World_Beliefs_10, World_Beliefs_15), na.rm = TRUE))
+covid_data$GCBS_ci <- (parse_integer(as.character(covid_data$World_Beliefs_5)) + parse_integer(as.character(covid_data$World_Beliefs_10)) + parse_integer(as.character(covid_data$World_Beliefs_15))) 
 
 #This is just a sum, and not an average, if that is what Emmett meant?
 #Total Score
@@ -663,10 +658,10 @@ covid_data <- covid_data %>%
          COVID_19_3_16_true = parse_integer(as.character(COVID_19_3_16_true))) 
 
 covid_data <- covid_data %>%
-  mutate(COVID_conspiracies_total = rowMeans(subset(covid_data, select = c(COVID_19_3_1, COVID_19_3_2, 
+  mutate(***************COVID_conspiracies_total = rowMeans(subset(covid_data, select = c(COVID_19_3_1, COVID_19_3_2, 
              COVID_19_3_3, COVID_19_3_4, COVID_19_3_5, COVID_19_3_6, COVID_19_3_7, COVID_19_3_8, 
              COVID_19_3_9, COVID_19_3_10, COVID_19_3_11, COVID_19_3_12, COVID_19_3_13, COVID_19_3_14, 
-             COVID_19_3_15, COVID_19_3_16), na.rm = TRUE)),
+             COVID_19_3_15, COVID_19_3_16), na.rm = TRUE))*****************,
          Conspiracies_endorsed = COVID_19_3_1_true + COVID_19_3_2_true + COVID_19_3_3_true + 
              COVID_19_3_4_true + COVID_19_3_5_true + COVID_19_3_6_true + COVID_19_3_7_true + 
              COVID_19_3_8_true +  COVID_19_3_9_true + COVID_19_3_10_true + COVID_19_3_11_true + 
@@ -889,7 +884,6 @@ covid_data <- covid_data %>%
 
 ```{r}
 # Computing PVDS Scores
-#This is another place where Megan did 8*mean.7 but Emmett said to do sums. ?
 covid_data <- covid_data %>%
     mutate(PVDS_1 = parse_integer(as.character(PVDS_1)),
            PVDS_2 = parse_integer(as.character(PVDS_2)),
@@ -908,10 +902,10 @@ covid_data <- covid_data %>%
            PVDS_15 = parse_integer(as.character(PVDS_15))) 
 
 covid_data <- covid_data %>%
-  mutate(Perceived_Infectability = rowMeans(subset(covid_data, select = c(PVDS_8, PVDS_12, PVDS_2, 
+  mutate(Perceived_Infectability = *********************rowMeans(subset(covid_data, select = c(PVDS_8, PVDS_12, PVDS_2, 
                                                     PVDS_14, PVDS_10, PVDS_5, PVDS_6), na.rm = TRUE)),
          Germ_Aversion = rowMeans(subset(covid_data, select = c(PVDS_7, PVDS_15, PVDS_4, 
-                                      PVDS_9, PVDS_3, PVDS_13, PVDS_11), na.rm = TRUE)))
+                                      PVDS_9, PVDS_3, PVDS_13, PVDS_11), na.rm = TRUE)))*************************
 ```
 
 
