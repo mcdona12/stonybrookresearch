@@ -1656,242 +1656,7 @@ $(document).ready(function () {
 <h1>Deleting First Row from each column</h1>
 <p>It was irrelevant and messed with classification of variables</p>
 <pre class="r"><code>covid_data &lt;- covid_data %&gt;% 
-   filter(row_number() &gt; (n() - 673))
-
-# NAs per column
-colSums(is.na(covid_data))</code></pre>
-<pre><code>##              StartDate                EndDate                 Status 
-##                      0                      0                      0 
-##               Progress  Duration (in seconds)               Finished 
-##                      0                      0                      0 
-##           RecordedDate             ResponseId      ExternalReference 
-##                      0                      0                    673 
-##    DistributionChannel           UserLanguage                Consent 
-##                      0                      0                      0 
-##                     1)                     2)              2)_6_TEXT 
-##                     17                     15                    672 
-##                     3)              3)_8_TEXT                     5) 
-##                     15                    654                    286 
-##              5)_8_TEXT                     6)                     7) 
-##                    667                    286                    287 
-##                     8)                  CRT_1                  CRT_2 
-##                    295                    294                    298 
-##                  CRT_3                  CRT_4                  CRT_5 
-##                    295                    295                    295 
-##                  CRT_6                  CRT_7        World_Beliefs_1 
-##                    295                    297                     72 
-##        World_Beliefs_2        World_Beliefs_3        World_Beliefs_4 
-##                     72                     72                     72 
-##        World_Beliefs_5        World_Beliefs_6        World_Beliefs_7 
-##                     72                     71                     71 
-##        World_Beliefs_8        World_Beliefs_9       World_Beliefs_10 
-##                     71                     72                     71 
-##       World_Beliefs_11       World_Beliefs_12       World_Beliefs_13 
-##                     71                     71                     71 
-##       World_Beliefs_14       World_Beliefs_15           R-GPTS_Ref_1 
-##                     71                     71                     71 
-##           R-GPTS_Ref_2           R-GPTS_Ref_3           R-GPTS_Ref_4 
-##                     71                     71                     71 
-##           R-GPTS_Ref_5           R-GPTS_Ref_6           R-GPTS_Ref_7 
-##                     71                     71                     71 
-##           R-GPTS_Ref_8           R-GPTS_Per_1           R-GPTS_Per_2 
-##                     71                     72                     71 
-##           R-GPTS_Per_3           R-GPTS_Per_4           R-GPTS_Per_5 
-##                     71                     71                     72 
-##           R-GPTS_Per_6           R-GPTS_Per_7           R-GPTS_Per_8 
-##                     71                     71                     72 
-##           R-GPTS_Per_9          R-GPTS_Per_10            IUS_Short_1 
-##                     72                     71                     70 
-##            IUS_Short_2            IUS_Short_3            IUS_Short_4 
-##                     70                     70                     70 
-##            IUS_Short_5            IUS_Short_6            IUS_Short_7 
-##                     70                     70                     70 
-##            IUS_Short_8            IUS_Short_9           IUS_Short_10 
-##                     70                     70                     71 
-##           IUS_Short_11           IUS_Short_12                  MIS_1 
-##                    356                    356                     96 
-##                  MIS_2                  MIS_3                  MIS_4 
-##                     96                     96                     96 
-##                  MIS_5                  MIS_6                  MIS_7 
-##                     96                     96                     96 
-##                  MIS_8                  MIS_9                 MIS_10 
-##                     96                     96                     97 
-##                 MIS_11                 MIS_12                 MIS_13 
-##                     96                     96                     96 
-##                 MIS_14                 MIS_15                  PAS_1 
-##                     96                     96                     69 
-##                  PAS_2                  PAS_3                  PAS_4 
-##                     69                     69                     69 
-##                  PAS_5                  PAS_6                  PAS_7 
-##                     69                     69                     69 
-##                  PAS_8                  PAS_9                 PAS_10 
-##                     69                     69                     69 
-##                 PAS_11                 PAS_12                 PAS_13 
-##                     69                     69                     69 
-##                 PAS_14                 PAS_15                R_SAS_1 
-##                     69                     69                     86 
-##                R_SAS_2                R_SAS_3                R_SAS_4 
-##                     86                     86                     86 
-##                R_SAS_5                R_SAS_6                R_SAS_7 
-##                     86                     86                     86 
-##                R_SAS_8                R_SAS_9               R_SAS_10 
-##                     86                     86                     86 
-##               R_SAS_11               R_SAS_12               R_SAS_13 
-##                     86                     86                     86 
-##               R_SAS_14               R_SAS_15                PAS_1_1 
-##                     86                     86                     72 
-##                PAS_2_1                PAS_3_1                PAS_4_1 
-##                     72                     73                     72 
-##                PAS_5_1                PAS_6_1                PAS_7_1 
-##                     72                     72                     72 
-##                PAS_8_1                PAS_9_1               PAS_10_1 
-##                     72                     72                     72 
-##               PAS_11_1               PAS_12_1               PAS_13_1 
-##                     72                     72                     73 
-##               PAS_14_1               PAS_15_1                STAIT_1 
-##                     72                     72                     64 
-##                STAIT_2                STAIT_3                STAIT_4 
-##                     65                     64                     64 
-##                STAIT_5                STAIT_6                STAIT_7 
-##                     64                     64                     64 
-##                STAIT_8                STAIT_9               STAIT_10 
-##                     65                     65                     65 
-##               STAIT_11               STAIT_12               STAIT_13 
-##                     65                     65                     65 
-##               STAIT_14               STAIT_15               STAIT_16 
-##                     65                     65                     65 
-##               STAIT_17               STAIT_18               STAIT_19 
-##                     65                     66                     65 
-##               STAIT_20                STAIS_1                STAIS_2 
-##                     65                     84                     84 
-##                STAIS_3                STAIS_4                STAIS_5 
-##                     84                     84                     84 
-##                STAIS_6                STAIS_7                STAIS_8 
-##                     84                     84                     84 
-##                STAIS_9               STAIS_10               STAIS_11 
-##                     84                     84                     84 
-##               STAIS_12               STAIS_13               STAIS_14 
-##                     84                     86                     84 
-##               STAIS_15               STAIS_16               STAIS_17 
-##                     84                     85                     84 
-##               STAIS_18               STAIS_19               STAIS_20 
-##                     84                     84                     84 
-##                 PSWQ_1                 PSWQ_2                 PSWQ_3 
-##                     77                     77                     77 
-##                 PSWQ_4                 PSWQ_5                 PSWQ_6 
-##                     78                     77                     77 
-##                 PSWQ_7                 PSWQ_8                 PSWQ_9 
-##                     77                     77                     77 
-##                PSWQ_10                PSWQ_11                PSWQ_12 
-##                     77                     77                     77 
-##                PSWQ_13                PSWQ_14                PSWQ_15 
-##                     77                     77                     77 
-##                PSWQ_16           COVID-19_3_1           COVID-19_3_2 
-##                     77                     86                     86 
-##           COVID-19_3_3           COVID-19_3_4           COVID-19_3_5 
-##                     86                     86                     86 
-##           COVID-19_3_6           COVID-19_3_7           COVID-19_3_8 
-##                     86                     86                     86 
-##           COVID-19_3_9          COVID-19_3_10          COVID-19_3_11 
-##                     86                     86                     86 
-##          COVID-19_3_12          COVID-19_3_13          COVID-19_3_14 
-##                     86                     86                     87 
-##          COVID-19_3_15          COVID-19_3_16  Attitudes/Behaviors_1 
-##                     86                     86                     66 
-##  Attitudes/Behaviors_2  Attitudes/Behaviors_3  Attitudes/Behaviors_4 
-##                     66                     66                     66 
-##  Attitudes/Behaviors_5  Attitudes/Behaviors_6  Attitudes/Behaviors_7 
-##                     66                     66                     66 
-##  Attitudes/Behaviors_8  Attitudes/Behaviors_9 Attitudes/Behaviors_10 
-##                     66                     88                     66 
-##     Facts vs misinfo_1     Facts vs misinfo_2     Facts vs misinfo_3 
-##                     69                     69                     71 
-##     Facts vs misinfo_4     Facts vs misinfo_5     Facts vs misinfo_6 
-##                     69                     69                     69 
-##     Facts vs misinfo_7     Facts vs misinfo_8     Facts vs misinfo_9 
-##                     69                     69                     69 
-##    Facts vs misinfo_10    Facts vs misinfo_11    Facts vs misinfo_12 
-##                     69                     69                     69 
-##    Facts vs misinfo_13    Facts vs misinfo_14    Facts vs misinfo_15 
-##                     69                     69                     69 
-##    Facts vs misinfo_16        Health_Behavior      Health_Behavior_1 
-##                     69                     72                     72 
-##      Health_Behavior_2      Health_Behavior_3      Health_Behavior_4 
-##                     72                     72                     72 
-##      Health_Behavior_5      Health_Behavior_6      Health_Behavior_7 
-##                     72                     72                     72 
-##      Health_Behavior_8      Health_Behavior_9     Health_Behavior_10 
-##                    337                    337                    337 
-##           COVID-19_1_1           COVID-19_1_2           COVID-19_1_3 
-##                     88                     88                     88 
-##           COVID-19_1_4           COVID-19_1_5           COVID-19_1_6 
-##                     89                     88                     88 
-##           COVID-19_1_7           COVID-19_1_8           COVID-19_1_9 
-##                     88                     88                     88 
-##          COVID-19_1_10          COVID-19_1_11          COVID-19_1_12 
-##                     88                     88                     88 
-##         COVID-19_1_1_1           COVID-19_2_1           COVID-19_2_2 
-##                     88                     70                     70 
-##           COVID-19_2_3           COVID-19_2_4           COVID-19_2_5 
-##                     70                     70                     71 
-##           COVID-19_2_6           COVID-19_2_7           COVID-19_2_8 
-##                     70                     70                     70 
-##           COVID-19_2_9          COVID-19_2_10          COVID-19_2_11 
-##                     70                     70                     70 
-##         COVID-19_2_1_1         COVID-19_2_2_1         COVID-19_2_3_1 
-##                     70                     70                     70 
-##         COVID-19_2_4_1         COVID-19_2_5_1         COVID-19_2_6_1 
-##                     70                     70                     70 
-##         COVID-19_2_1_2         COVID-19_2_2_2         COVID-19_2_3_2 
-##                     70                     70                     70 
-##         COVID-19_2_4_2         COVID-19_2_1_3         COVID-19_2_2_3 
-##                     70                     70                     70 
-##         COVID-19_2_3_3         COVID-19_2_4_3         COVID-19_2_5_2 
-##                     70                     70                     70 
-##         COVID-19_2_6_2         COVID-19_2_1_4         COVID-19_2_2_4 
-##                     70                     70                     70 
-##         COVID-19_2_3_4                 PVDS_1                 PVDS_2 
-##                     70                     81                     81 
-##                 PVDS_3                 PVDS_4                 PVDS_5 
-##                     81                     81                     81 
-##                 PVDS_6                 PVDS_7                 PVDS_8 
-##                     81                     81                     81 
-##                 PVDS_9                PVDS_10                PVDS_11 
-##                     81                     81                     81 
-##                PVDS_12                PVDS_13                PVDS_14 
-##                     81                     81                     81 
-##                PVDS_15                 QID106                 QID107 
-##                     81                    353                    353 
-##                 QID108                 QID109                 QID110 
-##                    353                    353                    353 
-##                 QID111                 QID112                 QID113 
-##                    353                    353                    353 
-##                 QID114                 QID135                 QID136 
-##                    353                    355                    355 
-##                 QID137                 QID138                 QID139 
-##                    354                    354                    354 
-##                 QID140                 QID141                 QID142 
-##                    355                    355                    354 
-##                 QID143                 QID144                 QID145 
-##                    353                    353                    353 
-##                 QID146                 QID147                 QID148 
-##                    354                    354                    354 
-##                 QID149                 QID150                 QID151 
-##                    354                    354                    353 
-##                 QID152                 QID153                 QID154 
-##                    353                    353                    353 
-##                 NFCS_1                 NFCS_2                 NFCS_3 
-##                    354                    354                    353 
-##                 NFCS_4                 NFCS_5                 NFCS_6 
-##                    353                    353                    353 
-##                 NFCS_7                 NFCS_8                 NFCS_9 
-##                    354                    353                    353 
-##                NFCS_10                NFCS_11                NFCS_12 
-##                    353                    353                    353 
-##                NFCS_13                NFCS_14                NFCS_15 
-##                    353                    353                    353 
-##                     id 
-##                      3</code></pre>
+   filter(row_number() &gt; (n() - 673))</code></pre>
 </div>
 <div id="green-variables" class="section level1">
 <h1>Green Variables</h1>
@@ -2619,9 +2384,7 @@ covid_data &lt;- covid_data %&gt;%
          COVID_19_2_personalrelationships = &quot;COVID-19_2_2_4&quot;,
          COVID_19_2_foodandhousing = &quot;COVID-19_2_3_4&quot;)</code></pre>
 <pre class="r"><code># Scoring COVID Consequences variables
-class(covid_data$COVID_19_2_takecareofpeople)</code></pre>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<pre class="r"><code>covid_data &lt;- covid_data %&gt;%
+covid_data &lt;- covid_data %&gt;%
   mutate(COVID_19_2_1_Headache = parse_integer(as.character(COVID_19_2_1_Headache)),
          COVID_19_2_1_Fever = parse_integer(as.character(COVID_19_2_1_Fever)),
          COVID_19_2_1_Bodyache = parse_integer(as.character(COVID_19_2_1_Bodyache)),
@@ -2810,6 +2573,171 @@ covid_data &lt;- covid_data %&gt;%
          NFCS_14 = parse_integer(as.character(NFCS_14)),
          NFCS_15 = parse_integer(as.character(NFCS_15))) %&gt;%
   mutate(NFCS_Total_Score = NFCS_1 + NFCS_2 + NFCS_3 + NFCS_4 + NFCS_5 + NFCS_6 + NFCS_7 + NFCS_8 + NFCS_9 + NFCS_10 + NFCS_11 + NFCS_12 + NFCS_13 + NFCS_14 + NFCS_15)</code></pre>
+</div>
+<div id="counting-nas-in-each-column" class="section level1">
+<h1>Counting NAs in each column</h1>
+<pre class="r"><code>sum(is.na(covid_data$CRT_1))
+sum(is.na(covid_data$CRT_2))
+sum(is.na(covid_data$CRT_3))
+sum(is.na(covid_data$CRT_4))
+sum(is.na(covid_data$CRT_5))
+sum(is.na(covid_data$CRT_6))
+sum(is.na(covid_data$CRT_7))
+
+sum(is.na(covid_data$World_Beliefs_1))
+sum(is.na(covid_data$World_Beliefs_2))
+sum(is.na(covid_data$World_Beliefs_3))
+sum(is.na(covid_data$World_Beliefs_4))
+sum(is.na(covid_data$World_Beliefs_5))
+sum(is.na(covid_data$World_Beliefs_6))
+sum(is.na(covid_data$World_Beliefs_7))
+sum(is.na(covid_data$World_Beliefs_8))
+sum(is.na(covid_data$World_Beliefs_9))
+sum(is.na(covid_data$World_Beliefs_10))
+sum(is.na(covid_data$World_Beliefs_11))
+sum(is.na(covid_data$World_Beliefs_12))
+sum(is.na(covid_data$World_Beliefs_13))
+sum(is.na(covid_data$World_Beliefs_14))
+sum(is.na(covid_data$World_Beliefs_15))
+
+sum(is.na(covid_data$Green_Short_A1))
+sum(is.na(covid_data$Green_Short_A2))
+sum(is.na(covid_data$Green_Short_A3))
+sum(is.na(covid_data$Green_Short_A4))
+sum(is.na(covid_data$Green_Short_A5))
+sum(is.na(covid_data$Green_Short_A6))
+sum(is.na(covid_data$Green_Short_A7))
+sum(is.na(covid_data$Green_Short_A8))
+sum(is.na(covid_data$Green_Short_B1))
+sum(is.na(covid_data$Green_Short_B2))
+sum(is.na(covid_data$Green_Short_B3))
+sum(is.na(covid_data$Green_Short_B4))
+sum(is.na(covid_data$Green_Short_B5))
+sum(is.na(covid_data$Green_Short_B6))
+sum(is.na(covid_data$Green_Short_B7))
+sum(is.na(covid_data$Green_Short_B8))
+sum(is.na(covid_data$Green_Short_B9))
+sum(is.na(covid_data$Green_Short_B10))
+
+sum(is.na(covid_data$IUS_Short_1))
+sum(is.na(covid_data$IUS_Short_2))
+sum(is.na(covid_data$IUS_Short_3))
+sum(is.na(covid_data$IUS_Short_4))
+sum(is.na(covid_data$IUS_Short_5))
+sum(is.na(covid_data$IUS_Short_6))
+sum(is.na(covid_data$IUS_Short_7))
+sum(is.na(covid_data$IUS_Short_8))
+sum(is.na(covid_data$IUS_Short_9))
+sum(is.na(covid_data$IUS_Short_10))
+sum(is.na(covid_data$IUS_Short_11))
+sum(is.na(covid_data$IUS_Short_12))
+
+sum(is.na(covid_data$MIS_1))
+sum(is.na(covid_data$MIS_2))
+sum(is.na(covid_data$MIS_3))
+sum(is.na(covid_data$MIS_4))
+sum(is.na(covid_data$MIS_5))
+sum(is.na(covid_data$MIS_6))
+sum(is.na(covid_data$MIS_7))
+sum(is.na(covid_data$MIS_8))
+sum(is.na(covid_data$MIS_9))
+sum(is.na(covid_data$MIS_10))
+sum(is.na(covid_data$MIS_11))
+sum(is.na(covid_data$MIS_12))
+sum(is.na(covid_data$MIS_13))
+sum(is.na(covid_data$MIS_14))
+sum(is.na(covid_data$MIS_15))
+
+sum(is.na(covid_data$PAS_1))
+sum(is.na(covid_data$PAS_2))
+sum(is.na(covid_data$PAS_3))
+sum(is.na(covid_data$PAS_4))
+sum(is.na(covid_data$PAS_5))
+sum(is.na(covid_data$PAS_6))
+sum(is.na(covid_data$PAS_7))
+sum(is.na(covid_data$PAS_8))
+sum(is.na(covid_data$PAS_9))
+sum(is.na(covid_data$PAS_10))
+sum(is.na(covid_data$PAS_11))
+sum(is.na(covid_data$PAS_12))
+sum(is.na(covid_data$PAS_13))
+sum(is.na(covid_data$PAS_14))
+sum(is.na(covid_data$PAS_15))
+
+sum(is.na(covid_data$R_SAS_1))
+sum(is.na(covid_data$R_SAS_2))
+sum(is.na(covid_data$R_SAS_3))
+sum(is.na(covid_data$R_SAS_4))
+sum(is.na(covid_data$R_SAS_5))
+sum(is.na(covid_data$R_SAS_6))
+sum(is.na(covid_data$R_SAS_7))
+sum(is.na(covid_data$R_SAS_8))
+sum(is.na(covid_data$R_SAS_9))
+sum(is.na(covid_data$R_SAS_10))
+sum(is.na(covid_data$R_SAS_11))
+sum(is.na(covid_data$R_SAS_12))
+sum(is.na(covid_data$R_SAS_13))
+sum(is.na(covid_data$R_SAS_14))
+sum(is.na(covid_data$R_SAS_15))
+
+sum(is.na(covid_data$PhAnS_1))
+sum(is.na(covid_data$PhAnS_2))
+sum(is.na(covid_data$PhAnS_3))
+sum(is.na(covid_data$PhAnS_4))
+sum(is.na(covid_data$PhAnS_5))
+sum(is.na(covid_data$PhAnS_6))
+sum(is.na(covid_data$PhAnS_7))
+sum(is.na(covid_data$PhAnS_8))
+sum(is.na(covid_data$PhAnS_9))
+sum(is.na(covid_data$PhAnS_10))
+sum(is.na(covid_data$PhAnS_11))
+sum(is.na(covid_data$PhAnS_12))
+sum(is.na(covid_data$PhAnS_13))
+sum(is.na(covid_data$PhAnS_14))
+sum(is.na(covid_data$PhAnS_15))
+
+sum(is.na(covid_data$STAIT_1))
+sum(is.na(covid_data$STAIT_2))
+sum(is.na(covid_data$STAIT_3))
+sum(is.na(covid_data$STAIT_4))
+sum(is.na(covid_data$STAIT_5))
+sum(is.na(covid_data$STAIT_6))
+sum(is.na(covid_data$STAIT_7))
+sum(is.na(covid_data$STAIT_8))
+sum(is.na(covid_data$STAIT_9))
+sum(is.na(covid_data$STAIT_10))
+sum(is.na(covid_data$STAIT_11))
+sum(is.na(covid_data$STAIT_12))
+sum(is.na(covid_data$STAIT_13))
+sum(is.na(covid_data$STAIT_14))
+sum(is.na(covid_data$STAIT_15))
+sum(is.na(covid_data$STAIT_16))
+sum(is.na(covid_data$STAIT_17))
+sum(is.na(covid_data$STAIT_18))
+sum(is.na(covid_data$STAIT_19))
+sum(is.na(covid_data$STAIT_20))
+
+colSums(is.na(covid_data))
+
+#CRT not as consistent (294, 298, 295 x 4, 297; 4)
+#World Beliefs consistent (72 x 5,  71 x 3, 72, 71 x 6; 1)
+#Green Short consistent (71 x 8, 72, 71 x 3, 72, 71 x 2, 72 x 2, 71; 1)
+#IUS consistent (359 x 12; 0)
+#MIS consistent (96 x 8, 97, 96 x 5; 1)
+#PAS consistent (69 x 15; 0)
+#R_SAS consistent (86 x 15; 0)
+#PhAnS consistent (72 x 2, 73, 72 x 9, 73, 72 x 2; 1)
+#STAIT consistent (64 x 3, 65 x 9, 66, 65 x 2; 2)
+#STAIS consistent (84 x 12, 86, 84 x 2, 85, 84 x 4; 2)
+#PSWQ consistent (77 x 3, 78, 77 x 12)
+#COVID_19_3 consistent (86 x 13, 87, 86 x 2; 1)
+#Attitudes/Behaviors not totally consistent (66 x 8, 88, 66, 69 x 2; 22!)
+#Health_Behavior consistent (except for questions 7-9 which were added later) (72 x 8 and 337 x 3; 0 and 0)
+#Covid-19_1 consistent (88 x 3, 89, 88 x 9; 1)
+#Covid_19_2 consistent (70 x 4, 71, 70 x 25; 1)
+#PVDS consistent (81 x 15; 0)
+#RLOC consistent (353 x 9, 355 x 2, 354 x 3, 355 x 2, 354, 353 x 3, 354 x 5, 353 x 4; 2)
+#NFCS consistent (354 x 2, 353 x 4, 354, 353 x 8; 1)</code></pre>
 <pre class="r"><code>write_csv(covid_data, &quot;COVID_19_December_2020_Cleaned_Data.csv&quot;)</code></pre>
 </div>
 

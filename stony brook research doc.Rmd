@@ -13,13 +13,14 @@ library(tidyverse)
 library(dplyr)
 covid_data <- read_csv("~/Stony Brook Research/COVID-19_December 14, 2020_14.40 .csv")
 ```
-
 # Deleting First Row from each column
 It was irrelevant and messed with classification of variables
 ```{r}
 covid_data <- covid_data %>% 
    filter(row_number() > (n() - 673))
 ```
+
+## Note for runner: before starting, check that first 300 columns go up to June 17th. 
 
 # Green Variables
 ```{r}
@@ -100,7 +101,7 @@ covid_data <- covid_data %>%
 ```
 
 # Make Green NA until June 17
-##Make sure row 300 is the end of the June 17 rows!*************************
+## Make sure row 300 is the end of the June 17 rows!*************************
 ```{r}
 for (n in 1:8)
      covid_data[[paste0("Green_Short_A", n)]] <- replace(covid_data[[paste0("Green_Short_A", n)]], 1:300, NA)
@@ -658,10 +659,10 @@ covid_data <- covid_data %>%
          COVID_19_3_16_true = parse_integer(as.character(COVID_19_3_16_true))) 
 
 covid_data <- covid_data %>%
-  mutate(***************COVID_conspiracies_total = rowMeans(subset(covid_data, select = c(COVID_19_3_1, COVID_19_3_2, 
-             COVID_19_3_3, COVID_19_3_4, COVID_19_3_5, COVID_19_3_6, COVID_19_3_7, COVID_19_3_8, 
-             COVID_19_3_9, COVID_19_3_10, COVID_19_3_11, COVID_19_3_12, COVID_19_3_13, COVID_19_3_14, 
-             COVID_19_3_15, COVID_19_3_16), na.rm = TRUE))*****************,
+  mutate(COVID_conspiracies_total = COVID_19_3_1 + COVID_19_3_2 + COVID_19_3_3 +
+             COVID_19_3_4 + COVID_19_3_5 + COVID_19_3_6 + COVID_19_3_7 + COVID_19_3_8 +  
+             COVID_19_3_9 + COVID_19_3_10 + COVID_19_3_11 + COVID_19_3_12 + COVID_19_3_13 + 
+             COVID_19_3_14 + COVID_19_3_15 + COVID_19_3_16,
          Conspiracies_endorsed = COVID_19_3_1_true + COVID_19_3_2_true + COVID_19_3_3_true + 
              COVID_19_3_4_true + COVID_19_3_5_true + COVID_19_3_6_true + COVID_19_3_7_true + 
              COVID_19_3_8_true +  COVID_19_3_9_true + COVID_19_3_10_true + COVID_19_3_11_true + 
@@ -902,10 +903,8 @@ covid_data <- covid_data %>%
            PVDS_15 = parse_integer(as.character(PVDS_15))) 
 
 covid_data <- covid_data %>%
-  mutate(Perceived_Infectability = *********************rowMeans(subset(covid_data, select = c(PVDS_8, PVDS_12, PVDS_2, 
-                                                    PVDS_14, PVDS_10, PVDS_5, PVDS_6), na.rm = TRUE)),
-         Germ_Aversion = rowMeans(subset(covid_data, select = c(PVDS_7, PVDS_15, PVDS_4, 
-                                      PVDS_9, PVDS_3, PVDS_13, PVDS_11), na.rm = TRUE)))*************************
+  mutate(Perceived_Infectability = PVDS_8 + PVDS_12 + PVDS_2 + PVDS_14 + PVDS_10 + PVDS_5 + PVDS_6,
+         Germ_Aversion = PVDS_7 + PVDS_15 + PVDS_4 + PVDS_9 + PVDS_3 + PVDS_1 + PVDS_13 + PVDS_11)
 ```
 
 
@@ -1034,15 +1033,14 @@ covid_data <- covid_data %>%
 library(foreign)
 covid_data2 <- read.spss("~/Stony Brook Research/covidsurvey_data_merged_clean_8.30.20 (1).sav", to.data.frame=TRUE)
 
-head(covid_data2)
 covid_data2 <- covid_data2 %>%
-  select(ResponseId, Green_Total_Short_Score, IUS_Total_Score) %>%
+  dplyr::select(ResponseId, Green_Total_Short_Score, IUS_Total_Score) %>%
   mutate(ResponseId = parse_character(as.character(ResponseId)))
 
 covid_data_joined <- left_join(covid_data, covid_data2, by = "ResponseId")
 
-covid_data_joined %>%
-  select(Green_Total_Short_Score.x, Green_Total_Short_Score.y, ResponseId, StartDate, IUS_Total_Score.x, IUS_Total_Score.y) %>%
+covid_data_joined_test <- covid_data_joined %>%
+  dplyr::select(Green_Total_Short_Score.x, Green_Total_Short_Score.y, ResponseId, StartDate, IUS_Total_Score.x, IUS_Total_Score.y) %>%
   mutate(Green_Total_Short_Score = coalesce(Green_Total_Short_Score.x, Green_Total_Short_Score.y),
          IUS_Total_Score = coalesce(IUS_Total_Score.x, IUS_Total_Score.y))
 
