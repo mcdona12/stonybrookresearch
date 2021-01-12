@@ -213,6 +213,485 @@ hist(covid_data$IUS_Total_Score)
 
 ```
 
+# GCBS
+```{r}
+##GCBS_gm
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ GCBS_gm, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$GCBS_gm)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##GCBS_et
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ GCBS_et, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$GCBS_et)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##GCBS_mg
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ GCBS_mg, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$GCBS_mg)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##GCBS_pw
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ GCBS_pw, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$GCBS_pw)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##GCBS_ci
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ GCBS_ci, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$GCBS_ci)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##GCBS_total
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ GCBS_total, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$GCBS_total)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+# MIS_total
+```{r}
+##MIS_total
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ MIS_total, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$MIS_total)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+# PAS
+```{r}
+##PAS_total
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ PAS_total, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$PAS_total)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+# Social_Anhedonia
+```{r}
+##Social_Anhedonia_Score
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ Social_Anhedonia_Score, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$Social_Anhedonia_Score)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+# PhAnS
+```{r}
+##PhAnS_score
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ PhAnS_score, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$PhAnS_score)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+#Sxtypy
+```{r}
+##pos_sxtypy_total
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ pos_sxtypy_total, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$pos_sxtypy_total)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##neg_sxtypy_total
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ neg_sxtypy_total, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$neg_sxtypy_total)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##overall_sxtypy_total
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ overall_sxtypy_total, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$overall_sxtypy_total)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+#STAIT
+```{r}
+##STAIT_total
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ STAIT_total, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$STAIT_total)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+# STAIS
+```{r}
+##STAIS_total
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ STAIS_total, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$STAIS_total)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+# PSWQ
+```{r}
+##STAIS_total
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ PSWQ_total, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$PSWQ_total)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+# COVID_conspiracies
+```{r}
+##COVID_conspiracies_total
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ COVID_conspiracies_total, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$COVID_conspiracies_total)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##Conspiracies_endorsed
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ Conspiracies_endorsed, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$Conspiracies_endorsed)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##Conspiracies_endorsed_lgtrans
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ Conspiracies_endorsed_lgtrans, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$Conspiracies_endorsed_lgtrans)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##COVID_factsvmisinfo_score
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ COVID_factsvmisinfo_score, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$COVID_factsvmisinfo_score)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+# Health_Behavior
+```{r}
+##Health_Behavior_Score
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ Health_Behavior_Score, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$Health_Behavior_Score)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+# COVID_conseq
+```{r}
+##COVID_conseq_sxs
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ COVID_conseq_sxs, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$COVID_conseq_sxs)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##COVID_conseq_abilities
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ COVID_conseq_abilities, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$COVID_conseq_abilities)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##COVID_conseq_mood
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ COVID_conseq_mood, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$COVID_conseq_mood)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##COVID_conseq_burden_to_others
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ COVID_conseq_burden_to_others, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$COVID_conseq_burden_to_others)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##COVID_conseq_realworld
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ COVID_conseq_realworld, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$COVID_conseq_realworld)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##COVID_conseq_total
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ COVID_conseq_total, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$COVID_conseq_total)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+# Perceived_Infectability
+```{r}
+##Perceived_Infectability
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ Perceived_Infectability, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$Perceived_Infectability)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+# Germ_Aversion
+```{r}
+##Germ_Aversion
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ Germ_Aversion, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$Germ_Aversion)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+# Rotters
+```{r}
+##Rotters_general
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ Rotters_general, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$Rotters_general)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+```{r}
+##Rotters_political
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ Rotters_political, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$Rotters_political)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+# RLOC
+```{r}
+##RLOC_Total_Score
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ RLOC_Total_Score, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$RLOC_Total_Score)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
+# NFCS
+```{r}
+##NFCS_Total_Score
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ NFCS_Total_Score, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$NFCS_Total_Score)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+
+```
+
 # CRT?
 
 # World Beliefs
