@@ -7,7 +7,7 @@ output:
   html_document:
     df_print: paged
 ---
-
+#********************************Make sure 1-300 is still all rows up to June 17****************************
 ```{r setup, include = FALSE} 
 library(tidyverse)
 library(dplyr)
@@ -19,9 +19,6 @@ It was irrelevant and messed with classification of variables
 covid_data <- covid_data %>% 
    filter(row_number() > (n() - 673))
 ```
-
-## Note for runner: before starting, check that first 300 columns go up to June 17th. 
-
 # Green Variables
 ```{r}
 # Renaming Green variables
@@ -1002,7 +999,7 @@ covid_data <- covid_data %>%
          Rotters_political = RLOC_3 + RLOC_12 + RLOC_17 + RLOC_22,
          RLOC_Total_Score = RLOC_2 + RLOC_3 + RLOC_4 + RLOC_5 + RLOC_6 + RLOC_7 + 
                             RLOC_9 + RLOC_10 + RLOC_11 + RLOC_12 + RLOC_13 + RLOC_15 + 
-                            RLOC_16 + RLOC_17 + RLOC_18 + RLOC_20 + RLOC_21 + RLOC_22 +
+                            RLOC_16 + RLOC_17 + RLOC_18 + RLOC_20 + RLOC_21 +
                             RLOC_23 + RLOC_25 + RLOC_26 + RLOC_28 + RLOC_29)
 ```
 
@@ -1030,8 +1027,8 @@ covid_data <- covid_data %>%
 
 ```{r, include= FALSE}
 # Merge
-library(foreign)
-covid_data2 <- read.spss("~/Stony Brook Research/covidsurvey_data_merged_clean_8.30.20 (1).sav", to.data.frame=TRUE)
+
+covid_data2 <- read_csv("~/Stony Brook Research/Clean_COVID_19_May 13, 2020_20.32.csv")
 
 covid_data2 <- covid_data2 %>%
   dplyr::select(ResponseId, Green_Total_Short_Score, IUS_Total_Score) %>%
@@ -1039,12 +1036,14 @@ covid_data2 <- covid_data2 %>%
 
 covid_data_joined <- left_join(covid_data, covid_data2, by = "ResponseId")
 
-covid_data_joined_test <- covid_data_joined %>%
+covid_data_joined %>%
   dplyr::select(Green_Total_Short_Score.x, Green_Total_Short_Score.y, ResponseId, StartDate, IUS_Total_Score.x, IUS_Total_Score.y) %>%
   mutate(Green_Total_Short_Score = coalesce(Green_Total_Short_Score.x, Green_Total_Short_Score.y),
          IUS_Total_Score = coalesce(IUS_Total_Score.x, IUS_Total_Score.y))
 
-# waiting on Emmett's response
+covid_data <- covid_data_joined %>%
+   mutate(Green_Total_Short_Score = coalesce(Green_Total_Short_Score.x, Green_Total_Short_Score.y),
+         IUS_Total_Score = coalesce(IUS_Total_Score.x, IUS_Total_Score.y))
 ```
 
 ```{r}
