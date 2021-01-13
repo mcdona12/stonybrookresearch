@@ -7,7 +7,7 @@ output:
   html_document:
     df_print: paged
 ---
-#********************************Make sure 1-300 is still all rows up to June 17****************************
+#***************************Make sure 1-300 is still all rows up to June 17****************************
 ```{r setup, include = FALSE} 
 library(tidyverse)
 library(dplyr)
