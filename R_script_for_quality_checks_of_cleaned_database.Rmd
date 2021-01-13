@@ -42,6 +42,8 @@ hist(covid_data$Demographics_age)
 #length(covid_data$Demographics_age)-sum(is.na(covid_data$Demographics_age)) 
 
 # Verification of Variable Coding (Range)
+covid_data <- covid_data %>%
+  mutate(Demographics_age = ifelse(Demographics_age < 16, NA, Demographics_age))
 ```
 
 ```{r}
