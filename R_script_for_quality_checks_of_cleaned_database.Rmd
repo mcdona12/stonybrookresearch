@@ -4,6 +4,9 @@ author: "Clare McDonald & Viveka Hall-Holt"
 date: "1/8/2021"
 output: html_document
 ---
+```{r}
+install.packages("psych")
+```
 
 ```{r setup, include = FALSE} 
 library(tidyverse)
@@ -13,21 +16,25 @@ library(psych)
 covid_data <- read_csv("~/Stony Brook Research/COVID_19_December_2020_Cleaned_Data.csv")
 ```
 
-<<<<<<< HEAD
-Example of format:
+#Time taken
 ```{r}
-##Name of item/score
-# Frequency Distributions (mean/sd)
+##Duration_in_minutes
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ duration_in_minutes, data = covid_data)#[c("mean","sd","n","missing")]
+#length(covid_data$Demographics_age)-sum(is.na(covid_data$Demographics_age))
 
 # Histogram 
+hist(covid_data$duration_in_minutes)
+
+#length(covid_data$Demographics_age)-sum(is.na(covid_data$Demographics_age)) 
 
 # Verification of Variable Coding (Range)
 
-# Scale Reliability
-
+#Any changes
+#covid_data <- covid_data %>% mutate(duration_in_minutes = ifelse(duration_in_minutes < 10, NA, duration_in_minutes))
+covid_data <- subset(covid_data, duration_in_minutes > 10)
 ```
 
-=======
 # Demographics
 ```{r}
 ##Demographics_age
@@ -42,7 +49,11 @@ hist(covid_data$Demographics_age)
 #length(covid_data$Demographics_age)-sum(is.na(covid_data$Demographics_age)) 
 
 # Verification of Variable Coding (Range)
+
+#Any changes
+#covid_data <- replace(covid_data[["Demographics_age"]], Demographics_age < 16, NA)
 ```
+
 
 ```{r}
 ##Demographics_gender
@@ -100,12 +111,13 @@ hist(covid_data$Demographics_economic)
 ```
 
 ```{r}
-##Demographics_economic
+##Demographics_family_income
 # Frequency Distributions (mean/sd, n per scale)
-favstats(~ Demographics_economic, data = covid_data)#[c("mean","sd","n","missing")]
+covid_data$Demographics_family_income <- as.numeric(as.character(covid_data$Demographics_family_income))
+favstats(~ Demographics_family_income, data = covid_data)#[c("mean","sd","n","missing")]
 
 # Histogram 
-hist(covid_data$Demographics_economic)
+hist(covid_data$Demographics_family_income)
 
 # Verification of Variable Coding (Range)
 ```
