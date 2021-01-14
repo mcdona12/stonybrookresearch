@@ -739,7 +739,6 @@ covid_data <- covid_data %>%
 # COVID 19 Health Behavior
 ```{r}
 # renaming variables
-#renamed by Megan. Should get rid of the renaming?
 covid_data <- covid_data %>%
   rename(Health_Behavior_1 = Health_Behavior,
          Health_Behavior_1a = Health_Behavior_1,
@@ -771,6 +770,10 @@ covid_data <- covid_data %>%
   mutate(Health_Behavior_Score = Health_Behavior_1 + Health_Behavior_1a + Health_Behavior_2 + 
            Health_Behavior_2a + Health_Behavior_3 + Health_Behavior_4 + Health_Behavior_5 + 
            Health_Behavior_6 + Health_Behavior_7 + Health_Behavior_8)
+
+covid_data$Health_Behavior_Score_1_6 <- covid_data$Health_Behavior_1 + covid_data$Health_Behavior_1a + covid_data$Health_Behavior_2 + 
+           covid_data$Health_Behavior_2a + covid_data$Health_Behavior_3 + covid_data$Health_Behavior_4 + covid_data$Health_Behavior_5 + 
+           covid_data$Health_Behavior_6
 ```
 
 # COVID Predicted Consequences

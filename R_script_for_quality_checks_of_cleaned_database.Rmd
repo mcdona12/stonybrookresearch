@@ -49,14 +49,12 @@ hist(covid_data$Demographics_age)
 #length(covid_data$Demographics_age)-sum(is.na(covid_data$Demographics_age)) 
 
 # Verification of Variable Coding (Range)
-<<<<<<< HEAD
 
 #Any changes
 #covid_data <- replace(covid_data[["Demographics_age"]], Demographics_age < 16, NA)
-=======
 covid_data <- covid_data %>%
   mutate(Demographics_age = ifelse(Demographics_age < 16, NA, Demographics_age))
->>>>>>> f4a00dc24999ac6fdb2c07654a1858c3d1fab2a2
+
 ```
 
 
@@ -596,6 +594,24 @@ covid_data %>%
  dplyr::select(Health_Behavior_1, Health_Behavior_1a, Health_Behavior_2,
            Health_Behavior_2a, Health_Behavior_3, Health_Behavior_4, Health_Behavior_5,
            Health_Behavior_6, Health_Behavior_7, Health_Behavior_8) %>%
+  alpha()
+```
+
+```{r}
+##Health_Behavior_Score_1_6
+# Frequency Distributions (mean/sd, n per scale)
+favstats(~ Health_Behavior_Score_1_6, data = covid_data)#[c("mean","sd","n","missing")]
+
+# Histogram 
+hist(covid_data$Health_Behavior_Score_1_6)
+
+# Verification of Variable Coding (Range)
+
+# Scale Reliability
+covid_data %>%
+ dplyr::select(Health_Behavior_1, Health_Behavior_1a, Health_Behavior_2,
+           Health_Behavior_2a, Health_Behavior_3, Health_Behavior_4, Health_Behavior_5,
+           Health_Behavior_6) %>%
   alpha()
 ```
 
