@@ -229,8 +229,6 @@ covid_data %>%
   alpha()
 ```
 
-<<<<<<< HEAD
-=======
 # GCBS
 ```{r}
 ##GCBS_gm
@@ -559,7 +557,7 @@ hist(covid_data$Conspiracies_endorsed_lgtrans)
 
 # Verification of Variable Coding (Range)
 ```
-
+## need to look into low alpha
 ```{r}
 ##COVID_factsvmisinfo_score
 # Frequency Distributions (mean/sd, n per scale)
@@ -582,6 +580,7 @@ covid_data %>%
 ```
 
 # Health_Behavior
+## Health Behaviors Pre-mask (make Health Behavior Total that excludes 7-8)
 ```{r}
 ##Health_Behavior_Score
 # Frequency Distributions (mean/sd, n per scale)
@@ -744,6 +743,7 @@ covid_data %>%
 ```
 
 # Germ_Aversion
+## double check-- low alpha
 ```{r}
 ##Germ_Aversion
 # Frequency Distributions (mean/sd, n per scale)
@@ -763,6 +763,7 @@ covid_data %>%
 ```
 
 # Rotters
+## double check
 ```{r}
 ##Rotters_general
 # Frequency Distributions (mean/sd, n per scale)
@@ -775,7 +776,7 @@ hist(covid_data$Rotters_general)
 
 # Scale Reliability
 covid_data %>%
- dplyr::select(RLOC_5, RLOC_9, RLOC_11, RLOC_13, RLOC_15, RLOC_16 + 
+ dplyr::select(RLOC_5, RLOC_9, RLOC_11, RLOC_13, RLOC_15, RLOC_16, 
                            RLOC_18, RLOC_25, RLOC_28) %>%
   alpha()
 
