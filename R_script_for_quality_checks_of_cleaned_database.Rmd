@@ -52,6 +52,8 @@ hist(covid_data$Demographics_age)
 
 #Any changes
 #covid_data <- replace(covid_data[["Demographics_age"]], Demographics_age < 16, NA)
+
+# Deleting age 12 participant if they exist
 covid_data <- covid_data %>%
   mutate(Demographics_age = ifelse(Demographics_age < 16, NA, Demographics_age))
 
@@ -404,7 +406,6 @@ covid_data %>%
 ```
 
 #Sxtypy
-don't think we need scale reliability for these -- i'll ask
 ```{r}
 ##pos_sxtypy_total
 # Frequency Distributions (mean/sd, n per scale)
@@ -416,6 +417,14 @@ hist(covid_data$pos_sxtypy_total)
 # Verification of Variable Coding (Range)
 
 # Scale Reliability
+
+covid_data %>%
+ dplyr::select(PAS_1, PAS_2, PAS_3, PAS_4, PAS_5, PAS_6, PAS_7, PAS_8, PAS_9,
+               PAS_10, PAS_11, PAS_12, PAS_13, PAS_14, PAS_15, MIS_1, MIS_2, 
+               MIS_3, MIS_4, MIS_5, MIS_6, MIS_7, MIS_8, MIS_9, MIS_10, MIS_11,
+               MIS_12, MIS_13, MIS_14, MIS_15) %>%
+  alpha()
+
 
 ```
 
@@ -431,6 +440,13 @@ hist(covid_data$neg_sxtypy_total)
 
 # Scale Reliability
 
+covid_data %>%
+ dplyr::select(PhAnS_1, PhAnS_2, PhAnS_3, PhAnS_4, PhAnS_5, PhAnS_6, PhAnS_7, 
+               PhAnS_8, PhAnS_9, PhAnS_10, PhAnS_11, PhAnS_12, PhAnS_13, PhAnS_14,
+               PhAnS_15,R_SAS_1, R_SAS_2, R_SAS_3, R_SAS_4, R_SAS_5, R_SAS_6, R_SAS_7, 
+               R_SAS_8, R_SAS_9, R_SAS_10, R_SAS_11, R_SAS_12, R_SAS_13, R_SAS_14, R_SAS_15) %>%
+  alpha()
+
 ```
 
 ```{r}
@@ -444,7 +460,16 @@ hist(covid_data$overall_sxtypy_total)
 # Verification of Variable Coding (Range)
 
 # Scale Reliability
-
+covid_data %>%
+ dplyr::select(PAS_1, PAS_2, PAS_3, PAS_4, PAS_5, PAS_6, PAS_7, PAS_8, PAS_9,
+               PAS_10, PAS_11, PAS_12, PAS_13, PAS_14, PAS_15, MIS_1, MIS_2, 
+               MIS_3, MIS_4, MIS_5, MIS_6, MIS_7, MIS_8, MIS_9, MIS_10, MIS_11,
+               MIS_12, MIS_13, MIS_14, MIS_15, PhAnS_1, PhAnS_2, PhAnS_3, PhAnS_4, 
+               PhAnS_5, PhAnS_6, PhAnS_7, PhAnS_8, PhAnS_9, PhAnS_10, PhAnS_11, 
+               PhAnS_12, PhAnS_13, PhAnS_14, PhAnS_15, R_SAS_1, R_SAS_2, R_SAS_3, 
+               R_SAS_4, R_SAS_5, R_SAS_6, R_SAS_7, R_SAS_8, R_SAS_9, R_SAS_10,
+               R_SAS_11, R_SAS_12, R_SAS_13, R_SAS_14, R_SAS_15) %>%
+  alpha()
 ```
 
 #STAIT
@@ -555,7 +580,7 @@ hist(covid_data$Conspiracies_endorsed_lgtrans)
 
 # Verification of Variable Coding (Range)
 ```
-## need to look into low alpha
+
 ```{r}
 ##COVID_factsvmisinfo_score
 # Frequency Distributions (mean/sd, n per scale)
@@ -578,7 +603,6 @@ covid_data %>%
 ```
 
 # Health_Behavior
-## Health Behaviors Pre-mask (make Health Behavior Total that excludes 7-8)
 ```{r}
 ##Health_Behavior_Score
 # Frequency Distributions (mean/sd, n per scale)
@@ -759,7 +783,6 @@ covid_data %>%
 ```
 
 # Germ_Aversion
-## double check-- low alpha
 ```{r}
 ##Germ_Aversion
 # Frequency Distributions (mean/sd, n per scale)
@@ -779,7 +802,6 @@ covid_data %>%
 ```
 
 # Rotters
-## double check
 ```{r}
 ##Rotters_general
 # Frequency Distributions (mean/sd, n per scale)

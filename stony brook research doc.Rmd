@@ -1053,6 +1053,15 @@ covid_data <- covid_data %>%
                 -IUS_Total_Score.y, -Green_PartA_short_score.x, -Green_PartA_short_score.y,
                 -Green_PartB_short_score.x, -Green_PartB_short_score.y, -IUS_Prospective_score.x,
                 -IUS_Prospective_score.y, -IUS_Inhibitory_score.x, -IUS_Inhibitory_score.y)
+
+# Adding Counter Variable
+
+covid_data3 <- read_csv("~/Stony Brook Research/CounterCOVID-19_January 14, 2021_10.38.csv")
+
+covid_data3 <- covid_data3 %>%
+  dplyr::select(days_passed, ResponseId)
+
+covid_data <- left_join(covid_data, covid_data3, by = "ResponseId")
 ```
 
 ```{r}
