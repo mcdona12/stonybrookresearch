@@ -829,7 +829,7 @@ hist(covid_data$RLOC_Total_Score)
 covid_data %>%
  dplyr::select(RLOC_2, RLOC_3, RLOC_4, RLOC_5, RLOC_6, RLOC_7, RLOC_9, 
                  RLOC_10, RLOC_11, RLOC_12, RLOC_13, RLOC_15,
-                 RLOC_16, RLOC_17, RLOC_18, RLOC_20, RLOC_21,
+                 RLOC_16, RLOC_17, RLOC_18, RLOC_20, RLOC_21, RLOC_22,
                  RLOC_23, RLOC_25, RLOC_26, RLOC_28, RLOC_29) %>%
   alpha()
 ```
