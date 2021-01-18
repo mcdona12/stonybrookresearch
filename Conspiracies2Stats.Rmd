@@ -5,3 +5,24 @@ date: "1/18/2021"
 output: html_document
 ---
 
+```{r, setup}
+library(tidyverse)
+library(mosaic)
+library(psych)
+covid_data <- read_csv("~/Stony Brook Research/COVID_19_December_2020_Cleaned_Data.csv")
+covid_data <- subset(covid_data, duration_in_minutes > 10)
+```
+
+```{r}
+covid_data %>% select(Demographics_age, Demographics_gender, COVID_conspiracies_total, STAIS_total, IUS_Total_Score, Green_PartA_short_score, Green_PartB_short_score, Green_Total_Short_Score, MIS_total, PAS_total, neg_sxtypy_total) %>% describe()
+```
+
+```{r}
+cor.test(covid_data$STAIS_total, covid_data$COVID_conspiracies_total)
+cor.test(covid_data$IUS_Total_Score, covid_data$COVID_conspiracies_total)
+cor.test(covid_data$Green_Total_Short_Score, covid_data$COVID_conspiracies_total)
+cor.test(covid_data$MIS_total, covid_data$COVID_conspiracies_total)
+cor.test(covid_data$PAS_total, covid_data$COVID_conspiracies_total)
+cor.test(covid_data$neg_sxtypy_total, covid_data$COVID_conspiracies_total)
+```
+
