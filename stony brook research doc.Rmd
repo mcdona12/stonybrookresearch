@@ -190,6 +190,13 @@ covid_data <- covid_data %>%
          Demographics_economic = "7)",
          Demographics_family_income = "8)")
 
+# Parsing
+covid_data$Demographics_age <- as.numeric(as.character(covid_data$Demographics_age))
+covid_data$Demographics_gender <- parse_factor(covid_data$Demographics_gender)
+covid_data$Demographics_ethnicity <- parse_factor(covid_data$Demographics_ethnicity)
+covid_data$Demographics_political_general <- parse_factor(covid_data$Demographics_political_general)
+covid_data$Demographics_societal <- parse_factor(covid_data$Demographics_societal)
+covid_data$Demographics_economic <- parse_factor(covid_data$Demographics_economic)
 ```
 
 # Duration from seconds to minutes

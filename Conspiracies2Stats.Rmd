@@ -12,11 +12,18 @@ library(psych)
 covid_data <- read_csv("~/Stony Brook Research/COVID_19_December_2020_Cleaned_Data.csv")
 covid_data <- subset(covid_data, duration_in_minutes > 10)
 ```
-
+# Summary Statistics of Main Variables of Interest
 ```{r}
-covid_data %>% select(Demographics_age, Demographics_gender, COVID_conspiracies_total, STAIS_total, IUS_Total_Score, Green_PartA_short_score, Green_PartB_short_score, Green_Total_Short_Score, MIS_total, PAS_total, neg_sxtypy_total) %>% describe()
-```
+covid_data %>% 
+  dplyr::select(Demographics_age, Demographics_gender, COVID_conspiracies_total, 
+                STAIS_total, IUS_Total_Score, Green_PartA_short_score, Green_PartB_short_score, 
+                Green_Total_Short_Score, MIS_total, PAS_total, neg_sxtypy_total) %>%
+  describe()
 
+# just formatted a little differently and I had to add the "dplyr::" b/c it wasn't working for me lol
+# also IUS shows up as having 550 observations for me! 
+```
+# Correlations + Tests
 ```{r}
 cor.test(covid_data$STAIS_total, covid_data$COVID_conspiracies_total)
 cor.test(covid_data$IUS_Total_Score, covid_data$COVID_conspiracies_total)
