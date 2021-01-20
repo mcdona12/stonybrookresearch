@@ -9,6 +9,8 @@ output: html_document
 library(tidyverse)
 library(mosaic)
 library(psych)
+install.packages("ggpubr")
+library(ggpubr)
 covid_data <- read_csv("~/Stony Brook Research/COVID_19_December_2020_Cleaned_Data.csv")
 covid_data <- subset(covid_data, duration_in_minutes > 10)
 ```
@@ -31,5 +33,73 @@ cor.test(covid_data$Green_Total_Short_Score, covid_data$COVID_conspiracies_total
 cor.test(covid_data$MIS_total, covid_data$COVID_conspiracies_total)
 cor.test(covid_data$PAS_total, covid_data$COVID_conspiracies_total)
 cor.test(covid_data$neg_sxtypy_total, covid_data$COVID_conspiracies_total)
+```
+
+```{r}
+ggplot(covid_data, aes(x = Green_Total_Short_Score, y = COVID_conspiracies_total)) + 
+         geom_point() +
+         geom_smooth(method=lm, size=1.25, se=FALSE) +
+         xlab ("GPTS") +
+         ylab ("COVID-19 CT")
+        # stat_cor(aes(label=..r.label..), label.x=70)
+
+ggplot(covid_data, aes(x=MIS_total, y=COVID_conspiracies_total)) + 
+         geom_point() +
+         geom_smooth(method=lm, size=1.25, se=FALSE)+
+         xlab ("MIS") +
+         ylab ("COVID-19 CT")
+        # stat_cor(aes(label=..r.label..), label.x=10)
+
+ggplot(covid_data, aes(x=PAS_total, y=COVID_conspiracies_total)) + 
+         geom_point() +
+         geom_smooth(method=lm, size=1.25, se=FALSE)+
+         xlab ("PAS")+
+         ylab ("COVID-19 CT")
+         #stat_cor(aes(label=..r.label..), label.x=12)
+
+ggplot(covid_data, aes(x=PhAnS_score, y=COVID_conspiracies_total)) + 
+         geom_point() +
+         geom_smooth(method=lm, size=1.25, se=FALSE)+
+         xlab ("PhAnS")+
+         ylab ("COVID-19 CT")
+         #stat_cor(aes(label=..r.label..), label.x=10)
+
+ggplot(covid_data, aes(x=Social_Anhedonia_Score, y=COVID_conspiracies_total)) + 
+         geom_point() +
+         geom_smooth(method=lm, size=1.25, se=FALSE)+
+         xlab ("SAS")+
+         ylab ("COVID-19 CT")
+         #stat_cor(aes(label=..r.label..), label.x=10)
+
+ggplot(covid_data, aes(x=IUS_Total_Score, y=COVID_conspiracies_total)) + 
+         geom_point() +
+         geom_smooth(method=lm, size=1.25, se=FALSE) +
+         #stat_cor(cor.coef.name = "r")+
+         xlab ("IUS")+
+         ylab ("COVID-19 CT")
+         #stat_cor(aes(label=..r.label..), label.x=52)
+
+ggplot(covid_data, aes(x=STAIT_total, y=COVID_conspiracies_total)) + 
+         geom_point() +
+         geom_smooth(method=lm, size=1.25, se=FALSE) +
+         #stat_cor(cor.coef.name = "r")+
+         xlab ("STAIT")+
+         ylab ("COVID-19 CT")
+        # stat_cor(aes(label=..r.label..))
+
+
+ggplot(covid_data, aes(x=STAIS_total, y=COVID_conspiracies_total)) + 
+         geom_point() +
+         geom_smooth(method=lm, size=1.25, se=FALSE) +
+         #stat_cor(cor.coef.name = "r")+
+         xlab ("STAIS")+
+         ylab ("COVID-19 CT")
+        # stat_cor(aes(label=..r.label..), label.x=52)
+```
+```{r}
+# Regression
+
+covid_reg1 <- lm(COVID_conspiracies_total ~ MIS_total + PAS_total + PhAnS_score + Social_Anhedonia_Score + Green_Total_Short_Score, data = covid_data)
+summary(covid_reg1)
 ```
 
