@@ -3,6 +3,8 @@ title: "Conspiracies2Stats"
 author: "Clare McDonald and Viveka Hall-Holt"
 date: "1/18/2021"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r, setup}
@@ -11,9 +13,12 @@ library(mosaic)
 library(psych)
 install.packages("ggpubr")
 library(ggpubr)
+install.packages("gridExtra")
+library(gridExtra)
 covid_data <- read_csv("~/Stony Brook Research/COVID_19_December_2020_Cleaned_Data.csv")
 covid_data <- subset(covid_data, duration_in_minutes > 10)
 ```
+
 # Summary Statistics of Main Variables of Interest
 ```{r}
 covid_data %>% 
@@ -25,6 +30,7 @@ covid_data %>%
 # just formatted a little differently and I had to add the "dplyr::" b/c it wasn't working for me lol
 # also IUS shows up as having 550 observations for me! 
 ```
+
 # Correlations + Tests
 ```{r}
 cor.test(covid_data$STAIS_total, covid_data$COVID_conspiracies_total)
@@ -35,43 +41,44 @@ cor.test(covid_data$PAS_total, covid_data$COVID_conspiracies_total)
 cor.test(covid_data$neg_sxtypy_total, covid_data$COVID_conspiracies_total)
 ```
 
+# Scatterplots
 ```{r}
-ggplot(covid_data, aes(x = Green_Total_Short_Score, y = COVID_conspiracies_total)) + 
+plot1 <- ggplot(covid_data, aes(x = Green_Total_Short_Score, y = COVID_conspiracies_total)) + 
          geom_point() +
          geom_smooth(method=lm, size=1.25, se=FALSE) +
          xlab ("GPTS") +
          ylab ("COVID-19 CT")
         # stat_cor(aes(label=..r.label..), label.x=70)
 
-ggplot(covid_data, aes(x=MIS_total, y=COVID_conspiracies_total)) + 
+plot2 <- ggplot(covid_data, aes(x=MIS_total, y=COVID_conspiracies_total)) + 
          geom_point() +
          geom_smooth(method=lm, size=1.25, se=FALSE)+
          xlab ("MIS") +
          ylab ("COVID-19 CT")
         # stat_cor(aes(label=..r.label..), label.x=10)
 
-ggplot(covid_data, aes(x=PAS_total, y=COVID_conspiracies_total)) + 
+plot3 <- ggplot(covid_data, aes(x=PAS_total, y=COVID_conspiracies_total)) + 
          geom_point() +
          geom_smooth(method=lm, size=1.25, se=FALSE)+
          xlab ("PAS")+
          ylab ("COVID-19 CT")
          #stat_cor(aes(label=..r.label..), label.x=12)
 
-ggplot(covid_data, aes(x=PhAnS_score, y=COVID_conspiracies_total)) + 
+plot4 <- ggplot(covid_data, aes(x=PhAnS_score, y=COVID_conspiracies_total)) + 
          geom_point() +
          geom_smooth(method=lm, size=1.25, se=FALSE)+
          xlab ("PhAnS")+
          ylab ("COVID-19 CT")
          #stat_cor(aes(label=..r.label..), label.x=10)
 
-ggplot(covid_data, aes(x=Social_Anhedonia_Score, y=COVID_conspiracies_total)) + 
+plot5 <- ggplot(covid_data, aes(x=Social_Anhedonia_Score, y=COVID_conspiracies_total)) + 
          geom_point() +
          geom_smooth(method=lm, size=1.25, se=FALSE)+
          xlab ("SAS")+
          ylab ("COVID-19 CT")
          #stat_cor(aes(label=..r.label..), label.x=10)
 
-ggplot(covid_data, aes(x=IUS_Total_Score, y=COVID_conspiracies_total)) + 
+plot6 <- ggplot(covid_data, aes(x=IUS_Total_Score, y=COVID_conspiracies_total)) + 
          geom_point() +
          geom_smooth(method=lm, size=1.25, se=FALSE) +
          #stat_cor(cor.coef.name = "r")+
@@ -79,7 +86,7 @@ ggplot(covid_data, aes(x=IUS_Total_Score, y=COVID_conspiracies_total)) +
          ylab ("COVID-19 CT")
          #stat_cor(aes(label=..r.label..), label.x=52)
 
-ggplot(covid_data, aes(x=STAIT_total, y=COVID_conspiracies_total)) + 
+plot7 <- ggplot(covid_data, aes(x=STAIT_total, y=COVID_conspiracies_total)) + 
          geom_point() +
          geom_smooth(method=lm, size=1.25, se=FALSE) +
          #stat_cor(cor.coef.name = "r")+
@@ -88,17 +95,19 @@ ggplot(covid_data, aes(x=STAIT_total, y=COVID_conspiracies_total)) +
         # stat_cor(aes(label=..r.label..))
 
 
-ggplot(covid_data, aes(x=STAIS_total, y=COVID_conspiracies_total)) + 
+plot8 <- ggplot(covid_data, aes(x=STAIS_total, y=COVID_conspiracies_total)) + 
          geom_point() +
          geom_smooth(method=lm, size=1.25, se=FALSE) +
          #stat_cor(cor.coef.name = "r")+
          xlab ("STAIS")+
          ylab ("COVID-19 CT")
         # stat_cor(aes(label=..r.label..), label.x=52)
-```
-```{r}
-# Regression
 
+grid.arrange(plot1, plot2, plot3, plot4, plot5, plot6, plot7, plot8, ncol=4)
+```
+
+# Regression
+```{r}
 covid_reg1 <- lm(COVID_conspiracies_total ~ MIS_total + PAS_total + PhAnS_score + Social_Anhedonia_Score + Green_Total_Short_Score, data = covid_data)
 summary(covid_reg1)
 ```
