@@ -1073,4 +1073,5 @@ covid_data <- left_join(covid_data, covid_data3, by = "ResponseId")
 
 ```{r}
 write_csv(covid_data, "COVID_19_December_2020_Cleaned_Data.csv")
+#add ../Stony Brook Research/ to automatically write in the folder under the current one it is being written in
 ```
