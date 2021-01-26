@@ -155,21 +155,42 @@ ggplot(covid_data, aes(x = Rotters_political, y = COVID_conspiracies_total)) +
 covid_reg1 <- lm(COVID_conspiracies_total ~ MIS_total + PAS_total + PhAnS_score + Social_Anhedonia_Score + Green_Total_Short_Score, data = covid_data)
 summary(covid_reg1)
 
-<<<<<<< HEAD
-summary(covid_data$MIS_total)
-summary(covid_data$PAS_total)
-summary(covid_data$PhAnS_score)
-summary(covid_data$Social_Anhedonia_Score)
-summary(covid_data$Green_Total_Short_Score)
-
-covid_data %>%
-  dplyr::select(MIS_total, PAS_total, PhAnS_score, Social_Anhedonia_Score, Green_Total_Short_Score)
-=======
 covid_reg2 <- lm(COVID_conspiracies_total ~ Demographics_societal + Demographics_economic, data = covid_data)
 summary(covid_reg2)
 
 covid_reg3 <- lm(COVID_conspiracies_total ~ Demographics_societal + Demographics_economic + MIS_total + PAS_total + PhAnS_score + Social_Anhedonia_Score + Green_Total_Short_Score, data = covid_data)
 summary(covid_reg3)
->>>>>>> 0c9a49a0e21f58c921fec8ae2171ab0b17d72228
+
+# Checking Missing for Covid Reg 1
+summary(covid_data$MIS_total) # 67 NA
+summary(covid_data$PAS_total) # 40 NA
+summary(covid_data$PhAnS_score) # 45 NA
+summary(covid_data$Social_Anhedonia_Score) # 45 NA
+summary(covid_data$Green_Total_Short_Score) # 69 NA
+summary(covid_data$COVID_conspiracies_total) # 57 NA
+
+covid_data %>%
+  dplyr::select(MIS_total, PAS_total, PhAnS_score, Social_Anhedonia_Score, Green_Total_Short_Score, COVID_conspiracies_total)
+ 
+# Counted 240 rows that had at least 1 NA (prob some human error bc I did this by eye) so this lines up with obs deleted
+
+# Testing Interactions b/w Demographics_societal and schizotypy variables
+covid_reg_int1 <- lm(COVID_conspiracies_total ~ Demographics_societal + Demographics_economic + MIS_total + PAS_total + PhAnS_score + Social_Anhedonia_Score + Green_Total_Short_Score + Demographics_societal:MIS_total, data = covid_data)
+summary(covid_reg_int1)
+
+covid_reg_int2 <- lm(COVID_conspiracies_total ~ Demographics_societal + Demographics_economic + MIS_total + PAS_total + PhAnS_score + Social_Anhedonia_Score + Green_Total_Short_Score + Demographics_societal:PAS_total, data = covid_data)
+summary(covid_reg_int2)
+
+covid_reg_int3 <- lm(COVID_conspiracies_total ~ Demographics_societal + Demographics_economic + MIS_total + PAS_total + PhAnS_score + Social_Anhedonia_Score + Green_Total_Short_Score + Demographics_societal:PhAnS_score, data = covid_data)
+summary(covid_reg_int3)
+
+covid_reg_int4 <- lm(COVID_conspiracies_total ~ Demographics_societal + Demographics_economic + MIS_total + PAS_total + PhAnS_score + Social_Anhedonia_Score + Green_Total_Short_Score + Demographics_societal:Social_Anhedonia_Score, data = covid_data)
+summary(covid_reg_int4)
+
+covid_reg_int4 <- lm(COVID_conspiracies_total ~ Demographics_societal + Demographics_economic + MIS_total + PAS_total + PhAnS_score + Social_Anhedonia_Score + Green_Total_Short_Score + Demographics_societal:Green_Total_Short_Score, data = covid_data)
+summary(covid_reg_int4)
+
+# None are significant when accounting for other variables
+
 ```
 
