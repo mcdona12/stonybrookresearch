@@ -4,7 +4,7 @@ author: "Clare McDonald and Viveka Hall-Holt"
 date: "1/18/2021"
 output: html_document
 editor_options: 
-  chunk_output_type: console
+  chunk_output_type: inline
 ---
 
 ```{r, setup}
@@ -110,5 +110,14 @@ grid.arrange(plot1, plot2, plot3, plot4, plot5, plot6, plot7, plot8, ncol=4)
 ```{r}
 covid_reg1 <- lm(COVID_conspiracies_total ~ MIS_total + PAS_total + PhAnS_score + Social_Anhedonia_Score + Green_Total_Short_Score, data = covid_data)
 summary(covid_reg1)
+
+summary(covid_data$MIS_total)
+summary(covid_data$PAS_total)
+summary(covid_data$PhAnS_score)
+summary(covid_data$Social_Anhedonia_Score)
+summary(covid_data$Green_Total_Short_Score)
+
+covid_data %>%
+  dplyr::select(MIS_total, PAS_total, PhAnS_score, Social_Anhedonia_Score, Green_Total_Short_Score)
 ```
 
