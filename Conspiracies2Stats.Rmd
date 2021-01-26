@@ -7,13 +7,17 @@ editor_options:
   chunk_output_type: inline
 ---
 
+```{r}
+install.packages("ggpubr")
+install.packages("gridExtra")
+```
+
+
 ```{r, setup}
 library(tidyverse)
 library(mosaic)
 library(psych)
-install.packages("ggpubr")
 library(ggpubr)
-install.packages("gridExtra")
 library(gridExtra)
 covid_data <- read_csv("~/Stony Brook Research/COVID_19_December_2020_Cleaned_Data.csv")
 covid_data <- subset(covid_data, duration_in_minutes > 10)
@@ -39,6 +43,11 @@ cor.test(covid_data$Green_Total_Short_Score, covid_data$COVID_conspiracies_total
 cor.test(covid_data$MIS_total, covid_data$COVID_conspiracies_total)
 cor.test(covid_data$PAS_total, covid_data$COVID_conspiracies_total)
 cor.test(covid_data$neg_sxtypy_total, covid_data$COVID_conspiracies_total)
+cor.test(covid_data$Demographics_societal, covid_data$COVID_conspiracies_total)
+cor.test(covid_data$Demographics_economic, covid_data$COVID_conspiracies_total)
+cor.test(covid_data$Rotters_general, covid_data$COVID_conspiracies_total)
+cor.test(covid_data$Rotters_political, covid_data$COVID_conspiracies_total)
+cor.test(covid_data$RLOC_Total_Score, covid_data$COVID_conspiracies_total)
 ```
 
 # Scatterplots
@@ -104,13 +113,49 @@ plot8 <- ggplot(covid_data, aes(x=STAIS_total, y=COVID_conspiracies_total)) +
         # stat_cor(aes(label=..r.label..), label.x=52)
 
 grid.arrange(plot1, plot2, plot3, plot4, plot5, plot6, plot7, plot8, ncol=4)
+
+ggplot(covid_data, aes(x = Demographics_societal, y = COVID_conspiracies_total)) + 
+         geom_point() +
+         geom_smooth(method=lm, size=1.25, se=FALSE) +
+         xlab ("Societal") +
+         ylab ("COVID-19 CT")
+        # stat_cor(aes(label=..r.label..), label.x=70)
+
+ggplot(covid_data, aes(x = Demographics_economic, y = COVID_conspiracies_total)) + 
+         geom_point() +
+         geom_smooth(method=lm, size=1.25, se=FALSE) +
+         xlab ("Economic") +
+         ylab ("COVID-19 CT")
+        # stat_cor(aes(label=..r.label..), label.x=70)
+
+ggplot(covid_data, aes(x = RLOC_Total_Score, y = COVID_conspiracies_total)) + 
+         geom_point() +
+         geom_smooth(method=lm, size=1.25, se=FALSE) +
+         xlab ("Economic") +
+         ylab ("COVID-19 CT")
+        # stat_cor(aes(label=..r.label..), label.x=70)
+
+ggplot(covid_data, aes(x = Rotters_general, y = COVID_conspiracies_total)) + 
+         geom_point() +
+         geom_smooth(method=lm, size=1.25, se=FALSE) +
+         xlab ("Rotters_general") +
+         ylab ("COVID-19 CT")
+        # stat_cor(aes(label=..r.label..), label.x=70)
+
+ggplot(covid_data, aes(x = Rotters_political, y = COVID_conspiracies_total)) + 
+         geom_point() +
+         geom_smooth(method=lm, size=1.25, se=FALSE) +
+         xlab ("Economic") +
+         ylab ("COVID-19 CT")
+        # stat_cor(aes(label=..r.label..), label.x=70)
 ```
 
-# Regression
+# Regressions
 ```{r}
 covid_reg1 <- lm(COVID_conspiracies_total ~ MIS_total + PAS_total + PhAnS_score + Social_Anhedonia_Score + Green_Total_Short_Score, data = covid_data)
 summary(covid_reg1)
 
+<<<<<<< HEAD
 summary(covid_data$MIS_total)
 summary(covid_data$PAS_total)
 summary(covid_data$PhAnS_score)
@@ -119,5 +164,12 @@ summary(covid_data$Green_Total_Short_Score)
 
 covid_data %>%
   dplyr::select(MIS_total, PAS_total, PhAnS_score, Social_Anhedonia_Score, Green_Total_Short_Score)
+=======
+covid_reg2 <- lm(COVID_conspiracies_total ~ Demographics_societal + Demographics_economic, data = covid_data)
+summary(covid_reg2)
+
+covid_reg3 <- lm(COVID_conspiracies_total ~ Demographics_societal + Demographics_economic + MIS_total + PAS_total + PhAnS_score + Social_Anhedonia_Score + Green_Total_Short_Score, data = covid_data)
+summary(covid_reg3)
+>>>>>>> 0c9a49a0e21f58c921fec8ae2171ab0b17d72228
 ```
 
