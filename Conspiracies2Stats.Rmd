@@ -187,10 +187,21 @@ summary(covid_reg_int3)
 covid_reg_int4 <- lm(COVID_conspiracies_total ~ Demographics_societal + Demographics_economic + MIS_total + PAS_total + PhAnS_score + Social_Anhedonia_Score + Green_Total_Short_Score + Demographics_societal:Social_Anhedonia_Score, data = covid_data)
 summary(covid_reg_int4)
 
-covid_reg_int4 <- lm(COVID_conspiracies_total ~ Demographics_societal + Demographics_economic + MIS_total + PAS_total + PhAnS_score + Social_Anhedonia_Score + Green_Total_Short_Score + Demographics_societal:Green_Total_Short_Score, data = covid_data)
-summary(covid_reg_int4)
 
 # None are significant when accounting for other variables
 
+# Attitude Variable
+covid_data <- covid_data %>%
+  mutate(Demographics_political_total = Demographics_societal + Demographics_economic)
+
+hist(covid_data$`Attitudes/Behaviors_1`)
+
+attitude_reg <- lm(COVID_conspiracies_total ~ `Attitudes/Behaviors_1` + Demographics_political_total, data = covid_data)
+summary(attitude_reg)
+
+cor.test(covid_data$Demographics_economic, covid_data$Demographics_societal)
+
+green_reg <- lm(COVID_conspiracies_total ~ `Attitudes/Behaviors_1` + Green_Total_Short_Score + `Attitudes/Behaviors_1`:Green_Total_Short_Score, data = covid_data)
+summary(green_reg)
 ```
 
